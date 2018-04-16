@@ -332,4 +332,4 @@ async def on_message(message):
 
 
 token = os.environ.get('DISCORD_TOKEN')
-bot.run('NDI2NDI3NDE4Njk0MjU0NTkz.DbTy3A.kkfZhKTpcdgvcW6dwIGcV8g3NtE')
+bot.run('token')
