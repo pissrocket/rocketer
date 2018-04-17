@@ -15,6 +15,7 @@ owner = ["361534796830081024"]
 client = discord.Client()
 bot = commands.Bot(command_prefix='r-')
 message = discord.Message
+Staff_Member = ["424927133522067467"]
 
 @bot.event
 async def on_ready():
@@ -26,18 +27,15 @@ async def on_ready():
     await bot.change_presence(game=discord.Game(name='Coding...'))
     
 
-@bot.command(pass_contex=True)
-async def setgame(ctx, *, game):
-    game = game.strip()
-    if game != "":
+@bot.command()
+async def clear():
+    if message.author.roles in Staff_Member:
         try:
-            await bot.presence(game=discord.Game(name=game))
-        except:
-            await bot.send_message(message.channel,"**Failed to change game**")
-        else:
-            await bot.send_message(message.channel, "**Successfuly changed game to {}**".format(game))
-bot.process_commands(message)
-
+            deleted = await client.purge_from(channel, limit=5, check=is_me)
+            msg = await client.send_message(channel, '{0.author}, Deleted {} message(s)'.format(message.author, len(deleted)))
+    else:
+        await bot.send_message(message.channel, "**{0.author}, you cant use this... Lol.**".format(message.author)
+            
 @bot.event
 async def on_message(message):
     if message.content.startswith('r-delme'):
