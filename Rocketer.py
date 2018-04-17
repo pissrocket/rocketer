@@ -12,7 +12,7 @@ import os
 
 version = "0.4.1"
 owner = ["361534796830081024"]
-
+servers = discord.Server
 client = discord.Client()
 bot = commands.Bot(command_prefix='r-')
 
@@ -23,7 +23,7 @@ async def on_ready():
     print(bot.user.id)
     print('------')
     print(discord.utils.oauth_url(bot.user.id))
-    await bot.change_presence(game=discord.Game(name='Coding in ' + servers.format(len(bot.servers))))
+    await bot.change_presence(game=discord.Game(name='Coding in ' + server.format(len(bot.servers))))
     bot.process_commands()
 
 @bot.command(pass_contex=True)
