@@ -49,7 +49,7 @@ async def on_message(message):
         await asyncio.sleep(3)
         await bot.edit_message(msg, ':red_circle: **Edited!**')
     if message.content.upper().startswith('R-AMIOWNER?'):
-        if message.author.id is owner:
+        if message.author.id in owner:
             await bot.send_message(message.channel, ':white_check_mark: **You are the Owner.**')
         else:
             await bot.send_message(message.channel, ':negative_squared_cross_mark: **You aren\'t the Owner.**')
@@ -57,7 +57,7 @@ async def on_message(message):
         e = discord.Embed(title=':ping_pong: **Pong!**', colour=0x3498db)
         msg = await bot.send_message(message.channel, embed=e)
         ping = time.time()
-        complete = "Its %.1f MS" % {:06.2f}'.format(ping)
+        complete = "Its %.8f MS" % ping
         em = discord.Embed(title=complete, colour=0x3498db)
         await bot.edit_message(msg, embed=em)
     if message.content.startswith('r-say'):
@@ -272,7 +272,7 @@ async def on_message(message):
                             ':white_small_square: r-editme\n'
                             ':white_small_square: r-say {words}\n'
                             ':white_small_square: r-ping\n'
-                            ':diamonds: r-AmiBot?\n'
+                            ':diamonds: r-AmiOwner?\n'
                             ':white_small_square: r-bigdigits\n'
                             ':white_small_square: r-digits {0-9}\n'
                             ':white_small_square: r-help\n'
