@@ -14,7 +14,10 @@ version = "0.4.1"
 owner = ["361534796830081024"]
 client = discord.Client()
 bot = commands.Bot(command_prefix='r-')
+message = discord.Message
 Staff_Member = ["424927133522067467"]
+Unregistered = ["395651431073316876"]
+
 
 @bot.event
 async def on_ready():
