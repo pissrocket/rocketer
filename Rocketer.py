@@ -36,7 +36,7 @@ async def setgame(ctx, *, game):
             await bot.send_message(message.channel,"**Failed to change game**")
         else:
             await bot.send_message(message.channel, "**Successfuly changed game to {}**".format(game))
-            bot.process_commands(message)
+bot.process_commands(message)
 
 @bot.event
 async def on_message(message):
@@ -291,15 +291,14 @@ async def on_message(message):
         em.set_thumbnail(url="https://cdn.discordapp.com/emojis/385152309090451467.png?v=1")
         await bot.send_message(message.channel, embed=em)  
     if message.content.startswith('r-bot'):
-        await bot.send_message(message.channel, "```diff\n"
+        await bot.send_message(message.channel, "```md\n"
                                 "<--______--______--THE ROCKETER BOT--______--______-->\n"
                                 "\n"
                                 "\n"
                                 "<The Official Bot of Piss Rocket.\n"
                                 "The currently version is " + version + "!>\n"
                                 "for the commands, type: \"r-help\"```")
-    
-        bot.process_commands(message)
+bot.process_commands(message)
 
         
 
