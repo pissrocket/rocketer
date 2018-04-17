@@ -23,7 +23,7 @@ async def on_ready():
     print('------')
     print(discord.utils.oauth_url(bot.user.id))
     await bot.change_presence(game=discord.Game(name='Coding...'))
-    bot.process_commands(message)
+    
 
 @bot.command(pass_contex=True)
 async def setgame(ctx, *, game):
@@ -35,7 +35,7 @@ async def setgame(ctx, *, game):
             await bot.send_message(message.channel,"**Failed to change game**")
         else:
             await bot.send_message(message.channel, "**Successfuly changed game to {}**".format(game))
-    bot.process_commands(message)
+    
 
 @bot.event
 async def on_message(message):
