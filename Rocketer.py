@@ -285,12 +285,12 @@ async def on_message(message):
         await bot.send_message(message.channel, embed=em)  
     if message.content.startswith('r-bot'):
         await bot.send_message(message.channel, "```md\n"
-                                "<--______--______--THE-ROCKETER-BOT--______--______-->\n"
+                                "<\\______\\______//THE-ROCKETER-BO\\______//______//>\n"
                                 "\n"
                                 "\n"
-                                "<         The-Official-Bot-of-PissRocket.>\n"
-                                "<          The-currently-version-is-{}-!>\n"
-                                "          for the commands, type: \"r-help\"```".format(version))
+                                "<˙˙˙˙˙˙˙˙˙˙˙The-Official-Bot-of-PissRocket.˙˙˙˙˙˙˙˙˙˙˙>\n"
+                                "<˙˙˙˙˙˙˙˙˙˙˙The-currently-version-is-{}-!˙˙˙˙˙˙˙˙˙˙˙˙>\n"
+                                "           for the commands, type: \"r-help\"```".format(version))
 bot.process_commands(message)
 
         
