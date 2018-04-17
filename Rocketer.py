@@ -26,7 +26,13 @@ async def on_ready():
     print(discord.utils.oauth_url(bot.user.id))
     await bot.change_presence(game=discord.Game(name='Coding...'))
     
-
+@bot.command(pass_context = True)
+async def clear(ctx, number):
+    mgs = []
+    number = int(number)
+    async for x in bot.logs_from(ctx.message.channel, limit = number):
+        mgs.append(x)
+    await bot.clear_reactions(mgs)
 
             
 @bot.event
