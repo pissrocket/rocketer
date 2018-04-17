@@ -10,7 +10,7 @@ from datetime import timedelta
 import traceback
 import os
 
-version = 0.4.1
+version = "0.4.1"
 owner = ["361534796830081024"]
 
 client = discord.Client()
