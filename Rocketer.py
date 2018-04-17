@@ -10,7 +10,7 @@ from datetime import timedelta
 import traceback
 import os
 
-version = "0.4.1"
+version = "0.4.2"
 owner = ["361534796830081024"]
 client = discord.Client()
 bot = commands.Bot(command_prefix='r-')
@@ -184,15 +184,18 @@ async def on_message(message):
         await asyncio.sleep(42300)
         await bot.send_message(message.channel, "**:alarm_clock: The Poll has ended**!")
     if message.content.startswith('r-verify'):
-        em = discord.Embed(title='VERIFICATION', description='**Hey __' + message.author.name + '__, if you want to get verified, you need to answer 3 questions:\n'
-                                ':one: Do you play __.io games__?\n'
-                                ':two: What else games do you play?\n'
-                                ':three: How did you get here?\n'
-                                '__Note__: if you play a game, and you want to get this game1s special role, you need to ask it to an Admin (or higher) in #new-game, __and you must certify it!__)\n'
-                                '\n'
-                                '__Type `!verify` to finish the verification__**', colour=0x3498db)
-        em.set_thumbnail(url=message.author.avatar_url)
-        await bot.send_message(message.channel, embed=em)
+        if message.author.roles in Unregistered:
+            em = discord.Embed(title='VERIFICATION', description='**Hey __' + message.author.name + '__, if you want to get verified, you need to answer 3 questions:\n'
+                                    ':one: Do you play __.io games__?\n'
+                                    ':two: What else games do you play?\n'
+                                    ':three: How did you get here?\n'
+                                    '__Note__: if you play a game, and you want to get this game1s special role, you need to ask it to an Admin (or higher) in #new-game, __and you must certify it!__)\n'
+                                    '\n'
+                                    '__Type `!verify` to finish the verification__**', colour=0x3498db)
+            em.set_thumbnail(url=message.author.avatar_url)
+            await bot.send_message(message.channel, embed=em)
+        else:
+            bot.send_message(message.channel, "**Boi, you are registred, why are you want to?? :logic:**")
     if message.content.startswith('r-leavepls'):
         em5 = discord.Embed(title=":warning: WARNING :warning:", description="THE BOT WILL LEAVE THE SERVER IN:\n"
                             ":large_blue_circle::large_blue_circle::large_blue_circle::large_blue_circle::black_circle:\n"
@@ -296,6 +299,7 @@ async def on_message(message):
                                 "<▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒>\n"
                                 "<                                                >\n"
                                 "<▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒>\n"
+                                "\n"
                                 "         for the commands, type: \"r-help\"```".format(version))
 bot.process_commands(message)
 
