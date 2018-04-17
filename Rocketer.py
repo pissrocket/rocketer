@@ -23,7 +23,7 @@ async def on_ready():
     print('------')
     print(discord.utils.oauth_url(bot.user.id))
     await bot.change_presence(game=discord.Game(name='Coding...'))
-    bot.process_commands()
+    bot.process_commands(message)
 
 @bot.command(pass_contex=True)
 async def setgame(ctx, *, game):
@@ -35,7 +35,7 @@ async def setgame(ctx, *, game):
             await bot.send_message(message.channel,"**Failed to change game**")
         else:
             await bot.send_message(message.channel, "**Successfuly changed game to {}**".format(game))
-    bot.process_commands()
+    bot.process_commands(message)
 
 @bot.event
 async def on_message(message):
@@ -57,7 +57,7 @@ async def on_message(message):
         e = discord.Embed(title=':ping_pong: **Pong!**', colour=0x3498db)
         msg = await bot.send_message(message.channel, embed=e)
         ping = time.time()
-        complete = "Its %.1f MS" % ping
+        complete = "Its %.1f MS" % {:06.2f}'.format(ping)
         em = discord.Embed(title=complete, colour=0x3498db)
         await bot.edit_message(msg, embed=em)
     if message.content.startswith('r-say'):
@@ -300,7 +300,6 @@ async def on_message(message):
     
         bot.process_commands(message)
 
-    
         
 
     
