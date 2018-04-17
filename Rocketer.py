@@ -286,8 +286,8 @@ async def on_message(message):
                                 "\n"
                                 "\n"
                                 "<         The-Official-Bot-of-PissRocket.>\n"
-                                "<          The-currently-version-is-{}-!>\n".format(version)
-                                "          for the commands, type: \"r-help\"```")
+                                "<          The-currently-version-is-{}-!>\n"
+                                "          for the commands, type: \"r-help\"```".format(version))
 bot.process_commands(message)
 
         
