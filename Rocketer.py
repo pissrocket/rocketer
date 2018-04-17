@@ -32,7 +32,7 @@ async def clear(ctx, number):
     number = int(number)
     async for x in bot.logs_from(ctx.message.channel, limit = number):
         mgs.append(x)
-    await bot.clear_reactions(mgs)
+    await bot.delete_messages(mgs)
 
             
 @bot.event
