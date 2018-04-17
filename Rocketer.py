@@ -14,7 +14,6 @@ version = "0.4.1"
 owner = ["361534796830081024"]
 client = discord.Client()
 bot = commands.Bot(command_prefix='r-')
-message = discord.Message
 Staff_Member = ["424927133522067467"]
 
 @bot.event
@@ -26,13 +25,7 @@ async def on_ready():
     print(discord.utils.oauth_url(bot.user.id))
     await bot.change_presence(game=discord.Game(name='Coding...'))
     
-@bot.command(pass_context = True)
-async def clear(ctx, number):
-    mgs = []
-    number = int(number)
-    async for x in bot.logs_from(ctx.message.channel, limit = number):
-        mgs.append(x)
-    await bot.delete_messages(mgs)
+
 
             
 @bot.event
@@ -185,7 +178,7 @@ async def on_message(message):
         msg = await bot.send_message(message.channel, "**A Poll has started! `12 hour remaining`**")
         await bot.add_reaction(msg, "\U0001F44D")
         await bot.add_reaction(msg, "\U0001F44E")
-        asyncio.sleep(42300)
+        await asyncio.sleep(42300)
         await bot.send_message(message.channel, "**:alarm_clock: The Poll has ended**!")
     if message.content.startswith('r-verify'):
         em = discord.Embed(title='VERIFICATION', description='**Hey __' + message.author.name + '__, if you want to get verified, you need to answer 3 questions:\n'
@@ -289,12 +282,12 @@ async def on_message(message):
         await bot.send_message(message.channel, embed=em)  
     if message.content.startswith('r-bot'):
         await bot.send_message(message.channel, "```md\n"
-                                "<--______--______--THE ROCKETER BOT--______--______-->\n"
+                                "<--______--______--THE-ROCKETER-BOT--______--______-->\n"
                                 "\n"
                                 "\n"
-                                "<The Official Bot of Piss Rocket.\n"
-                                "The currently version is " + version + "!>\n"
-                                "for the commands, type: \"r-help\"```")
+                                "<         The-Official-Bot-of-PissRocket.>\n"
+                                "<          The-currently-version-is-{}-!>\n".format(version)
+                                "          for the commands, type: \"r-help\"```")
 bot.process_commands(message)
 
         
