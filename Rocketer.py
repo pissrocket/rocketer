@@ -14,6 +14,7 @@ version = "0.4.1"
 owner = ["361534796830081024"]
 client = discord.Client()
 bot = commands.Bot(command_prefix='r-')
+message = discord.Message
 
 @bot.event
 async def on_ready():
@@ -35,7 +36,7 @@ async def setgame(ctx, *, game):
             await bot.send_message(message.channel,"**Failed to change game**")
         else:
             await bot.send_message(message.channel, "**Successfuly changed game to {}**".format(game))
-    
+            bot.process_commands(message)
 
 @bot.event
 async def on_message(message):
