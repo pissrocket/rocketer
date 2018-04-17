@@ -12,7 +12,6 @@ import os
 
 version = "0.4.1"
 owner = ["361534796830081024"]
-servers = discord.Server
 client = discord.Client()
 bot = commands.Bot(command_prefix='r-')
 
@@ -23,7 +22,7 @@ async def on_ready():
     print(bot.user.id)
     print('------')
     print(discord.utils.oauth_url(bot.user.id))
-    await bot.change_presence(game=discord.Game(name='Coding in ' + server.format(len(bot.servers))))
+    await bot.change_presence(game=discord.Game(name='Coding...'))
     bot.process_commands()
 
 @bot.command(pass_contex=True)
@@ -279,7 +278,7 @@ async def on_message(message):
                             ':white_small_square: r-help\n'
                             ':small_blue_diamond: r-clear\n'
                             ':white_small_square: r-8ball\n'
-                            ':diamonds: r-verify\n'
+                            ':white_small_square: r-verify\n'
                             ':white_small_square: r-leavepls\n'
                             ':white_small_square: Poll\n'
                             ':white_small_square: r-invite\n'
@@ -297,7 +296,7 @@ async def on_message(message):
                                 "\n"
                                 "<The Official Bot of Piss Rocket.\n"
                                 "The currently version is " + version + "!>\n"
-                                "for the commands, type: \"r-help\"")
+                                "for the commands, type: \"r-help\"```")
     
         bot.process_commands(message)
 
