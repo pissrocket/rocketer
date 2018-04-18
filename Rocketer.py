@@ -35,8 +35,8 @@ async def clear(message, reaction):
     msg = await bot.get_message(channel=message.channel, id=None)
     if Permissions.manage_messages in message.author.Permissions:
         await bot.clear_reactions(message=msg)
-        await bot.send_message(message.channel, "**{}, cleared the reactions.**".format(message.author)
-                                          
+        await bot.send_message(message.channel, "**{}, cleared the reactions.**".format(message.author)                        
+                                                                                        
 @bot.event
 async def on_message(message):
     if message.content.startswith('r-delme'):
