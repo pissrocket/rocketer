@@ -34,11 +34,11 @@ async def clear(message, reaction):
     reaction = discord.Reaction
     author = message.author
     msg = await bot.get_message(channel=message.channel, id=None)
-    try:
+    if author.Permissions = Permissions.manage_messages:
         await bot.clear_reactions(message=msg)
         await bot.send_message(message.channel, "**{}, cleared the reactions.**".format(author)
-    except ForbiddenError as err:
-                               await bot.send_message(message.channel, "**{}, you cant use this... Lol.**".format(author)
+    else:
+        await bot.send_message(message.channel, "**{}, you cant use this... Lol.**".format(author)
                                
    
 
