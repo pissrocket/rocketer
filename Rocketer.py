@@ -9,6 +9,7 @@ import re
 from datetime import timedelta
 import traceback
 import os
+import sys
 
 version = "0.4.2"
 owner = ["361534796830081024"]
@@ -27,8 +28,19 @@ async def on_ready():
     print('------')
     print(discord.utils.oauth_url(bot.user.id))
     await bot.change_presence(game=discord.Game(name='Coding...'))
-    
 
+@bot.command(text_contex=True)
+async def clear(message, reaction):
+    reaction = discord.Reaction
+    author = message.author
+    msg = await bot.get_message(channel=message.channel, id=None)
+    try:
+        await bot.clear_reactions(message=msg)
+        await bot.send_message(message.channel, "**{}, cleared the reactions.**".format(author)
+    except Forbidden as err:
+                               await bot.send_message(message.channel, "**{}, you cant use this... Lol.**".format(author)
+                               
+   
 
             
 @bot.event
@@ -178,10 +190,10 @@ async def on_message(message):
                                                               '**Ask it to ur mum :8ball:**',
                                                               '**:feelsUltraREE: *REEEE* :8ball:**',]))
     if message.content.upper().startswith('POLL'):
-        msg = await bot.send_message(message.channel, "**A Poll has started! `12 hour remaining`**")
+        msg = await bot.send_message(message.channel, "**A Poll has started! `24 hour remaining`**")
         await bot.add_reaction(msg, "\U0001F44D")
         await bot.add_reaction(msg, "\U0001F44E")
-        await asyncio.sleep(3)
+        await asyncio.sleep(86400)
         await bot.send_message(message.channel, "**:alarm_clock: The Poll has ended**!")
     if message.content.startswith('r-verify'):
         if message.author.roles in Unregistered:
@@ -293,8 +305,8 @@ async def on_message(message):
                                 "<▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒>\n"
                                 "<                                                >\n"
                                 "<▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒>\n"
-                                "<˙˙˙˙˙˙˙˙˙The-Official-Bot-of-PissRocket.˙˙˙˙˙˙˙˙˙>\n"
-                                "<˙˙˙˙˙˙˙˙The-currently-version-is-{}-!˙˙˙˙˙˙˙˙˙˙>\n"
+                                "<˙˙˙˙˙˙˙˙˙The-Official-Bot-of-PissRocket.˙˙˙˙˙˙˙˙>\n"
+                                "<˙˙˙˙˙˙˙˙The-currently-version-is-{}-!˙˙˙˙˙˙˙˙>\n"
                                 "<                                                >\n"
                                 "<▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒>\n"
                                 "<                                                >\n"
