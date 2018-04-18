@@ -37,7 +37,7 @@ async def clear(message, reaction):
     try:
         await bot.clear_reactions(message=msg)
         await bot.send_message(message.channel, "**{}, cleared the reactions.**".format(author)
-    except Forbidden as err:
+    except ForbiddenError as err:
                                await bot.send_message(message.channel, "**{}, you cant use this... Lol.**".format(author)
                                
    
