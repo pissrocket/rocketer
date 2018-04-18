@@ -18,7 +18,14 @@ bot = commands.Bot(command_prefix='r-')
 message = discord.Message
 Staff_Member = ["424927133522067467"]
 Unregistered = ["395651431073316876"]
-
+@bot.command(text_contex=True)
+async def clear(message, reaction):
+    reaction = discord.Reaction
+    msg = await bot.get_message(channel=message.channel, id=None)
+    if Permissions.manage_messages in message.author.Permissions:
+        await bot.clear_reactions(message=msg)
+        await bot.send_message(message.channel, "**{}, cleared the reactions.**".format(message.author)
+                               return
 
 @bot.event
 async def on_ready():
@@ -28,15 +35,7 @@ async def on_ready():
     print('------')
     print(discord.utils.oauth_url(bot.user.id))
     await bot.change_presence(game=discord.Game(name='Coding...'))
-
-@bot.command(text_contex=True)
-async def clear(message, reaction):
-    reaction = discord.Reaction
-    msg = await bot.get_message(channel=message.channel, id=None)
-    if Permissions.manage_messages in message.author.Permissions:
-        await bot.clear_reactions(message=msg)
-        await bot.send_message(message.channel, "**{}, cleared the reactions.**".format(message.author)                        
-                                                                                        
+ 
 @bot.event
 async def on_message(message):
     if message.content.startswith('r-delme'):
