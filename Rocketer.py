@@ -36,7 +36,7 @@ async def clear(message, reaction):
     if Permissions.manage_messages in message.author.Permissions:
         await bot.clear_reactions(message=msg)
         await bot.send_message(message.channel, "**{}, cleared the reactions.**".format(message.author)
-    else:
+    if Permissions.manage_messages not in message.author.Permissions:
         await bot.send_message(message.channel, "**{}, you cant use this... Lol.**".format(message.author)
                                
    
