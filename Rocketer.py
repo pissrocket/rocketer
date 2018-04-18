@@ -307,13 +307,7 @@ bot.process_commands(message)
     
         
 
-@bot.command(text_contex=True)
-async def clear(message, reaction):
-    reaction = discord.Reaction
-    msg = await bot.get_message(channel=message.channel, id=None)
-    if Permissions.manage_messages in message.author.Permissions:
-        await bot.clear_reactions(message=msg)
-        await bot.send_message(message.channel, "**{}, cleared the reactions.**".format(message.author)
+
 
 
 
@@ -327,3 +321,11 @@ async def clear(message, reaction):
 
 token = os.environ.get('DISCORD_TOKEN')
 bot.run(token)
+
+@bot.command(text_contex=True)
+async def clear(message, reaction):
+    reaction = discord.Reaction
+    msg = await bot.get_message(channel=message.channel, id=None)
+    if Permissions.manage_messages in message.author.Permissions:
+        await bot.clear_reactions(message=msg)
+        await bot.send_message(message.channel, "**{}, cleared the reactions.**".format(message.author)
