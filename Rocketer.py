@@ -28,7 +28,17 @@ async def on_ready():
     print('------')
     print(discord.utils.oauth_url(bot.user.id))
     await bot.change_presence(game=discord.Game(name='Coding...'))
- 
+
+@bot.command(text_contex=True)
+async def clear(reaction):
+    reaction = discord.Reaction
+    msg = await bot.get_message(channel=message.channel, id=None)
+    if discord.Permissions.manage_messages in message.author.Permissions:
+        await bot.clear_reactions(message=msg)
+        await bot.send_message(message.channel, "**{}, cleared the reactions.**".format(message.author)
+
+
+                               
 @bot.event
 async def on_message(message):
     if message.content.startswith('r-delme'):
@@ -321,11 +331,3 @@ bot.process_commands(message)
 
 token = os.environ.get('DISCORD_TOKEN')
 bot.run(token)
-
-@bot.command(text_contex=True)
-async def clear(reaction):
-    reaction = discord.Reaction
-    msg = await bot.get_message(channel=message.channel, id=None)
-    if message.author.Permissions.manage_message = True:
-        await bot.clear_reactions(message=msg)
-        await bot.send_message(message.channel, "**{}, cleared the reactions.**".format(message.author)
