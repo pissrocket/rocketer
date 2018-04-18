@@ -32,13 +32,12 @@ async def on_ready():
 @bot.command(text_contex=True)
 async def clear(message, reaction):
     reaction = discord.Reaction
-    author = message.author
     msg = await bot.get_message(channel=message.channel, id=None)
-    if author.Permissions = Permissions.manage_messages:
+    if Permissions.manage_messages in message.author.Permissions:
         await bot.clear_reactions(message=msg)
-        await bot.send_message(message.channel, "**{}, cleared the reactions.**".format(author)
+        await bot.send_message(message.channel, "**{}, cleared the reactions.**".format(message.author)
     else:
-        await bot.send_message(message.channel, "**{}, you cant use this... Lol.**".format(author)
+        await bot.send_message(message.channel, "**{}, you cant use this... Lol.**".format(message.author)
                                
    
 
