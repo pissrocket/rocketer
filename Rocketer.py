@@ -181,7 +181,7 @@ async def on_message(message):
         msg = await bot.send_message(message.channel, "**A Poll has started! `12 hour remaining`**")
         await bot.add_reaction(msg, "\U0001F44D")
         await bot.add_reaction(msg, "\U0001F44E")
-        await asyncio.sleep(42300)
+        await asyncio.sleep(3)
         await bot.send_message(message.channel, "**:alarm_clock: The Poll has ended**!")
     if message.content.startswith('r-verify'):
         if message.author.roles in Unregistered:
