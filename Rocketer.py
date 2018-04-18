@@ -29,13 +29,6 @@ async def on_ready():
     print(discord.utils.oauth_url(bot.user.id))
     await bot.change_presence(game=discord.Game(name='Coding...'))
 
-@bot.command(text_contex=True)
-async def clear(reaction):
-    reaction = discord.Reaction
-    msg = await bot.get_message(channel=message.channel, id=None)
-    if discord.Permissions.manage_messages in message.author.Permissions:
-        await bot.clear_reactions(message=msg)
-        await bot.send_message(message.channel, "**{}, cleared the reactions.**".format(message.author)
 
 
                                
