@@ -33,8 +33,8 @@ async def on_ready():
 async def on_member_join(member):
     tube = bot.get_channel(id='381774233199443968')
     server = member.server
-    fmt = '**Welcome {0.mention}, Im __{}__, I will show you around :thonkSmile:\n'
-    'First you need to verify yourself so go to {}, Than type `r-verify` and anwer all of the questions!\n'
+    fmt = '**Welcome {0.mention}, Im __{1}__, I will show you around :thonkSmile:\n'
+    'First you need to verify yourself so go to {2}, Than type `r-verify` and anwer all of the questions!\n'
     '__Remember, always write the number of the question to trigger me.__**'
     await bot.send_message(server, fmt.format(member, bot.user.name, tube))
 
