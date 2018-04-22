@@ -32,9 +32,9 @@ async def on_ready():
 @bot.event
 async def on_member_join(member):
     tube = bot.get_channel(id='381774233199443968')
-    await bot.send_message(tube, '**Welcome {0.mention}, Im __' + bot.user.name + '__, I will show you around :thonkSmile:\n'
-    'First you need to verify yourself so go to {}, Than type `r-verify` and anwer all of the questions!\n'
-    '__Remember, always write the number of the question to trigger me.__**'.format(member, tube))
+    await bot.send_message(tube, '**Welcome {}, Im __' + bot.user.name + '__, I will show you around :thonkSmile:\n'
+    'First you need to type `r-verify` and answer all of the questions!\n'
+    '__Remember, always write the number of the question to trigger me!__**'.format(member))
 
 @bot.command()
 async def joined(member : discord.Member):
