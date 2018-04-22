@@ -159,9 +159,9 @@ async def on_message(message):
                                ":black_circle::black_circle::black_circle::black_circle::large_blue_circle:\n"
                                ":black_circle::black_circle::black_circle::black_circle::large_blue_circle:\n"
                                ":black_circle::large_blue_circle::large_blue_circle::large_blue_circle::black_circle:")
-    if message.author == client.user:
-        return
     if message.content.startswith('r-guess'):
+        if message.author == bot.user:
+            return
         await bot.send_message(message.channel, 'Guess a number between 1 to 10')
 
     def guess_check(m):
