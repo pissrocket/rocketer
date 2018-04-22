@@ -29,7 +29,6 @@ async def on_ready():
     print(discord.utils.oauth_url(bot.user.id))
     await bot.change_presence(game=discord.Game(name='Coding...'))
 
-@bot.event
 class Lenny:
     def __init__(self, bot):
         self.bot = bot
