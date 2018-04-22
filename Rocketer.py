@@ -32,7 +32,7 @@ async def on_ready():
 class Lenny:
     def __init__(self, bot):
         self.bot = bot
-    @bot.command()
+    @commands.command()
     async def lenny(self):
         if message.content.startswith('r-lenny'):
             ears = ['q{}p', 'ʢ{}ʡ', '⸮{}?', 'ʕ{}ʔ', 'ᖗ{}ᖘ', 'ᕦ{}ᕥ', 'ᕦ({})ᕥ', 'ᕙ({})ᕗ', 'ᘳ{}ᘰ', 'ᕮ{}ᕭ', 'ᕳ{}ᕲ', '({})', '[{}]', '¯\\\_{}_/¯', '୧{}୨', '୨{}୧', '⤜({})⤏', '☞{}☞', 'ᑫ{}ᑷ', 'ᑴ{}ᑷ', 'ヽ({})ﾉ', '\\\({})/', '乁({})ㄏ', '└[{}]┘', '(づ{})づ', '(ง{})ง', '|{}|']
@@ -48,7 +48,7 @@ class Lenny:
 async def on_member_join(member):
     member = discord.Member
     tube = bot.get_channel(id='381774233199443968')
-    await bot.send_message(tube, '**Welcome, Im __' + bot.user.name + '__, I will show you around :thonkSmile:381711802842742785\n'
+    await bot.send_message(tube, '**Welcome, Im __' + bot.user.name + '__, I will show you around <:thonkSmile:381711802842742785>\n'
     'First you need to type `r-verify` and answer all of the questions!\n'
     '__Remember, always write the number of the question to trigger me!__**')
 
