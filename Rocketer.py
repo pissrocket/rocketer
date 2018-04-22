@@ -200,7 +200,7 @@ async def on_message(message):
                                 ':one: Do you play __.io games__?\n'
                                 ':two: What else games do you play?\n'
                                 ':three: How did you get here?\n'
-                                '__Note__: if you play a game, and you want to get this game1s special role, you need to ask it to an Admin (or higher) in #new-game, __and you must certify it!__)\n'
+                                '__Note__: if you play a game, and you want to get this game\'s special role, you need to ask it to an Admin (or higher) in #new-game, __and you must certify it!__)\n'
                                 '\n'
                                 '__Type `!verify` to finish the verification__**', colour=0x3498db)
         em.set_thumbnail(url=message.author.avatar_url)
