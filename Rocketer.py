@@ -17,7 +17,7 @@ client = discord.Client()
 bot = commands.Bot(command_prefix='r-')
 message = discord.Message
 Staff_Member = ["424927133522067467"]
-Unregistered = ["395651431073316876"]
+
 
 
 @bot.event
@@ -29,7 +29,14 @@ async def on_ready():
     print(discord.utils.oauth_url(bot.user.id))
     await bot.change_presence(game=discord.Game(name='Coding...'))
 
-
+@bot.event
+async def on_member_join(member):
+    tube = await bot.get_channel(id='381774233199443968')
+    server = member.server
+    fmt = '**Welcome {0.mention}, Im __{}__, I will show you around :thonkSmile:\n'
+    'First you need to verify yourself so go to {}, Than type `r-verify` and anwer all of the questions!\n'
+    '__Remember, always write the number of the question to trigger me.__**'
+    await bot.send_message(server, fmt.format(member, bot.user.name, tube))
 
                                
 @bot.event
@@ -152,10 +159,24 @@ async def on_message(message):
                                ":black_circle::black_circle::black_circle::black_circle::large_blue_circle:\n"
                                ":black_circle::black_circle::black_circle::black_circle::large_blue_circle:\n"
                                ":black_circle::large_blue_circle::large_blue_circle::large_blue_circle::black_circle:")
+    if message.author == client.user:
+        return
     if message.content.startswith('r-guess'):
         await bot.send_message(message.channel, 'Guess a number between 1 to 10')
 
-    
+    def guess_check(m):
+        return m.content.isdigit()
+
+    guess = await bot.wait_for_message(timeout=5.0, author=message.author, check=guess_check)
+    answer = random.randint(1, 10)
+    if guess is None:
+        fmt = 'Sorry boi, game over. It was {}.'
+        await bot.send_message(message.channel, fmt.format(answer))
+        return
+    if int(guess.content) == answer:
+        await bot.send_message(message.channel, 'You are right!')
+    else:
+        await bot.send_message(message.channel, 'Sorry. It is actually {}.'.format(answer))
     if message.content.startswith('r-8ball'):
         await bot.send_message(message.channel, random.choice(['**It is certain :8ball:**',
                                                               '**It is decidedly so :8ball:**',
@@ -189,18 +210,22 @@ async def on_message(message):
         await asyncio.sleep(86400)
         await bot.send_message(message.channel, "**:alarm_clock: The Poll has ended**!")
     if message.content.startswith('r-verify'):
-        if message.author.roles in Unregistered:
-            em = discord.Embed(title='VERIFICATION', description='**Hey __' + message.author.name + '__, if you want to get verified, you need to answer 3 questions:\n'
-                                    ':one: Do you play __.io games__?\n'
-                                    ':two: What else games do you play?\n'
-                                    ':three: How did you get here?\n'
-                                    '__Note__: if you play a game, and you want to get this game1s special role, you need to ask it to an Admin (or higher) in #new-game, __and you must certify it!__)\n'
-                                    '\n'
-                                    '__Type `!verify` to finish the verification__**', colour=0x3498db)
-            em.set_thumbnail(url=message.author.avatar_url)
-            await bot.send_message(message.channel, embed=em)
-        else:
-            bot.send_message(message.channel, "**Boi, you are registred, why are you want to?? :logic:**")
+        em = discord.Embed(title='VERIFICATION', description='**Hey __' + message.author.name + '__, if you want to get verified, you need to answer 3 questions:\n'
+                                ':one: Do you play __.io games__?\n'
+                                ':two: What else games do you play?\n'
+                                ':three: How did you get here?\n'
+                                '__Note__: if you play a game, and you want to get this game1s special role, you need to ask it to an Admin (or higher) in #new-game, __and you must certify it!__)\n'
+                                '\n'
+                                '__Type `!verify` to finish the verification__**', colour=0x3498db)
+        em.set_thumbnail(url=message.author.avatar_url)
+        await bot.send_message(message.channel, embed=em)
+        await bot.wait_for_message(author=message.author, content='3')
+        await bot.send_message(message.channel, "**Verified! :thumbsup:**")
+        role = "381774688948322317"
+        role2 = "395651431073316876"
+        member = message.author
+        await bot.add_roles(member, role)
+        await bot.remove_roles(member, role2)
     if message.content.startswith('r-leavepls'):
         em5 = discord.Embed(title=":warning: WARNING :warning:", description="THE BOT WILL LEAVE THE SERVER IN:\n"
                             ":large_blue_circle::large_blue_circle::large_blue_circle::large_blue_circle::black_circle:\n"
@@ -310,7 +335,7 @@ async def on_message(message):
 bot.process_commands(message)
 
 
-        
+
 
     
     
