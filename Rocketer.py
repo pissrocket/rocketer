@@ -33,14 +33,15 @@ async def on_ready():
 async def on_member_join(member):
     tube = bot.get_channel(id='381774233199443968')
     server = member.server
-    fmt = '**Welcome {0.mention}, Im __{1}__, I will show you around :thonkSmile:\n'
-    'First you need to verify yourself so go to {2}, Than type `r-verify` and anwer all of the questions!\n'
+    fmt = '**Welcome {0.mention}, Im __{0.bot.user.name}__, I will show you around :thonkSmile:\n'
+    'First you need to verify yourself so go to {0.channel}, Than type `r-verify` and answer all of the questions!\n'
     '__Remember, always write the number of the question to trigger me.__**'
-    await bot.send_message(server, fmt.format(member, bot.user.name, tube))
+    await bot.send_message(tube, fmt.format(member, bot.user.name, tube))
 
 @bot.command()
 async def joined(member : discord.Member):
-    await bot.say('{0.name} joined in {0.joined_at}'.format(member))
+    await bot.send_message(message.channel, '{0.name} joined in {0.joined_at}'.format(member))
+    
                                
 @bot.event
 async def on_message(message):
