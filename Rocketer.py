@@ -10,8 +10,6 @@ import datetime
 import traceback
 import os
 import sys
-from .utils import checks
-
 
 version = "0.4.2"
 owner = ["361534796830081024"]
