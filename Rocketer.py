@@ -6,7 +6,7 @@ import time
 import random
 import aiohttp
 import re
-from datetime import timedelta
+import datetime
 import traceback
 import os
 import sys
@@ -152,6 +152,22 @@ async def on_message(message):
                                ":black_circle::black_circle::black_circle::black_circle::large_blue_circle:\n"
                                ":black_circle::black_circle::black_circle::black_circle::large_blue_circle:\n"
                                ":black_circle::large_blue_circle::large_blue_circle::large_blue_circle::black_circle:")
+    if message.content.startswith('r-guess'):
+        await bot.send_message(message.channel, 'Guess a number between 1 to 10')
+
+    def guess_check(m):
+        return m.content.isdigit()
+
+    guess = await bot.wait_for_message(timeout=5.0, author=message.author, check=guess_check)
+    answer = random.randint(1, 10)
+    if guess is None:
+        fmt = 'Sorry boi, game over. It was {}.'
+        await bot.send_message(message.channel, fmt.format(answer))
+        return
+    if int(guess.content) == answer:
+        await bot.send_message(message.channel, 'You are right!')
+    else:
+        await bot.send_message(message.channel, 'Sorry. It is actually {}.'.format(answer))
     if message.content.startswith('r-8ball'):
         await bot.send_message(message.channel, random.choice(['**It is certain :8ball:**',
                                                               '**It is decidedly so :8ball:**',
@@ -270,7 +286,7 @@ async def on_message(message):
                             ':white_small_square: r-editme\n'
                             ':white_small_square: r-say {words}\n'
                             ':white_small_square: r-ping\n'
-                            ':diamonds: r-AmiOwner?\n'
+                            ':white_small_square: r-AmiOwner?\n'
                             ':white_small_square: r-bigdigits\n'
                             ':white_small_square: r-digits {0-9}\n'
                             ':white_small_square: r-help\n'
@@ -281,6 +297,7 @@ async def on_message(message):
                             ':white_small_square: Poll\n'
                             ':white_small_square: r-invite\n'
                             ':white_small_square: r-bot\n'
+                            ':white_small_square: r-guess\n'
                             '\n'
                             ':white_small_square: Free for everyone\n'
                             ':small_blue_diamond: Staff commands\n'
@@ -303,6 +320,7 @@ async def on_message(message):
                                 "\n"
                                 "         for the commands, type: \"r-help\"```".format(version))
 bot.process_commands(message)
+
 
         
 
