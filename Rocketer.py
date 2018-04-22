@@ -223,13 +223,6 @@ async def on_message(message):
                                 '__Type `!verify` to finish the verification__**', colour=0x3498db)
         em.set_thumbnail(url=message.author.avatar_url)
         await bot.send_message(message.channel, embed=em)
-        await bot.wait_for_message(author=message.author, content='3')
-        await bot.send_message(message.channel, "**Verified! :thumbsup:**")
-        role = "381774688948322317"
-        role2 = "395651431073316876"
-        member = message.author
-        await bot.add_roles(member, role)
-        await bot.remove_roles(member, role2)
     if message.content.startswith('r-leavepls'):
         em5 = discord.Embed(title=":warning: WARNING :warning:", description="THE BOT WILL LEAVE THE SERVER IN:\n"
                             ":large_blue_circle::large_blue_circle::large_blue_circle::large_blue_circle::black_circle:\n"
