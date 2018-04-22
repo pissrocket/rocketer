@@ -296,7 +296,7 @@ async def on_message(message):
                             ':white_small_square: Poll\n'
                             ':white_small_square: r-invite\n'
                             ':white_small_square: r-bot\n'
-                            ':white_small_square: r-guess\n'
+                            ':white:small_square: r-joined {user}\n'
                             '\n'
                             ':white_small_square: Free for everyone\n'
                             ':small_blue_diamond: Staff commands\n'
