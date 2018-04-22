@@ -29,14 +29,7 @@ async def on_ready():
     print(discord.utils.oauth_url(bot.user.id))
     await bot.change_presence(game=discord.Game(name='Coding...'))
 
-@bot.event
-async def on_member_join(member):
-    tube = bot.get_channel(id='381774233199443968')
-    server = member.server
-    fmt = '**Welcome {0.mention}, Im __' + bot.user.name + '__, I will show you around :thonkSmile:\n'
-    'First you need to verify yourself so go to {}, Than type `r-verify` and anwer all of the questions!\n'
-    '__Remember, always write the number of the question to trigger me.__**'
-    await bot.send_message(server, fmt.format(member, tube))
+
 
 @bot.command()
 async def joined(member : discord.Member):
