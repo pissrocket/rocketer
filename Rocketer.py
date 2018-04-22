@@ -162,24 +162,6 @@ async def on_message(message):
                                ":black_circle::black_circle::black_circle::black_circle::large_blue_circle:\n"
                                ":black_circle::black_circle::black_circle::black_circle::large_blue_circle:\n"
                                ":black_circle::large_blue_circle::large_blue_circle::large_blue_circle::black_circle:")
-    if message.author == client.user:
-        return
-    if message.content.startswith('r-guess'):
-        await bot.send_message(message.channel, 'Guess a number between 1 to 10')
-
-    def guess_check(m):
-        return m.content.isdigit()
-
-    guess = await bot.wait_for_message(timeout=5.0, author=message.author, check=guess_check)
-    answer = random.randint(1, 10)
-    if guess is None:
-        fmt = 'Sorry boi, game over. It was {}.'
-        await bot.send_message(message.channel, fmt.format(answer))
-        return
-    if int(guess.content) == answer:
-        await bot.send_message(message.channel, 'You are right!')
-    else:
-        await bot.send_message(message.channel, 'Sorry. It is actually {}.'.format(answer))
     if message.content.startswith('r-8ball'):
         await bot.send_message(message.channel, random.choice(['**It is certain :8ball:**',
                                                               '**It is decidedly so :8ball:**',
