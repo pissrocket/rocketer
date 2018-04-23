@@ -29,10 +29,6 @@ async def on_ready():
     print(discord.utils.oauth_url(bot.user.id))
     await bot.change_presence(game=discord.Game(name='Coding...'))   
 
-@bot.command()
-async def word():
-    await bot.send_message(message.channel, "Im working..")
-
 @bot.event
 async def on_member_join(member):
     member = discord.Member
@@ -307,7 +303,7 @@ async def on_message(message):
                             ':diamonds: Only works in PissRocket\n', colour=0x3498db)
         em.set_thumbnail(url="https://cdn.discordapp.com/emojis/385152309090451467.png?v=1")
         await bot.send_message(message.channel, embed=em)  
-    if message.content.startswith('r-latest'):
+    if message.content('r-latest'):
         emb = discord.Embed(title="LATEST UPDATES", description=":high_brightness: The Currently version is __" + version + "__ :high_brightness:\n\n"
                             ":white_small_square: r-lenny", colour=0x3498db)
         emb.set_thumbnail(url="https://cdn.discordapp.com/emojis/438035428386275340.png?v=1")
