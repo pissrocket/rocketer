@@ -310,6 +310,7 @@ async def on_message(message):
     if message.content.startswith('r-latest'):
         emb = discord.Embed(title="LATEST UPDATES", description=":high_brightness: The Currently version is __" + version + "__ :high_brightness:\n\n"
                             ":white_small_square: r-lenny", colour=0x3498db)
+        emb.set_thumbnail(url="https://discordapp.com/assets/d36b33903dafb0107bb067b55bdd9cbc.svg")
         await bot.send_message(message.channel, embed=emb)
     if message.content.startswith('r-bot'):
         em = discord.Embed(description= "```md\n"
@@ -326,6 +327,7 @@ async def on_message(message):
                                 "<▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒>\n"
                                 "\n"
                                 "         for the commands, type: \"r-help\"```".format(version), colour=0x3498db)
+        em.set_thumbnail(url="https://discordapp.com/assets/d68327d74508465432fe6e9dee35b9ff.svg")
         await bot.send_message(message.channel, embed=em)
 bot.process_commands(message)
 
