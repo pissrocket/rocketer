@@ -304,7 +304,7 @@ async def on_message(message):
         em.set_thumbnail(url="https://cdn.discordapp.com/emojis/385152309090451467.png?v=1")
         await bot.send_message(message.channel, embed=em)  
     if message.content.startswith('r-latest'):
-        emb = discord.Embed(title="LATEST UPDATES", description=":high_brightness: The Currently version is __" + version "__ :high_brightness:\n\n"
+        emb = discord.Embed(title="LATEST UPDATES", description=":high_brightness: The Currently version is __" + version + "__ :high_brightness:\n\n"
                             ":white_small_square: r-lenny", colour=0x3498db)
         await bot.send_message(message.channel, embed=emb)
     if message.content.startswith('r-bot'):
