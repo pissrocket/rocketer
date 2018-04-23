@@ -11,7 +11,7 @@ import traceback
 import os
 import sys
 
-version = "0.4.2"
+version = "0.4.3"
 owner = ["361534796830081024"]
 client = discord.Client()
 bot = commands.Bot(command_prefix='r-')
@@ -195,11 +195,12 @@ async def on_message(message):
         await asyncio.sleep(86400)
         await bot.send_message(message.channel, "**:alarm_clock: The Poll has ended**!")
     if message.content.startswith('r-lenny'):
-        ears = ['q{}p', 'ʢ{}ʡ', '⸮{}?', 'ʕ{}ʔ', 'ᖗ{}ᖘ', 'ᕦ{}ᕥ', 'ᕦ({})ᕥ', 'ᕙ({})ᕗ', 'ᘳ{}ᘰ', 'ᕮ{}ᕭ', 'ᕳ{}ᕲ', '({})', '[{}]', '¯\\\_{}_/¯', '୧{}୨', '୨{}୧', '⤜({})⤏', '☞{}☞', 'ᑫ{}ᑷ', 'ᑴ{}ᑷ', 'ヽ({})ﾉ', '\\\({})/', '乁({})ㄏ', '└[{}]┘', '(づ{})づ', '(ง{})ง', '|{}|']
+        ears = ['q{}p', 'ʢ{}ʡ', '⸮{}?', 'ʕ{}ʔ', 'ᖗ{}ᖘ', 'ᕦ{}ᕥ', 'ᕦ({})ᕥ', 'ᕙ({})ᕗ', 'ᘳ{}ᘰ', 'ᕮ{}ᕭ', 'ᕳ{}ᕲ', '({})', '[{}]', '୧{}୨', '୨{}୧', '⤜({})⤏', '☞{}☞', 'ᑫ{}ᑷ', 'ᑴ{}ᑷ', 'ヽ({})ﾉ', '乁({})ㄏ', '└[{}]┘', '(づ{})づ', '(ง{})ง', '|{}|']
         eyes = ['⌐■{}■', ' ͠°{} °', '⇀{}↼', '´• {} •`', '´{}`', '`{}´', 'ó{}ò', 'ò{}ó', '>{}<', 'Ƹ̵̡ {}Ʒ', 'ᗒ{}ᗕ', '⪧{}⪦', '⪦{}⪧', '⪩{}⪨', '⪨{}⪩', '⪰{}⪯', '⫑{}⫒', '⨴{}⨵', "⩿{}⪀", "⩾{}⩽", "⩺{}⩹", "⩹{}⩺", "◥▶{}◀◤", "≋{}≋", "૦ઁ{}૦ઁ", "  ͯ{}  ͯ", "  ̿{}  ̿", "  ͌{}  ͌", "ළ{}ළ", "◉{}◉", "☉{}☉", "・{}・", "▰{}▰", "ᵔ{}ᵔ", "□{}□", "☼{}☼", "*{}*", "⚆{}⚆", "⊜{}⊜", ">{}>", "❍{}❍", "￣{}￣", "─{}─", "✿{}✿", "•{}•", "T{}T", "^{}^", "ⱺ{}ⱺ", "@{}@", "ȍ{}ȍ", "x{}x", "-{}-", "${}$", "Ȍ{}Ȍ", "ʘ{}ʘ", "Ꝋ{}Ꝋ", "๏{}๏", "■{}■", "◕{}◕", "◔{}◔", "✧{}✧", "♥{}♥", " ͡°{} ͡°", "¬{}¬", " º {} º ", "⍜{}⍜", "⍤{}⍤", "ᴗ{}ᴗ", "ಠ{}ಠ", "σ{}σ"]
         mouth = ['v', 'ᴥ', 'ᗝ', 'Ѡ', 'ᗜ', 'Ꮂ', 'ヮ', '╭͜ʖ╮', ' ͟ل͜', ' ͜ʖ', ' ͟ʖ', ' ʖ̯', 'ω', '³', ' ε ', '﹏', 'ل͜', '╭╮', '‿‿', '▾', '‸', 'Д', '∀', '!', '人', '.', 'ロ', '_', '෴', 'ѽ', 'ഌ', '⏏', 'ツ', '益']
         lenny = random.choice(ears).format(random.choice(eyes)).format(random.choice(mouth))
-        await bot.send_message(message.channel, lenny)
+        await bot.send_message(message.channel, "**A wild Lenny has appeard:**\n"
+                                lenny)
     if message.content.startswith('r-verify'):
         room = bot.get_channel(id='420141568486408203')
         em = discord.Embed(title='VERIFICATION', description='**Hey __' + message.author.name + '__, if you want to get verified, you need to answer 3 questions:\n'
@@ -295,7 +296,7 @@ async def on_message(message):
                             ':white_small_square: Poll\n'
                             ':white_small_square: r-invite\n'
                             ':white_small_square: r-bot\n'
-                            ':white_small_square: r-joined {user}\n'
+                            ':white_small_square: r-lenny\n'
                             '\n'
                             ':white_small_square: Free for everyone\n'
                             ':small_blue_diamond: Staff commands\n'
@@ -303,7 +304,7 @@ async def on_message(message):
         em.set_thumbnail(url="https://cdn.discordapp.com/emojis/385152309090451467.png?v=1")
         await bot.send_message(message.channel, embed=em)  
     if message.content.startswith('r-bot'):
-        await bot.send_message(message.channel, "```md\n"
+        em = discord.Embed(description= "```md\n"
                                 "<⊐______⊐______⊏THE-ROCKETER-BOT⊐______⊏______⊏>\n"
                                 "<                                                >\n"
                                 "<▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒>\n"
@@ -316,7 +317,8 @@ async def on_message(message):
                                 "<                                                >\n"
                                 "<▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒>\n"
                                 "\n"
-                                "         for the commands, type: \"r-help\"```".format(version))
+                                "         for the commands, type: \"r-help\"```", colour=0x3498db)
+        await bot.send_message(message.channel, embed=em.format(version))
 bot.process_commands(message)
 
 
