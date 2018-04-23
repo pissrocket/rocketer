@@ -327,7 +327,6 @@ async def on_message(message):
                                 "<▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒>\n"
                                 "\n"
                                 "         for the commands, type: \"r-help\"```".format(version), colour=0x3498db)
-        em.set_thumbnail(url="https://cdn.discordapp.com/emojis/438033153060372480.png?v=1")
         await bot.send_message(message.channel, embed=em)
 bot.process_commands(message)
 
