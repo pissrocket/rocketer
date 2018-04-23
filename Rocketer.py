@@ -11,7 +11,7 @@ import traceback
 import os
 import sys
 
-version = "0.4.3"
+version = "0.4.4"
 owner = ["361534796830081024"]
 client = discord.Client()
 bot = commands.Bot(command_prefix='r-')
@@ -295,6 +295,7 @@ async def on_message(message):
                             ':white_small_square: Poll\n'
                             ':white_small_square: r-invite\n'
                             ':white_small_square: r-bot\n'
+                            ':white_small_square: r-latest\n'
                             ':white_small_square: r-lenny\n'
                             '\n'
                             ':white_small_square: Free for everyone\n'
@@ -302,6 +303,10 @@ async def on_message(message):
                             ':diamonds: Only works in PissRocket\n', colour=0x3498db)
         em.set_thumbnail(url="https://cdn.discordapp.com/emojis/385152309090451467.png?v=1")
         await bot.send_message(message.channel, embed=em)  
+    if message.content.startswith('r-latest'):
+        emb = discord.Embed(title="LATEST UPDATES", description=":high_brightness: The Currently version is __" + version "__ :high_brightness:\n\n"
+                            ":white_small_square: r-lenny", colour=0x3498db)
+        await bot.send_message(message.channel, embed=emb)
     if message.content.startswith('r-bot'):
         em = discord.Embed(description= "```md\n"
                                 "<⊐______⊐______⊏THE-ROCKETER-BOT⊐______⊏______⊏>\n"
