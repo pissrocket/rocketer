@@ -281,7 +281,7 @@ async def on_message(message):
         await bot.edit_message(msg,  embed=em)
     if message.content.startswith('r-invite'):
         em = discord.Embed(title='MY LINKS:', description=':cyclone: PissRocket: https://discord.gg/Cf833k8\n'
-                           ':cyclone: Invite link: https://discordapp.com/api/oauth2/authorize?client_id=426427418694254593&permissions=8&scope=bot', colour=0x3498db)
+                           ':link: Website: https://hegyiaron101.wixsite.com/pissrocket', colour=0x3498db)
         await bot.send_message(message.channel, embed=em)
     if message.content.startswith('r-help'):
         em = discord.Embed(title='MY COMMANDS:', description=':white_small_square: r-delme\n'
@@ -310,7 +310,7 @@ async def on_message(message):
     if message.content.startswith('r-latest'):
         emb = discord.Embed(title="LATEST UPDATES", description=":high_brightness: The Currently version is __" + version + "__ :high_brightness:\n\n"
                             ":white_small_square: r-lenny", colour=0x3498db)
-        emb.set_thumbnail(url="https://discordapp.com/assets/d36b33903dafb0107bb067b55bdd9cbc.svg")
+        emb.set_thumbnail(url="https://cdn.discordapp.com/emojis/438035428386275340.png?v=1")
         await bot.send_message(message.channel, embed=emb)
     if message.content.startswith('r-bot'):
         em = discord.Embed(description= "```md\n"
@@ -327,7 +327,7 @@ async def on_message(message):
                                 "<▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒>\n"
                                 "\n"
                                 "         for the commands, type: \"r-help\"```".format(version), colour=0x3498db)
-        em.set_thumbnail(url="https://discordapp.com/assets/d68327d74508465432fe6e9dee35b9ff.svg")
+        em.set_thumbnail(url="https://cdn.discordapp.com/emojis/438033153060372480.png?v=1")
         await bot.send_message(message.channel, embed=em)
 bot.process_commands(message)
 
