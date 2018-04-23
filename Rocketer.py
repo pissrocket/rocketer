@@ -29,6 +29,10 @@ async def on_ready():
     print(discord.utils.oauth_url(bot.user.id))
     await bot.change_presence(game=discord.Game(name='Coding...'))   
 
+@bot.command()
+async def word():
+    await bot.send_message(message.channel, "Im working..")
+
 @bot.event
 async def on_member_join(member):
     member = discord.Member
