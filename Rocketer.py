@@ -1,5 +1,4 @@
 import discord
-from discord.ext.commands import Bot
 from discord.ext import commands
 import asyncio
 import time
@@ -13,8 +12,8 @@ import sys
 
 version = "0.4.4"
 owner = ["361534796830081024"]
-client = discord.Client()
-bot = commands.Bot(command_prefix='r-')
+description = "The Offical bot of PissRocket!"
+bot = commands.Bot(command_prefix='r-', description=description)
 message = discord.Message
 Staff_Member = ["424927133522067467"]
 
@@ -30,29 +29,18 @@ async def on_ready():
     await bot.change_presence(game=discord.Game(name='Coding...'))   
 
 @bot.event
-async def on_member_join(member):
-    member = discord.Member
+async def on_member_join(member : discord.Member):
     tube = bot.get_channel(id='381774233199443968')
-    await bot.send_message(tube, '**Welcome, Im __' + bot.user.name + '__, I will show you around <:thonkSmile:381711802842742785>\n'
+    await bot.send_message(tube, '**Welcome {0.mention}, Im __' + bot.user.name + '__, I will show you around <:thonkSmile:381711802842742785>\n'
     'First you need to type `r-verify` and answer all of the questions!\n'
-    '__Remember, always write the number of the question to trigger me!__**')
+    '__Remember, always write the number of the question to trigger me!__**'.format(member))
 
 @bot.command()
-async def joined(member):
-    member = discord.Member
-    await bot.send_message(message.channel, '{0.name} joined in {0.joined_at}'.format(member))
-                               
+async def joined(member : discord.Member):
+    await bot.say('{0.name} joined in {0.joined_at}'.format(member))
+
 @bot.event
 async def on_message(message):
-    if message.content.startswith('r-delme'):
-        msg = await bot.send_message(message.channel, ':o: **I will delete this message...**')
-        await asyncio.sleep(3)
-        await bot.delete_message(msg)
-        await bot.send_message(message.channel, ':x:' + '**' + message.author.name + ' deleted 1 message**')
-    if message.content.startswith('r-editme'):
-        msg = await bot.send_message(message.channel, ':large_blue_circle: **Editing...**')
-        await asyncio.sleep(3)
-        await bot.edit_message(msg, ':red_circle: **Edited!**')
     if message.content.upper().startswith('R-AMIOWNER?'):
         if message.author.id in owner:
             await bot.send_message(message.channel, ':white_check_mark: **You are the Owner.**')
