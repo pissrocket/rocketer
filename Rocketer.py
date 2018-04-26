@@ -33,6 +33,16 @@ async def on_member_join(member : discord.Member):
     'First you need to type `r-verify` and answer all of the questions!\n'
     '__Remember, always write the number of the question to trigger me!__**')
 
+@bot.event
+async def counting_room():
+    member = discord.Member
+    counting_channel = bot.get_channel(id='395984496681418753')
+    role = bot.get_role(id='439110673062952960')
+    thing = await bot.wait_for_message(author=member, content=int)
+    await bot.add_roles(member, role)
+    await asyncio.sleep(60)
+    return thing 
+    
 @bot.command()
 async def joined(member : discord.Member):
     await bot.say('{0.name} joined in {0.joined_at}'.format(member))
