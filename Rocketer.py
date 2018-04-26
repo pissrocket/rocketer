@@ -17,8 +17,6 @@ bot = commands.Bot(command_prefix='r-', description=description)
 message = discord.Message
 Staff_Member = ["424927133522067467"]
 
-
-
 @bot.event
 async def on_ready():
     print('Logged in as')
@@ -31,9 +29,9 @@ async def on_ready():
 @bot.event
 async def on_member_join(member : discord.Member):
     tube = bot.get_channel(id='381774233199443968')
-    await bot.send_message(tube, '**Welcome {0.mention}, Im __' + bot.user.name + '__, I will show you around <:thonkSmile:381711802842742785>\n'
+    await bot.send_message(tube, f'**Welcome {user.mention}, Im __' + bot.user.name + '__, I will show you around <:thonkSmile:381711802842742785>\n'
     'First you need to type `r-verify` and answer all of the questions!\n'
-    '__Remember, always write the number of the question to trigger me!__**'.format(member))
+    '__Remember, always write the number of the question to trigger me!__**')
 
 @bot.command()
 async def joined(member : discord.Member):
