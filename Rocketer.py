@@ -38,7 +38,7 @@ async def counting_room():
     member = discord.Member
     counting_channel = bot.get_channel(id='395984496681418753')
     role = bot.get_role(id='439110673062952960')
-    thing = await bot.wait_for_message(author=member, content=int)
+    thing = await bot.wait_for_message(author=member)
     await bot.add_roles(member, role)
     await asyncio.sleep(60)
     return thing 
