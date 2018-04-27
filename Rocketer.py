@@ -16,6 +16,8 @@ description = "The Offical bot of PissRocket!"
 bot = commands.Bot(command_prefix='r-', description=description)
 message = discord.Message
 Staff_Member = ["424927133522067467"]
+Counting_channel = bot.get_channel(id='395984496681418753')
+Counting_role = bot.get_role(id='439110673062952960')
 
 @bot.event
 async def on_ready():
@@ -27,25 +29,17 @@ async def on_ready():
     await bot.change_presence(game=discord.Game(name='Coding...'))   
 
 @bot.event
-async def on_member_join(member : discord.Member):
-    tube = bot.get_channel(id='381774233199443968')
-    await bot.send_message(tube, f'**Welcome {user.mention}, Im __' + bot.user.name + '__, I will show you around <:thonkSmile:381711802842742785>\n'
-    'First you need to type `r-verify` and answer all of the questions!\n'
-    '__Remember, always write the number of the question to trigger me!__**')
-
-@bot.event
 async def counting_room():
-    member = discord.Member
-    counting_channel = bot.get_channel(id='395984496681418753')
-    role = bot.get_role(id='439110673062952960')
-    thing = await bot.wait_for_message(author=member)
-    await bot.add_roles(member, role)
-    await asyncio.sleep(60)
-    return thing 
-    
+    if channel == Counting_channel:
+        if message.content.startswith("."):
+            await bot.add_roles(member, Counting_role)
+            await asyncio.sleep(60)
+            await bot.remove_roles(member, Counting_role)
+    return 
+
 @bot.command()
-async def joined(member : discord.Member):
-    await bot.say('{0.name} joined in {0.joined_at}'.format(member))
+async def joined(member):
+    await bot.say(f'{member.name} joined in {member.joined_at}')
 
 @bot.event
 async def on_message(message):
