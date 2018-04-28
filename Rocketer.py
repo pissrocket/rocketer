@@ -314,7 +314,7 @@ async def on_message(message):
                                 "\n"
                                 "         for the commands, type: \"r-help\"```".format(version), colour=0x3498db)
         await bot.send_message(message.channel, embed=em)
-bot.process_commands(message)
+await bot.process_commands(message) #IMPORTANT
 
 
 
