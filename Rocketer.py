@@ -16,8 +16,6 @@ description = "The Offical bot of PissRocket!"
 bot = commands.Bot(command_prefix='r-', description=description)
 message = discord.Message
 Staff_Member = ["424927133522067467"]
-Counting_channel = bot.get_channel(id='395984496681418753')
-Counting_role = bot.get_role(id='439110673062952960')
 
 @bot.event
 async def on_ready():
@@ -26,10 +24,12 @@ async def on_ready():
     print(bot.user.id)
     print('------')
     print(discord.utils.oauth_url(bot.user.id))
-    await bot.change_presence(game=discord.Game(name='Coding...'))   
+    await bot.change_presence(game=discord.Game(name='Waiting for 100 members :))'))   
 
 @bot.event
 async def counting_room():
+    Counting_channel = bot.get_channel(id='395984496681418753')
+    Counting_role = bot.get_role(id='439110673062952960')
     if channel == Counting_channel:
         if message.content.startswith("."):
             await bot.add_roles(member, Counting_role)
