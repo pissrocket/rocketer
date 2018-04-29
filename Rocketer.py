@@ -275,7 +275,7 @@ async def on_message(message):
                            ':link: Website: https://hegyiaron101.wixsite.com/pissrocket', colour=0x3498db)
         await bot.send_message(message.channel, embed=em)
     if message.content.startswith('r-list'):
-        em = discord.Embed(title='MY COMMANDS:', description=':white_small_square: r-delme\n'
+        em = discord.Embed(title='MY COMMANDS:', description=':white_small_square: r-bot\n'
                             ':white_small_square: r-game {game}\n'
                             ':white_small_square: r-say {words}\n'
                             ':white_small_square: r-ping\n'
@@ -289,14 +289,13 @@ async def on_message(message):
                             ':white_small_square: r-leavepls\n'
                             ':white_small_square: Poll\n'
                             ':white_small_square: r-invite\n'
-                            ':white_small_square: r-bot\n'
                             ':white_small_square: r-latest\n'
                             ':white_small_square: r-lenny\n'
                             '\n'
                             ':white_small_square: Free for everyone\n'
                             ':small_blue_diamond: Staff commands', colour=0x3498db)
         em.set_thumbnail(url="https://cdn.discordapp.com/emojis/385152309090451467.png?v=1")
-        em.set_footer(text="The Official Bot of PissRocket, inviting and using the Bot in other servers breaks the Term of Use.", icon_url=bot.user.icon_url)
+        em.set_footer(text="The Official Bot of PissRocket, inviting and using the Bot in other servers breaks the Term of Use.")
         await bot.send_message(message.channel, embed=em)  
     if message.content.startswith('r-latest'):
         emb = discord.Embed(title="LATEST UPDATES", description=":high_brightness: The Currently version is __" + version + "__ :high_brightness:\n\n"
