@@ -10,10 +10,9 @@ import traceback
 import os
 import sys
 
-version = "0.4.4"
+version = "0.4.5"
 owner = ["361534796830081024"]
-description = "The Offical bot of PissRocket!"
-bot = commands.Bot(command_prefix='r-', description=description)
+bot = commands.Bot(command_prefix='r-', description=None)
 message = discord.Message
 Staff_Member = ["424927133522067467"]
 
@@ -36,6 +35,12 @@ async def counting_room():
             await asyncio.sleep(60)
             await bot.remove_roles(member, Counting_role)
     return 
+
+@bot.command()
+async def game(play):
+    await bot.change_presence(game=discord.Game(name=play))
+    em = discord.Embed(title="Game Status", description=f"Game status changed to __{play}__!", colour=0x3498db)
+    await bot.say(embed=em)
 
 @bot.command()
 async def joined(member):
@@ -271,7 +276,7 @@ async def on_message(message):
         await bot.send_message(message.channel, embed=em)
     if message.content.startswith('r-help'):
         em = discord.Embed(title='MY COMMANDS:', description=':white_small_square: r-delme\n'
-                            ':white_small_square: r-editme\n'
+                            ':white_small_square: r-game {game}\n'
                             ':white_small_square: r-say {words}\n'
                             ':white_small_square: r-ping\n'
                             ':white_small_square: r-AmiOwner?\n'
@@ -289,13 +294,13 @@ async def on_message(message):
                             ':white_small_square: r-lenny\n'
                             '\n'
                             ':white_small_square: Free for everyone\n'
-                            ':small_blue_diamond: Staff commands\n'
-                            ':diamonds: Only works in PissRocket\n', colour=0x3498db)
+                            ':small_blue_diamond: Staff commands', colour=0x3498db)
         em.set_thumbnail(url="https://cdn.discordapp.com/emojis/385152309090451467.png?v=1")
+        em.set_footer(text="The Official Bot of PissRocket, inviting and using the Bot in other servers breaks the Term of Use.", icon_url=bot.user.icon_url)
         await bot.send_message(message.channel, embed=em)  
     if message.content.startswith('r-latest'):
         emb = discord.Embed(title="LATEST UPDATES", description=":high_brightness: The Currently version is __" + version + "__ :high_brightness:\n\n"
-                            ":white_small_square: r-lenny", colour=0x3498db)
+                            ":white_small_square: r-game {game}", colour=0x3498db)
         emb.set_thumbnail(url="https://cdn.discordapp.com/emojis/438035428386275340.png?v=1")
         await bot.send_message(message.channel, embed=emb)
     if message.content.startswith('r-bot'):
@@ -314,7 +319,7 @@ async def on_message(message):
                                 "\n"
                                 "         for the commands, type: \"r-help\"```".format(version), colour=0x3498db)
         await bot.send_message(message.channel, embed=em)
-await bot.process_commands(message) #IMPORTANT
+    await bot.process_commands(message) #IMPORTANT
 
 
 
