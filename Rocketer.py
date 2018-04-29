@@ -274,7 +274,7 @@ async def on_message(message):
         em = discord.Embed(title='MY LINKS:', description=':cyclone: PissRocket: https://discord.gg/Cf833k8\n'
                            ':link: Website: https://hegyiaron101.wixsite.com/pissrocket', colour=0x3498db)
         await bot.send_message(message.channel, embed=em)
-    if message.content.startswith('r-help'):
+    if message.content.startswith('r-list'):
         em = discord.Embed(title='MY COMMANDS:', description=':white_small_square: r-delme\n'
                             ':white_small_square: r-game {game}\n'
                             ':white_small_square: r-say {words}\n'
