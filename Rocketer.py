@@ -23,7 +23,7 @@ async def on_ready():
     print(bot.user.id)
     print('------')
     print(discord.utils.oauth_url(bot.user.id))
-    await bot.change_presence(game=discord.Game(name='Waiting for 100 members :))'))   
+    await bot.change_presence(game=discord.Game(name='Hmmmm... :))'))   
 
 @bot.event
 async def counting_room():
@@ -48,24 +48,21 @@ async def joined(member):
         member = message.author
     await bot.say(f'{member.name} joined in {member.joined_at}')
 
-class Event:
-    roles = discord.Role
-    channel = discord.Channel
-    server = discord.Server
+@bot.command()
+async def eventon():
     eventroom = bot.get_channel(id="397377032930983946")
     eventrole = bot.utils.get(server.roles, name="Registered")
+    overwrite = discord.PermissionOverwrite()
+    overwrite.send_messages = True
+    await bot.edit_channel_permissions(eventroom, eventrole, overwrite)
     
-    @bot.command
-    async def eventon():
-        overwrite = discord.PermissionOverwrite()
-        overwrite.send_messages = True
-        await bot.edit_channel_permissions(eventroom, eventrole, overwrite)
-    
-    @bot.command
-    async def eventoff():
-        overwrite = discord.PermissionOverwrite()
-        overwrite.send_messages = False
-        await bot.edit_channel_permissions(eventroom, eventrole, overwrite)
+@bot.command()
+async def eventoff():
+    eventroom = bot.get_channel(id="397377032930983946")
+    eventrole = bot.utils.get(server.roles, name="Registered")
+    overwrite = discord.PermissionOverwrite()
+    overwrite.send_messages = False
+    await bot.edit_channel_permissions(eventroom, eventrole, overwrite)
     
 @bot.event
 async def on_message(message):
