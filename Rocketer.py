@@ -28,7 +28,7 @@ async def on_ready():
 @bot.event
 async def counting_room():
     Counting_channel = bot.get_channel(id='395984496681418753')
-    Counting_role = find(lambda m: m.name == 'Count-Wait', server.roles)
+    Counting_role = discord.utils.find(lambda m: m.name == 'Count-Wait', server.roles)
     if message.channel == Counting_channel:
         if message.content.startswith("."):
             await bot.add_roles(member, Counting_role)
@@ -55,7 +55,7 @@ def has_perm(perm):
         raise discord.Exceptions.Forbidden
 
 def has_role(role):
-    role_get = find(lambda m: m.name == role, server.roles)
+    role_get = discord.utils.find(lambda m: m.name == role, server.roles)
     if role_get in member.roles:
         return
     if role_get not in member.roles:
@@ -65,7 +65,7 @@ def has_role(role):
 @has_role("Event Organizer")
 async def eventon():
     eventroom = bot.get_channel(id="397377032930983946")
-    eventrole = find(lambda m: m.name == 'Registered', server.roles)
+    eventrole = discord.utils.find(lambda m: m.name == 'Registered', server.roles)
     overwrite = discord.PermissionOverwrite()
     overwrite.send_messages = True
     await bot.edit_channel_permissions(eventroom, eventrole, overwrite)
@@ -74,7 +74,7 @@ async def eventon():
 @has_role("Event Organizer")
 async def eventoff():
     eventroom = bot.get_channel(id="397377032930983946")
-    eventrole = find(lambda m: m.name == 'Registered', server.roles)
+    eventrole = discord.utils.find(lambda m: m.name == 'Registered', server.roles)
     overwrite = discord.PermissionOverwrite()
     overwrite.send_messages = False
     await bot.edit_channel_permissions(eventroom, eventrole, overwrite)
