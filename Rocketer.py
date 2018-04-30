@@ -50,13 +50,13 @@ async def joined(member):
 
 def has_perm(perm):
     if discord.Permissions.perm in message.author.Permissions:
-        continue
+        return
     if discord.Permissions.perm not in message.author.Permissions:
         raise discord.Exceptions.Forbidden
 
 def has_role(role_id):
     if role_id in message.author.roles.id:
-        continue
+        return
     if role_id not in message.author.roles.id:
         raise discord.Exceptions.Forbidden
     
