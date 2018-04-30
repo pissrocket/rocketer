@@ -51,13 +51,13 @@ async def joined(member):
     await bot.say(f'{member.name} joined in {member.joined_at}')
 
 def has_perm(perm):
-    if discord.Permissions.perm in message.author.Permissions:
+    if perm in message.author.Permissions:
         return
-    if discord.Permissions.perm not in message.author.Permissions:
+    if perm not in message.author.Permissions:
         raise discord.Exceptions.Forbidden
     
 @bot.command()
-@has_perm(mute_members)
+@has_perm(discord.Permissions.mute_members)
 async def eventon():
     eventroom = bot.get_channel(id="397377032930983946")
     eventrole = discord.utils.find(lambda m: m.name == 'Registered', member.roles)
@@ -66,7 +66,7 @@ async def eventon():
     await bot.edit_channel_permissions(eventroom, eventrole, overwrite)
     
 @bot.command()
-@has_perm(mute_members)
+@has_perm(discord.Permissions.mute_members)
 async def eventoff():
     eventroom = bot.get_channel(id="397377032930983946")
     eventrole = discord.utils.find(lambda m: m.name == 'Registered', member.roles)
