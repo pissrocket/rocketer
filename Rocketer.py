@@ -28,8 +28,8 @@ async def on_ready():
 @bot.event
 async def counting_room():
     Counting_channel = bot.get_channel(id='395984496681418753')
-    Counting_role = bot.get_role(id='439110673062952960')
-    if channel == Counting_channel:
+    Counting_role = bot.utils.get(server.roles, id='439110673062952960')
+    if message.channel == Counting_channel:
         if message.content.startswith("."):
             await bot.add_roles(member, Counting_role)
             await asyncio.sleep(60)
@@ -44,8 +44,26 @@ async def game(play):
 
 @bot.command()
 async def joined(member):
+    if member is None:
+        member = message.author
     await bot.say(f'{member.name} joined in {member.joined_at}')
 
+class Event:
+    eventroom = bot.get_channel(id="397377032930983946")
+    eventrole = bot.utils.get(server.roles, name="Registered")
+    
+    @bot.command
+    async def eventon():
+        overwrite = discord.PermissionOverwrite()
+        overwrite.send_messages = True
+        await bot.edit_channel_permissions(eventroom, eventrole, overwrite)
+    
+    @bot.command
+    async def eventoff():
+        overwrite = discord.PermissionOverwrite()
+        overwrite.send_messages = False
+        await bot.edit_channel_permissions(eventroom, eventrole, overwrite)
+    
 @bot.event
 async def on_message(message):
     if message.content.upper().startswith('R-AMIOWNER?'):
