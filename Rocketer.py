@@ -49,6 +49,9 @@ async def joined(member):
     await bot.say(f'{member.name} joined in {member.joined_at}')
 
 class Event:
+    roles = discord.Roles
+    channel = discord.Channel
+    server = discord.Server
     eventroom = bot.get_channel(id="397377032930983946")
     eventrole = bot.utils.get(server.roles, name="Registered")
     
