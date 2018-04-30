@@ -55,16 +55,9 @@ def has_perm(perm):
         return
     if discord.Permissions.perm not in message.author.Permissions:
         raise discord.Exceptions.Forbidden
-
-def has_role(role):
-    role_get = discord.utils.find(lambda m: m.name == role, member.roles)
-    if role_get in member.roles:
-        return
-    if role_get not in member.roles:
-        raise discord.Exceptions.Forbidden
     
 @bot.command()
-@has_role("Event Organizer")
+@has_perm(mute_members)
 async def eventon():
     eventroom = bot.get_channel(id="397377032930983946")
     eventrole = discord.utils.find(lambda m: m.name == 'Registered', member.roles)
@@ -73,7 +66,7 @@ async def eventon():
     await bot.edit_channel_permissions(eventroom, eventrole, overwrite)
     
 @bot.command()
-@has_role("Event Organizer")
+@has_perm(mute_members)
 async def eventoff():
     eventroom = bot.get_channel(id="397377032930983946")
     eventrole = discord.utils.find(lambda m: m.name == 'Registered', member.roles)
