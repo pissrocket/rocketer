@@ -15,6 +15,7 @@ owner = ["361534796830081024"]
 bot = commands.Bot(command_prefix='r-', description=None)
 message = discord.Message
 Staff_Member = ["424927133522067467"]
+server = discord.Server
 
 @bot.event
 async def on_ready():
