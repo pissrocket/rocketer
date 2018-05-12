@@ -42,7 +42,7 @@ async def suggest(pref, text):
     if pref is "Q":
         msg = "𝓠𝓾𝒆𝓼𝓽𝓲𝓸𝓷"
     await bot.send_message(room, msg + "**from {}/n**".format(message.author)
-                            "**⋙ {}**".format(text)
+                            "**{}**".format(text)
                             )
     
 @bot.command()
