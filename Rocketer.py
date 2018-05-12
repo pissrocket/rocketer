@@ -42,7 +42,7 @@ async def suggest(pref, text):
     if pref is "Q":
         msg = "𝓠𝓾𝒆𝓼𝓽𝓲𝓸𝓷"
     em = discord.Embed(title=f"{msg}", description=f"**From {user.name}**/n⋙ {text}", colour=0x3498db)
-    em.set_thumbnail(url=user.avatar_url)
+    em.set_thumbnail(url="https://cdn.discordapp.com/attachments/388945761611808769/444859188213186581/iconfinder-128_1.png")
     room = bot.get_channel(id="444837114258128916")
     await bot.send_message(room, embed=em)
     
