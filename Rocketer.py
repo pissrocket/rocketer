@@ -9,6 +9,7 @@ import datetime
 import traceback
 import os
 import sys
+import colormap
 
 version = "0.4.5"
 owner = ["361534796830081024"]
@@ -41,7 +42,7 @@ async def suggest(pref, text):
         msg = "𝓢𝓾𝓰𝓰𝒆𝓼𝓽𝓲𝓸𝓷"
     if pref is "Q":
         msg = "𝓠𝓾𝒆𝓼𝓽𝓲𝓸𝓷"
-    col = member.colour
+    col = rgb2hex(member.colour)
     em = discord.Embed(title=f"{msg}", description=f"**From {member.nick}**/n⋙ {text}", colour=col)
     room = bot.get_channel(id="444837114258128916")
     await bot.send_message(room, embed=em)
