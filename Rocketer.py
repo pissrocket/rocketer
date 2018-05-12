@@ -33,22 +33,22 @@ async def game(play):
     em = discord.Embed(title="Game Status", description=f"Game status changed to __{play}__!", colour=0x3498db)
     await bot.say(embed=em)
 
-@bot.command()
-async def suggest(pref, text):
-    message = discord.Message
-    member = discord.Member
-    if pref is "S":
-        msg = "𝓢𝓾𝓰𝓰𝒆𝓼𝓽𝓲𝓸𝓷"
-    if pref is "Q":
-        msg = "𝓠𝓾𝒆𝓼𝓽𝓲𝓸𝓷"
-    else:
+@bot.command(pass_context=True)
+async def suggest(ctx, pref, text):
+    try:
+        if pref is "S":
+            msg = "𝓢𝓾𝓰𝓰𝒆𝓼𝓽𝓲𝓸𝓷"
+        if pref is "Q":
+            msg = "𝓠𝓾𝒆𝓼𝓽𝓲𝓸𝓷"
+    except discord.Exceptions.UnboundLocalError:
         bot.say("**Please use a valid prefix! The available prefixes: __Q__, __S__**")
-    colours = [0x11806a, 0x1abc9c, 0x2ecc71, 0x1f8b4c, 0x3498db, 0x206694, 0x9b59b6, 0x71368a, 0xe91e63, 0xad1457, 0xf1c40f, 0xc27c0e, 0xe67e22, 0xa84300, 0xe74c3c, 0x992d22, 0x95a5a6, 0x607d8b, 0x979c9f, 0x546e7a]
-    col = random.choice(colours)
-    em = discord.Embed(title=f"{msg}", description=f"**From {member.nick}**\n⋙ {text}", colour=col)
-    room = bot.get_channel(id="444837114258128916")
-    bot.say("**:white_check_mark: Sent**")
-    await bot.send_message(room, embed=em)
+    finally:
+        colours = [0x11806a, 0x1abc9c, 0x2ecc71, 0x1f8b4c, 0x3498db, 0x206694, 0x9b59b6, 0x71368a, 0xe91e63, 0xad1457, 0xf1c40f, 0xc27c0e, 0xe67e22, 0xa84300, 0xe74c3c, 0x992d22, 0x95a5a6, 0x607d8b, 0x979c9f, 0x546e7a]
+        col = random.choice(colours)
+        em = discord.Embed(title=f"{msg}", description=f"**From {member.nick}**\n⋙ {text}", colour=col)
+        room = bot.get_channel(id="444837114258128916")
+        bot.say("**:white_check_mark: Sent**")
+        await bot.send_message(room, embed=em)
     
 @bot.command()
 async def joined(member):
