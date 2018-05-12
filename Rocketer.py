@@ -41,7 +41,7 @@ async def suggest(pref, text):
         msg = "𝓢𝓾𝓰𝓰𝒆𝓼𝓽𝓲𝓸𝓷"
     if pref is "Q":
         msg = "𝓠𝓾𝒆𝓼𝓽𝓲𝓸𝓷"
-    await bot.send_message(room, f"**{msg} from {message.author}/n ⋙** {text})
+    await bot.send_message(room, f"**{msg} from {message.author}//n ⋙** {text})
     
 @bot.command()
 async def joined(member):
