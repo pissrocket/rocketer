@@ -9,7 +9,7 @@ import datetime
 import traceback
 import os
 import sys
-import colormap
+from colormap.colors import hex2rgb
 
 version = "0.4.5"
 owner = ["361534796830081024"]
