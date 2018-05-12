@@ -37,7 +37,8 @@ async def game(play):
 async def suggest(pref, text):
     message = discord.Message
     room = bot.get_channel(id="444837114258128916")
-    await bot.send_message(room, '**{1}\'s suggestion: /n{2}: {3}**'.format(message.author, pref, text))
+    await bot.send_message(room, "**{1}'s suggestion:/n"
+                           "[{2}] {3}**".format(message.author, pref, text))
     
 @bot.command()
 async def joined(member):
