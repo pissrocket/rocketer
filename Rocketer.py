@@ -37,9 +37,9 @@ async def game(play):
 async def suggest(pref, text):
     message = discord.Message
     room = bot.get_channel(id="444837114258128916")
-    if pref = "S":
+    if pref is "S":
         msg = "𝓢𝓾𝓰𝓰𝒆𝓼𝓽𝓲𝓸𝓷"
-    if pref = "Q":
+    if pref is "Q":
         msg = "𝓠𝓾𝒆𝓼𝓽𝓲𝓸𝓷"
     await bot.send_message(room, msg + "**from {}/n**".format(message.author)
                            "**⋙ {}**".format(text))
