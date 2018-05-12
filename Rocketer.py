@@ -43,7 +43,7 @@ async def suggest(pref, text):
     if pref is "Q":
         msg = "𝓠𝓾𝒆𝓼𝓽𝓲𝓸𝓷"
     em = discord.Embed(title=f"{msg}", description=f"**From {user.name}**/n⋙ {text}", colour=0x3498db)
-    em.set_thumbnail(url=message.author.avatar_url)
+    em.set_thumbnail(url=user.avatar_url)
     await bot.send_message(room, embed=em)
     
 @bot.command()
