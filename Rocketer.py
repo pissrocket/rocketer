@@ -48,7 +48,7 @@ async def suggest(ctx, pref, text):
         em = discord.Embed(title=f"{msg}", description=f"**From {member.nick}**\n⋙ {text}", colour=col)
         channel = bot.get_channel(id="444837114258128916")
         room = bot.get_channel(id="444837114258128916")
-        await bot.send_message(message.channel, f"**:white_check_mark: Sent in {channel}**")
+        await bot.reply(f"**:white_check_mark: Sent in {channel}**")
         await bot.send_message(room, embed=em)
     
 @bot.command()
