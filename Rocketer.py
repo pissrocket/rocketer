@@ -36,12 +36,15 @@ async def game(play):
 @bot.command()
 async def suggest(pref, text):
     message = discord.Message
+    user = discord.User
     room = bot.get_channel(id="444837114258128916")
     if pref is "S":
         msg = "𝓢𝓾𝓰𝓰𝒆𝓼𝓽𝓲𝓸𝓷"
     if pref is "Q":
         msg = "𝓠𝓾𝒆𝓼𝓽𝓲𝓸𝓷"
-    await bot.send_message(room, f"**{msg} from {message.author.name}**/n⋙** {text}**")
+    em = discord.Embed(title=f"{msg}", description=f"**From {user.name}**/n⋙ {text}", colour=0x3498db)
+    em.set_thumbnail(url=message.author.avatar_url)
+    await bot.send_message(room, embed=em)
     
 @bot.command()
 async def joined(member):
