@@ -36,11 +36,8 @@ async def game(play):
 @bot.command()
 async def suggest(pref, text):
     message = discord.Message
-    prefixes = ["S", "Q"]
-    if pref not in prefixes:
-        bot.say(f"{message.author}, it isnt a valid prefix, `the available prefixes: {prefixes}`")
     room = bot.get_channel(id="444837114258128916")
-    await bot.send_message(room, f"**{message.author}'s suggestion:/n{pref}: {text}")
+    await bot.send_message(room, f'**{message.author}\'s suggestion:/n**{pref}: {text}**')
     
 @bot.command()
 async def joined(member):
