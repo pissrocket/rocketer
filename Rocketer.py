@@ -54,29 +54,29 @@ async def suggest(ctx, pref, text):
 @bot.command()
 async def polladd(emote):
     msg = await bot.send_message(message.channel, "**A Poll has started! `24 hour remaining`**")
-        if emote == "yes":
+        if emote is "yes":
             await bot.add_reaction(msg, "\U0001F44D")
-        elif emote == "no":
+        elif emote is "no":
             await bot.add_reaction(msg, "\U0001F44E")
-        elif emote == "one":
+        elif emote is "one":
             await bot.add_reaction(msg, u"\u0031")
-        elif emote == "two":
+        elif emote is "two":
             await bot.add_reaction(msg, u"\u0032")
-        elif emote == "three":
-            await bot.add_reaction(msg, u"\u0033")
-        elif emote == "four":
+        elif emote is "three":
+            await is.add_reaction(msg, u"\u0033")
+        elif emote is "four":
             await bot.add_reaction(msg, u"\u0034")
-        elif emote == "five":
+        elif emote is "five":
             await bot.add_reaction(msg, u"\u0035")
-        elif emote == "six":
+        elif emote is "six":
             await bot.add_reaction(msg, u"\u0036")
-        elif emote == "seven":
+        elif emote is "seven":
              await bot.add_reaction(msg, u"\u0037")
-        elif emote == "eight":
+        elif emote is "eight":
             await bot.add_reaction(msg, u"\u0038")
-        elif emote == "nine":
+        elif emote is "nine":
              await bot.add_reaction(msg, u"\u0039")
-        elif emote == "zero":
+        elif emote is "zero":
             await bot.add_reaction(msg, u"\u0030")
     await asyncio.sleep(86400)
     await bot.send_message(message.channel, "**:alarm_clock: The Poll has ended**!")
