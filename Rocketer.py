@@ -10,7 +10,7 @@ import traceback
 import os
 import sys
 
-version = "0.4.5"
+version = "0.4.6"
 owner = ["361534796830081024"]
 bot = commands.Bot(command_prefix='r-', description=None)
 message = discord.Message
@@ -365,6 +365,7 @@ async def on_message(message):
                             ':white_small_square: r-invite\n'
                             ':white_small_square: r-latest\n'
                             ':white_small_square: r-lenny\n'
+                            ':white_small_square: r-suggest {Q or S} \"{message}\"\n'
                             '\n'
                             ':white_small_square: Free for everyone\n'
                             ':small_blue_diamond: Staff commands', colour=0x3498db)
@@ -373,7 +374,7 @@ async def on_message(message):
         await bot.send_message(message.channel, embed=em)  
     if message.content.startswith('r-latest'):
         emb = discord.Embed(title="LATEST UPDATES", description=":high_brightness: The Currently version is __" + version + "__ :high_brightness:\n\n"
-                            ":white_small_square: r-game {game}", colour=0x3498db)
+                            ":white_small_square: r-suggest {Q or S} \"{message}\"", colour=0x3498db)
         emb.set_thumbnail(url="https://cdn.discordapp.com/emojis/438035428386275340.png?v=1")
         await bot.send_message(message.channel, embed=emb)
     if message.content.startswith('r-bot'):
