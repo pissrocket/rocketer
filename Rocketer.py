@@ -57,27 +57,27 @@ async def poll(emote):
     try:
         if emote is "yes":
             await bot.add_reaction(msg, "\U0001F44D")
-        elif emote is "no":
+        if emote is "no":
             await bot.add_reaction(msg, "\U0001F44E")
-        elif emote is "one":
+        if emote is "one":
             await bot.add_reaction(msg, u"\u0031")
-        elif emote is "two":
+        if emote is "two":
             await bot.add_reaction(msg, u"\u0032")
-        elif emote is "three":
+        if emote is "three":
             await bot.add_reaction(msg, u"\u0033")
-        elif emote is "four":
+        if emote is "four":
             await bot.add_reaction(msg, u"\u0034")
-        elif emote is "five":
+        if emote is "five":
             await bot.add_reaction(msg, u"\u0035")
-        elif emote is "six":
+        if emote is "six":
             await bot.add_reaction(msg, u"\u0036")
-        elif emote is "seven":
+        if emote is "seven":
             await bot.add_reaction(msg, u"\u0037")
-        elif emote is "eight":
+        if emote is "eight":
             await bot.add_reaction(msg, u"\u0038")
-        elif emote is "nine":
+        if emote is "nine":
             await bot.add_reaction(msg, u"\u0039")
-        elif emote is "zero":
+        if emote is "zero":
             await bot.add_reaction(msg, u"\u0030")
     finally:
         await asyncio.sleep(86400)
