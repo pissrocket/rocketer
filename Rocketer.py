@@ -53,38 +53,36 @@ async def suggest(ctx, pref, text):
 
 @bot.event
 async def polling():
-    try:
-        if message.content.upper().startswith('POLL'):
-            msg = await bot.send_message(message.channel, "**A Poll has started! `24 hour remaining`**")
-            @bot.command()
-            async def poll_add(emote):
-                if emote == "yes":
-                    await bot.add_reaction(msg, "\U0001F44D")
-                elif emote == "no":
-                    await bot.add_reaction(msg, "\U0001F44E")
-                elif emote == "one":
-                    await bot.add_reaction(msg, u"\u0031")
-                elif emote == "two":
-                    await bot.add_reaction(msg, u"\u0032")
-                elif emote == "three":
-                    await bot.add_reaction(msg, u"\u0033")
-                elif emote == "four":
-                    await bot.add_reaction(msg, u"\u0034")
-                elif emote == "five":
-                    await bot.add_reaction(msg, u"\u0035")
-                elif emote == "six":
-                    await bot.add_reaction(msg, u"\u0036")
-                elif emote == "seven":
-                    await bot.add_reaction(msg, u"\u0037")
-                elif emote == "eight":
-                    await bot.add_reaction(msg, u"\u0038")
-                elif emote == "nine":
-                    await bot.add_reaction(msg, u"\u0039")
-                elif emote == "zero":
-                    await bot.add_reaction(msg, u"\u0030")
-    finally:
-        await asyncio.sleep(86400)
-        await bot.send_message(message.channel, "**:alarm_clock: The Poll has ended**!")
+    if message.content.upper().startswith('POLL'):
+        msg = await bot.send_message(message.channel, "**A Poll has started! `24 hour remaining`**")
+        @bot.command()
+        async def polladd(emote):
+            if emote == "yes":
+                await bot.add_reaction(msg, "\U0001F44D")
+            elif emote == "no":
+                await bot.add_reaction(msg, "\U0001F44E")
+            elif emote == "one":
+                await bot.add_reaction(msg, u"\u0031")
+            elif emote == "two":
+                await bot.add_reaction(msg, u"\u0032")
+            elif emote == "three":
+                await bot.add_reaction(msg, u"\u0033")
+            elif emote == "four":
+                await bot.add_reaction(msg, u"\u0034")
+            elif emote == "five":
+                await bot.add_reaction(msg, u"\u0035")
+            elif emote == "six":
+                await bot.add_reaction(msg, u"\u0036")
+            elif emote == "seven":
+                await bot.add_reaction(msg, u"\u0037")
+            elif emote == "eight":
+                await bot.add_reaction(msg, u"\u0038")
+            elif emote == "nine":
+                await bot.add_reaction(msg, u"\u0039")
+            elif emote == "zero":
+                await bot.add_reaction(msg, u"\u0030")
+    await asyncio.sleep(86400)
+    await bot.send_message(message.channel, "**:alarm_clock: The Poll has ended**!")
 
 @bot.command()
 async def joined(member):
