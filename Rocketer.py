@@ -50,7 +50,42 @@ async def suggest(ctx, pref, text):
         room = bot.get_channel(id="444837114258128916")
         await bot.reply(f"**:white_check_mark: Sent in {channel}**")
         await bot.send_message(room, embed=em)
-    
+
+@bot.event
+async def polling():
+    try:
+        if message.content.upper().startswith('POLL'):
+            msg = await bot.send_message(message.channel, "**A Poll has started! `24 hour remaining`**")
+            @bot.command()
+            async def poll_add(emote):
+                if emote == "yes":
+                    await bot.add_reaction(msg, "\U0001F44D")
+                elif emote == "no":
+                    await bot.add_reaction(msg, "\U0001F44E")
+                elif emote == "one":
+                    await bot.add_reaction(msg, u"\u0031")
+                elif emote == "two":
+                    await bot.add_reaction(msg, u"\u0032")
+                elif emote == "three":
+                    await bot.add_reaction(msg, u"\u0033")
+                elif emote == "four":
+                    await bot.add_reaction(msg, u"\u0034")
+                elif emote == "five":
+                    await bot.add_reaction(msg, u"\u0035")
+                elif emote == "six":
+                    await bot.add_reaction(msg, u"\u0036")
+                elif emote == "seven":
+                    await bot.add_reaction(msg, u"\u0037")
+                elif emote == "eight":
+                    await bot.add_reaction(msg, u"\u0038")
+                elif emote == "nine":
+                    await bot.add_reaction(msg, u"\u0039")
+                elif emote == "zero":
+                    await bot.add_reaction(msg, u"\u0030")
+    finally:
+        await asyncio.sleep(86400)
+        await bot.send_message(message.channel, "**:alarm_clock: The Poll has ended**!")
+
 @bot.command()
 async def joined(member):
     if member is None:
@@ -194,12 +229,6 @@ async def on_message(message):
                                                               '**Ha! :8ball:**',
                                                               '**Ask it to ur mum :8ball:**',
                                                               '**:feelsUltraREE: *REEEE* :8ball:**',]))
-    if message.content.upper().startswith('POLL'):
-        msg = await bot.send_message(message.channel, "**A Poll has started! `24 hour remaining`**")
-        await bot.add_reaction(msg, "\U0001F44D")
-        await bot.add_reaction(msg, "\U0001F44E")
-        await asyncio.sleep(86400)
-        await bot.send_message(message.channel, "**:alarm_clock: The Poll has ended**!")
     if message.content.startswith('r-lenny'):
         ears = ['q{}p', 'ʢ{}ʡ', '⸮{}?', 'ʕ{}ʔ', 'ᖗ{}ᖘ', 'ᕦ{}ᕥ', 'ᕦ({})ᕥ', 'ᕙ({})ᕗ', 'ᘳ{}ᘰ', 'ᕮ{}ᕭ', 'ᕳ{}ᕲ', '({})', '[{}]', '୧{}୨', '୨{}୧', '⤜({})⤏', '☞{}☞', 'ᑫ{}ᑷ', 'ᑴ{}ᑷ', 'ヽ({})ﾉ', '乁({})ㄏ', '└[{}]┘', '(づ{})づ', '(ง{})ง', '|{}|']
         eyes = ['⌐■{}■', ' ͠°{} °', '⇀{}↼', '´• {} •`', '´{}`', '`{}´', 'ó{}ò', 'ò{}ó', '>{}<', 'Ƹ̵̡ {}Ʒ', 'ᗒ{}ᗕ', '⪧{}⪦', '⪦{}⪧', '⪩{}⪨', '⪨{}⪩', '⪰{}⪯', '⫑{}⫒', '⨴{}⨵', "⩿{}⪀", "⩾{}⩽", "⩺{}⩹", "⩹{}⩺", "◥▶{}◀◤", "≋{}≋", "૦ઁ{}૦ઁ", "  ͯ{}  ͯ", "  ̿{}  ̿", "  ͌{}  ͌", "ළ{}ළ", "◉{}◉", "☉{}☉", "・{}・", "▰{}▰", "ᵔ{}ᵔ", "□{}□", "☼{}☼", "*{}*", "⚆{}⚆", "⊜{}⊜", ">{}>", "❍{}❍", "￣{}￣", "─{}─", "✿{}✿", "•{}•", "T{}T", "^{}^", "ⱺ{}ⱺ", "@{}@", "ȍ{}ȍ", "x{}x", "-{}-", "${}$", "Ȍ{}Ȍ", "ʘ{}ʘ", "Ꝋ{}Ꝋ", "๏{}๏", "■{}■", "◕{}◕", "◔{}◔", "✧{}✧", "♥{}♥", " ͡°{} ͡°", "¬{}¬", " º {} º ", "⍜{}⍜", "⍤{}⍤", "ᴗ{}ᴗ", "ಠ{}ಠ", "σ{}σ"]
