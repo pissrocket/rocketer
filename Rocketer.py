@@ -64,7 +64,7 @@ async def poll(emote):
         elif emote is "two":
             await bot.add_reaction(msg, u"\u0032")
         elif emote is "three":
-            await is.add_reaction(msg, u"\u0033")
+            await bot.add_reaction(msg, u"\u0033")
         elif emote is "four":
             await bot.add_reaction(msg, u"\u0034")
         elif emote is "five":
