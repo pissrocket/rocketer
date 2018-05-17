@@ -29,19 +29,19 @@ async def on_ready():
     await bot.change_presence(game=discord.Game(name='Hmmmm... :))'))   
 
 @bot.command()
-async def roll(ctx, x, y):
+async def roll(x, y, ctx):
     msg = random.choice(x, y)
     text = await bot.send_message(ctx.message.channel, "**Hmmm...**")
     await bot.edit_message(text, f"**Oh, my choose: {msg}**")
     
 @bot.command()
-async def add(ctx, x, y):
+async def add(x, y, ctx):
     msg = x + y
     text = await bot.send_message(ctx.message.channel, "**Hmmm...**")
     await bot.edit_message(text, f"**Oh, the result: {msg}**")
     
 @bot.command()
-async def gun(ctx, somebody):
+async def gun(somebody, ctx):
     if somebody.id in owner:
         bot.say("**Nah, i wont kill my owner xF**")
     if somebody.id in Domi:
