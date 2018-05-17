@@ -37,9 +37,9 @@ async def roll(ctx, x : int, y : int):
     
 @bot.command(pass_context=True)
 async def gun(ctx, somebody):
-    if somebody.user.id in owner:
+    if ctx.user.id in owner:
         bot.say("**Nah, i wont kill my owner xF**")
-    elif somebody.user.id in Domi:
+    elif ctx.user.id in Domi:
         bot.say("**Nah, i wont kill him :P**")
     else:
         bot.say(f"**{somebody} got killed by {ctx.message.author}** :rip:")
