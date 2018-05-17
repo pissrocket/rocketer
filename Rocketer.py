@@ -17,6 +17,7 @@ message = discord.Message
 Staff_Member = ["424927133522067467"]
 server = discord.Server
 member = discord.Member
+Domi = ["365173881952272384"]
 
 @bot.event
 async def on_ready():
@@ -28,6 +29,26 @@ async def on_ready():
     await bot.change_presence(game=discord.Game(name='Hmmmm... :))'))   
 
 @bot.command()
+async def roll(x, y):
+    msg = random.choice(x, y)
+    text = bot.say("**Hmmm...**")
+    await bot.edit_message(msg, f"**Oh, my choose: {msg}**")
+    
+@bot.command()
+async def add(x, y):
+    msg = x + y
+    text = bot.say("**Hmmm...**")
+    await bot.edit_message(msg, f"**Oh, the result: {msg}**")
+    
+@bot.command()
+async def gun(ctx, somebody):
+    if somebody.id in owner:
+        bot.say("**Nah, i wont kill my owner xF**")
+    if somebody.id in Domi:
+        bot.say("**Nah, i wont kill him :P**")
+    bot.say(f"**{somebody} got killed by {ctx.message.author}** :rip:")
+    
+@bot.command()
 async def game(play):
     await bot.change_presence(game=discord.Game(name=play))
     em = discord.Embed(title="Game Status", description=f"Game status changed to __{play}__!", colour=0x3498db)
@@ -36,12 +57,18 @@ async def game(play):
 @bot.command(pass_context=True)
 async def suggest(ctx, pref, text):
     try:
-        if pref is "S":
-            msg = "𝓢𝓾𝓰𝓰𝒆𝓼𝓽𝓲𝓸𝓷"
-        if pref is "Q":
-            msg = "𝓠𝓾𝒆𝓼𝓽𝓲𝓸𝓷"
-    except discord.Exceptions.UnboundLocalError:
-        bot.say("**Please use a valid prefix! The available prefixes: __Q__, __S__**")
+            if pref is "S":
+                msg = "𝓢𝓾𝓰𝓰𝒆𝓼𝓽𝓲𝓸𝓷"
+            if pref is "Q":
+                msg = "𝓠𝓾𝒆𝓼𝓽𝓲𝓸𝓷"
+            if pref is "C":
+                msg = "𝓒𝓸𝓶𝓶𝓪𝓷𝓭 𝓢𝓾𝓰𝓰𝒆𝓼𝓽𝓲𝓸𝓷"
+        if pref is None:
+            bot.say("**Please use a valid prefix! The available prefixes: __Q__, __S__, __C__**")
+        if text is None:
+            bot.say("**Please write a message!**")
+        if text and pref is None:
+            bot.say("**Usage:\n\tr-suggest {pref} \"{message}\"**")
     finally:
         colours = [0x11806a, 0x1abc9c, 0x2ecc71, 0x1f8b4c, 0x3498db, 0x206694, 0x9b59b6, 0x71368a, 0xe91e63, 0xad1457, 0xf1c40f, 0xc27c0e, 0xe67e22, 0xa84300, 0xe74c3c, 0x992d22, 0x95a5a6, 0x607d8b, 0x979c9f, 0x546e7a]
         col = random.choice(colours)
