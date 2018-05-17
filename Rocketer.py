@@ -9,6 +9,7 @@ import datetime
 import traceback
 import os
 import sys
+import math
 
 version = "0.4.8"
 owner = ["361534796830081024"]
