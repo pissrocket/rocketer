@@ -59,7 +59,7 @@ async def div(ctx, x : int, y : int):
     
 @bot.command(pass_context=True)
 async def exp(ctx, x : int, y : int):
-    msg = math.exp(x, y)
+    msg = x ** y
     text = await bot.send_message(ctx.message.channel, "**Hmmm...**")
     await asyncio.sleep(3)
     await bot.edit_message(text, f"**Oh, the result: {msg}**")
