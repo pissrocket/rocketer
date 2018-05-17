@@ -32,13 +32,13 @@ async def on_ready():
 async def roll(x, y):
     msg = random.choice(x, y)
     text = bot.say("**Hmmm...**")
-    await bot.edit_message(msg, f"**Oh, my choose: {msg}**")
+    await bot.edit_message(text, f"**Oh, my choose: {msg}**")
     
 @bot.command()
 async def add(x, y):
     msg = x + y
     text = bot.say("**Hmmm...**")
-    await bot.edit_message(msg, f"**Oh, the result: {msg}**")
+    await bot.edit_message(text, f"**Oh, the result: {msg}**")
     
 @bot.command()
 async def gun(ctx, somebody):
