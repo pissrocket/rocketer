@@ -30,15 +30,9 @@ async def on_ready():
 
 @bot.command(pass_context=True)
 async def roll(ctx, x, y):
-    msg = random.choice(x, y)
+    msg = random.randint(x, y)
     text = await bot.send_message(ctx.message.channel, "**Hmmm...**")
     await bot.edit_message(text, f"**Oh, my choose: {msg}**")
-    
-@bot.command(pass_context=True)
-async def add(ctx, x, y):
-    msg = x + y
-    text = await bot.send_message(ctx.message.channel, "**Hmmm...**")
-    await bot.edit_message(text, f"**Oh, the result: {msg}**")
     
 @bot.command(pass_context=True)
 async def gun(ctx, somebody):
