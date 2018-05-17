@@ -36,8 +36,22 @@ async def roll(ctx, x : int, y : int):
     await bot.edit_message(text, f"**Oh, my choose: {msg}**")
 
 @bot.command(pass_context=True)
-async def minus(ctx, x : int, y : int):
+async def sub(ctx, x : int, y : int):
     msg = x - y
+    text = await bot.send_message(ctx.message.channel, "**Hmmm...**")
+    await asyncio.sleep(3)
+    await bot.edit_message(text, f"**Oh, the result: {msg}**")
+    
+@bot.command(pass_context=True)
+async def mul(ctx, x : int, y : int):
+    msg = x * y
+    text = await bot.send_message(ctx.message.channel, "**Hmmm...**")
+    await asyncio.sleep(3)
+    await bot.edit_message(text, f"**Oh, the result: {msg}**")
+    
+@bot.command(pass_context=True)
+async def div(ctx, x : int, y : int):
+    msg = x / y
     text = await bot.send_message(ctx.message.channel, "**Hmmm...**")
     await asyncio.sleep(3)
     await bot.edit_message(text, f"**Oh, the result: {msg}**")
