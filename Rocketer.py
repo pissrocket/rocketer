@@ -57,12 +57,12 @@ async def game(play):
 @bot.command(pass_context=True)
 async def suggest(ctx, pref, text):
     try:
-            if pref is "S":
-                msg = "𝓢𝓾𝓰𝓰𝒆𝓼𝓽𝓲𝓸𝓷"
-            if pref is "Q":
-                msg = "𝓠𝓾𝒆𝓼𝓽𝓲𝓸𝓷"
-            if pref is "C":
-                msg = "𝓒𝓸𝓶𝓶𝓪𝓷𝓭 𝓢𝓾𝓰𝓰𝒆𝓼𝓽𝓲𝓸𝓷"
+        if pref is "S":
+            msg = "𝓢𝓾𝓰𝓰𝒆𝓼𝓽𝓲𝓸𝓷"
+        if pref is "Q":
+            msg = "𝓠𝓾𝒆𝓼𝓽𝓲𝓸𝓷"
+        if pref is "C":
+            msg = "𝓒𝓸𝓶𝓶𝓪𝓷𝓭 𝓢𝓾𝓰𝓰𝒆𝓼𝓽𝓲𝓸𝓷"
         if pref is None:
             bot.say("**Please use a valid prefix! The available prefixes: __Q__, __S__, __C__**")
         if text is None:
