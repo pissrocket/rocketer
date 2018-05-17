@@ -34,12 +34,33 @@ async def roll(ctx, x : int, y : int):
     text = await bot.send_message(ctx.message.channel, "**Hmmm...**")
     await asyncio.sleep(3)
     await bot.edit_message(text, f"**Oh, my choose: {msg}**")
+
+@bot.command(pass_context=True)
+async def minus(ctx, x : int, y : int):
+    msg = x - y
+    text = await bot.send_message(ctx.message.channel, "**Hmmm...**")
+    await asyncio.sleep(3)
+    await bot.edit_message(text, f"**Oh, the result: {msg}**")
+    
+@bot.command(pass_context=True)
+async def exp(ctx, x : int, y : int):
+    msg = math.exp(x, y)
+    text = await bot.send_message(ctx.message.channel, "**Hmmm...**")
+    await asyncio.sleep(3)
+    await bot.edit_message(text, f"**Oh, the result: {msg}**")
+    
+@bot.command(pass_context=True)
+async def add(ctx, x : int, y : int):
+    msg = x + y
+    text = await bot.send_message(ctx.message.channel, "**Hmmm...**")
+    await asyncio.sleep(3)
+    await bot.edit_message(text, f"**Oh, the result: {msg}**")
     
 @bot.command(pass_context=True)
 async def gun(ctx, somebody):
-    if ctx.user.id in owner:
+    if ctx.id in owner:
         bot.say("**Nah, i wont kill my owner xF**")
-    elif ctx.user.id in Domi:
+    elif ctx.id in Domi:
         bot.say("**Nah, i wont kill him :P**")
     else:
         bot.say(f"**{somebody} got killed by {ctx.message.author}** :rip:")
