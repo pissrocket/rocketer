@@ -29,13 +29,13 @@ async def on_ready():
     await bot.change_presence(game=discord.Game(name='Hmmmm... :))'))   
 
 @bot.command()
-async def roll(x, y):
+async def roll(ctx, x, y):
     msg = random.choice(x, y)
     text = await bot.send_message(ctx.message.channel, "**Hmmm...**")
     await bot.edit_message(text, f"**Oh, my choose: {msg}**")
     
 @bot.command()
-async def add(x, y):
+async def add(ctx, x, y):
     msg = x + y
     text = await bot.send_message(ctx.message.channel, "**Hmmm...**")
     await bot.edit_message(text, f"**Oh, the result: {msg}**")
