@@ -10,7 +10,7 @@ import traceback
 import os
 import sys
 
-version = "0.4.6"
+version = "0.4.8"
 owner = ["361534796830081024"]
 bot = commands.Bot(command_prefix='r-', description=None)
 message = discord.Message
@@ -32,15 +32,17 @@ async def on_ready():
 async def roll(ctx, x : int, y : int):
     msg = random.randint(x, y)
     text = await bot.send_message(ctx.message.channel, "**Hmmm...**")
+    await asyncio.sleep(3)
     await bot.edit_message(text, f"**Oh, my choose: {msg}**")
     
 @bot.command(pass_context=True)
 async def gun(ctx, somebody):
-    if somebody.id in owner:
+    if somebody.user.id in owner:
         bot.say("**Nah, i wont kill my owner xF**")
-    if somebody.id in Domi:
+    elif somebody.user.id in Domi:
         bot.say("**Nah, i wont kill him :P**")
-    bot.say(f"**{somebody} got killed by {ctx.message.author}** :rip:")
+    else:
+        bot.say(f"**{somebody} got killed by {ctx.message.author}** :rip:")
     
 @bot.command()
 async def game(play):
