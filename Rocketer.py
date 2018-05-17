@@ -11,7 +11,7 @@ import os
 import sys
 import math
 
-version = "0.4.8"
+version = "0.5.0"
 owner = ["361534796830081024"]
 bot = commands.Bot(command_prefix='r-', description=None)
 message = discord.Message
@@ -433,7 +433,23 @@ async def on_message(message):
         await bot.send_message(message.channel, embed=em)  
     if message.content.startswith('r-latest'):
         emb = discord.Embed(title="LATEST UPDATES", description=":high_brightness: The Currently version is __" + version + "__ :high_brightness:\n\n"
-                            ":white_small_square: r-suggest {Q or S} \"{message}\"", colour=0x3498db)
+                            ":white_small_square: r-suggest {Q or S or __C__} \"{message}\""
+                            "New prefix: __C__ for Command Suggestions\n"
+                            "\n"
+                            ":white_small_square: r-add {number1} {number2}\n"
+                            "number1 + number2\n"
+                            "\n"
+                            ":white_small_square: r-sub {number1} {number2}\n"
+                            "number1 - number2\n"
+                            "\n"
+                            ":white_small_square: r-mul {number1} {number2}\n"
+                            "number1 * number2\n"
+                            "\n"
+                            ":white_small_square: r-div {number1} {number2}\n"
+                            "number1 ÷ number2\n"
+                            "\n"
+                            ":white_small_square: r-exp {number1} {number2}\n"
+                            "number1 ** number2", colour=0x3498db)
         emb.set_thumbnail(url="https://cdn.discordapp.com/emojis/438035428386275340.png?v=1")
         await bot.send_message(message.channel, embed=emb)
     if message.content.startswith('r-bot'):
