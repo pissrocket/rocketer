@@ -28,19 +28,19 @@ async def on_ready():
     print(discord.utils.oauth_url(bot.user.id))
     await bot.change_presence(game=discord.Game(name='Hmmmm... :))'))   
 
-@bot.command()
+@bot.command(pass_context=True)
 async def roll(x, y, ctx):
     msg = random.choice(x, y)
     text = await bot.send_message(ctx.message.channel, "**Hmmm...**")
     await bot.edit_message(text, f"**Oh, my choose: {msg}**")
     
-@bot.command()
+@bot.command(pass_context=True)
 async def add(x, y, ctx):
     msg = x + y
     text = await bot.send_message(ctx.message.channel, "**Hmmm...**")
     await bot.edit_message(text, f"**Oh, the result: {msg}**")
     
-@bot.command()
+@bot.command(pass_context=True)
 async def gun(somebody, ctx):
     if somebody.id in owner:
         bot.say("**Nah, i wont kill my owner xF**")
