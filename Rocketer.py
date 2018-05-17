@@ -31,13 +31,13 @@ async def on_ready():
 @bot.command()
 async def roll(x, y):
     msg = random.choice(x, y)
-    text = bot.say("**Hmmm...**")
+    text = await bot.send_message(ctx.message.channel, "**Hmmm...**")
     await bot.edit_message(text, f"**Oh, my choose: {msg}**")
     
 @bot.command()
 async def add(x, y):
     msg = x + y
-    text = bot.say("**Hmmm...**")
+    text = await bot.send_message(ctx.message.channel, "**Hmmm...**")
     await bot.edit_message(text, f"**Oh, the result: {msg}**")
     
 @bot.command()
