@@ -29,6 +29,31 @@ async def on_ready():
     print(discord.utils.oauth_url(bot.user.id))
     await bot.change_presence(game=discord.Game(name='Hmmmm... :))'))   
 
+class RNG():
+    def __init__(self, bot):
+        self.bot = bot
+
+    @commands.command()
+    async def roll(self, dice : str):
+        """Rolls a dice in NdN format."""
+        try:
+            rolls, limit = map(int, dice.split('d'))
+        except Exception:
+            await self.bot.say('Format has to be in NdN!')
+            return
+
+        result = ', '.join(str(random.randint(1, limit)) for r in range(rolls))
+        await self.bot.say(result)
+
+    @commands.command(description='For when you wanna settle the score some other way')
+    async def choose(self, *choices : str):
+        """Chooses between multiple choices."""
+        await self.bot.say(random.choice(choices))
+
+
+def setup(bot):
+    bot.add_cog(RNG(bot))
+
 @bot.command(pass_context=True)
 async def roll(ctx, x : int, y : int):
     msg = random.randint(x, y)
