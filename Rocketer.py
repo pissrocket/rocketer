@@ -71,10 +71,6 @@ async def add(ctx, x : int, y : int):
     await asyncio.sleep(3)
     await bot.edit_message(text, f"**Oh, the result: {msg}**")
     
-@bot.command(pass_context=True)
-async def gun(ctx, somebody):
-    bot.say(f"**{somebody} got killed by {ctx.message.author}** :rip:")
-    
 @bot.command()
 async def game(play):
     await bot.change_presence(game=discord.Game(name=play))
@@ -86,6 +82,10 @@ async def nick(ctx, name):
     await bot.change_nickname(ctx.message.author, name)
     em = discord.Embed(title="Nickname", description=f"{ctx.message.author}'s nick set to __{name}__!", colour=0x3498db)
     await bot.say(embed=em)
+    
+@bot.command(pass_context=True)
+async def gun(ctx, somebody):
+    bot.send_message(ctx.message.channel, f"**{somebody} got killed by {ctx.message.author}** :rip:")
     
 @bot.command(pass_context=True)
 async def suggest(ctx, pref, text):
@@ -174,11 +174,11 @@ class QuickPoll:
 def setup(bot):
     bot.add_cog(QuickPoll(bot))
     
-@bot.command()
-async def joined(member):
+@bot.command(pass_context=True)
+async def joined(ctx, member):
     if member is None:
-        member = message.author
-    await bot.say(f'{member.name} joined in {member.joined_at}')
+        member = ctx.message.author
+    await bot.send_message(ctx.message.channel, f'{ctx.member} joined in {ctx.member.joined_at}')
     
 @bot.event
 async def on_message(message):
@@ -429,7 +429,7 @@ async def on_message(message):
                             '\n'
                             ':white_small_square: Free for everyone\n'
                             ':small_blue_diamond: Staff commands', colour=0x3498db)
-        em.add_filter(name="Help 2", value=":white_small_square: r-add {number1} {number2}\n"
+        em.add_field(name="Help 2", value=":white_small_square: r-add {number1} {number2}\n"
                         ":white_small_square: r-sub {number1} {number2}\n"
                         ":white_small_square: r-mul {number1} {number2}\n"
                         ":white_small_square: r-div {number1} {number2}\n"
@@ -441,7 +441,7 @@ async def on_message(message):
         await bot.send_message(message.channel, embed=em)  
     if message.content.startswith('r-latest'):
         emb = discord.Embed(title="LATEST UPDATES", description=":high_brightness: The Currently version is __" + version + "__ :high_brightness:\n\n"
-                            ":white_small_square: r-suggest {Q or S or __C__} \"{message}\""
+                            ":white_small_square: r-suggest {Q or S or __C__} \"{message}\"\n"
                             "New prefix: __C__ for Command Suggestions\n"
                             "\n"
                             ":white_small_square: r-add {number1} {number2}\n"
@@ -457,11 +457,13 @@ async def on_message(message):
                             "number1 ÷ number2\n"
                             "\n"
                             ":white_small_square: r-exp {number1} {number2}\n"
-                            "number1 ** number2"
+                            "number1 ** number2\n"
+                            "\n"
                             ":white_small_square: r-gun {user}\n"
                             "Fun\n"
                             "\n"
-                            ":white_small_square: r-nick \"{name}\"", colour=0x3498db)
+                            ":white_small_square: r-nick \"{name}\"\n"
+                            "Change your name", colour=0x3498db)
         emb.set_thumbnail(url="https://cdn.discordapp.com/emojis/438035428386275340.png?v=1")
         await bot.send_message(message.channel, embed=emb)
     if message.content.startswith('r-bot'):
