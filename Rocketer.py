@@ -87,6 +87,12 @@ async def game(play):
     await bot.say(embed=em)
 
 @bot.command(pass_context=True)
+async def nick(ctx, name):
+    await bot.change_nickname(ctx.message.author, name)
+    em = discord.Embed(title="Nickname", description=f"{ctx.message.author}'s nick set to __{name}__!", colour=0x3498db)
+    await bot.say(embed=em)
+    
+@bot.command(pass_context=True)
 async def suggest(ctx, pref, text):
     try:
         if pref is "S":
