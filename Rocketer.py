@@ -11,7 +11,7 @@ import os
 import sys
 import math
 
-version = "0.5.1"
+version = "0.5.4"
 owner = ["361534796830081024"]
 bot = commands.Bot(command_prefix='r-', description=None)
 message = discord.Message
@@ -82,10 +82,6 @@ async def nick(ctx, name):
     await bot.change_nickname(ctx.message.author, name)
     em = discord.Embed(title="Nickname", description=f"{ctx.message.author}'s nick set to __{name}__!", colour=0x3498db)
     await bot.say(embed=em)
-    
-@bot.command(pass_context=True)
-async def gun(ctx, somebody):
-    bot.send_message(ctx.message.channel, f"**{somebody} got killed by {ctx.message.author}** :rip:")
     
 @bot.command(pass_context=True)
 async def suggest(ctx, pref, text):
@@ -173,12 +169,6 @@ class QuickPoll:
 
 def setup(bot):
     bot.add_cog(QuickPoll(bot))
-    
-@bot.command(pass_context=True)
-async def joined(ctx, member):
-    if member is None:
-        member = ctx.message.author
-    await bot.send_message(ctx.message.channel, f'{ctx.member} joined in {ctx.member.joined_at}')
     
 @bot.event
 async def on_message(message):
@@ -409,33 +399,29 @@ async def on_message(message):
                            ':link: Website: https://hegyiaron101.wixsite.com/pissrocket', colour=0x3498db)
         await bot.send_message(message.channel, embed=em)
     if message.content.startswith('r-list'):
-        em = discord.Embed(title='MY COMMANDS:', description=':white_small_square: r-bot\n'
+        em = discord.Embed(title='MY COMMANDS:', description="Hey, check out my commands!", colour=0x3498db)
+        em.add_field(name=None, value="':small_blue_diamond: r-bot\n'
                             ':white_small_square: r-game {game}\n'
-                            ':white_small_square: r-say {words}\n'
+                            ':small_blue_diamond: r-say {words}\n'
                             ':white_small_square: r-ping\n'
-                            ':white_small_square: r-AmiOwner?\n'
+                            ':small_blue_diamond: r-AmiOwner?\n'
                             ':white_small_square: r-bigdigits\n'
-                            ':white_small_square: r-digits {0-9}\n'
+                            ':small_blue_diamond: r-digits {0-9}\n'
                             ':white_small_square: r-help\n'
-                            ':small_blue_diamond: r-clear\n'
-                            ':white_small_square: r-8ball\n'
+                            ':small_blue_diamond: r-8ball\n'
                             ':white_small_square: r-verify\n'
-                            ':white_small_square: r-leavepls\n'
+                            ':small_blue_diamond: r-leavepls\n'
                             ':white_small_square: Poll\n'
-                            ':white_small_square: r-invite\n'
+                            ':small_blue_diamond: r-invite\n'
                             ':white_small_square: r-latest\n'
-                            ':white_small_square: r-lenny\n'
-                            ':white_small_square: r-suggest {Q or S or C} \"{message}\"\n'
-                            '\n'
-                            ':white_small_square: Free for everyone\n'
-                            ':small_blue_diamond: Staff commands', colour=0x3498db)
-        em.add_field(name="Help 2", value=":white_small_square: r-add {number1} {number2}\n"
-                        ":white_small_square: r-sub {number1} {number2}\n"
+                            ':small_blue_diamond: r-lenny\n'
+                            ':white_small_square: r-suggest {Q or S or C} \"{message}\"\n', inline=True)
+        em.add_field(name=None, value=":white_small_square: r-add {number1} {number2}\n"
+                        ":small_blue_diamond: r-sub {number1} {number2}\n"
                         ":white_small_square: r-mul {number1} {number2}\n"
-                        ":white_small_square: r-div {number1} {number2}\n"
+                        ":small_blue_diamond: r-div {number1} {number2}\n"
                         ":white_small_square: r-exp {number1} {number2}\n"
-                        ":white_small_square: r-gun {user}\n"
-                        ":white_small_square: r-nick \"{name}\"\n", inline=True)
+                        ":small_blue_diamond: r-nick \"{name}\"\n", inline=True)
         em.set_thumbnail(url="https://cdn.discordapp.com/emojis/385152309090451467.png?v=1")
         em.set_footer(text="The Official Bot of PissRocket, inviting and using the Bot in other servers breaks the Term of Use.")
         await bot.send_message(message.channel, embed=em)  
@@ -444,25 +430,25 @@ async def on_message(message):
                             ":white_small_square: r-suggest {Q or S or __C__} \"{message}\"\n"
                             "New prefix: __C__ for Command Suggestions\n"
                             "\n"
-                            ":white_small_square: r-add {number1} {number2}\n"
+                            ":small_blue_diamond: r-add {number1} {number2}\n"
                             "number1 + number2\n"
                             "\n"
                             ":white_small_square: r-sub {number1} {number2}\n"
                             "number1 - number2\n"
                             "\n"
-                            ":white_small_square: r-mul {number1} {number2}\n"
+                            ":small_blue_diamond: r-mul {number1} {number2}\n"
                             "number1 * number2\n"
                             "\n"
                             ":white_small_square: r-div {number1} {number2}\n"
                             "number1 ÷ number2\n"
                             "\n"
-                            ":white_small_square: r-exp {number1} {number2}\n"
+                            ":small_blue_diamond: r-exp {number1} {number2}\n"
                             "number1 ** number2\n"
                             "\n"
                             ":white_small_square: r-gun {user}\n"
                             "Fun\n"
                             "\n"
-                            ":white_small_square: r-nick \"{name}\"\n"
+                            ":small_blue_diamond: r-nick \"{name}\"\n"
                             "Change your name", colour=0x3498db)
         emb.set_thumbnail(url="https://cdn.discordapp.com/emojis/438035428386275340.png?v=1")
         await bot.send_message(message.channel, embed=emb)
