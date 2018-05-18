@@ -400,7 +400,7 @@ async def on_message(message):
         await bot.send_message(message.channel, embed=em)
     if message.content.startswith('r-list'):
         em = discord.Embed(title='MY COMMANDS:', description="Hey, check out my commands!", colour=0x3498db)
-        em.add_field(name="", value="':small_blue_diamond: r-bot\n'
+        em.add_field(name="", value=':small_blue_diamond: r-bot\n'
                             ':white_small_square: r-game {game}\n'
                             ':small_blue_diamond: r-say {words}\n'
                             ':white_small_square: r-ping\n'
@@ -415,7 +415,7 @@ async def on_message(message):
                             ':small_blue_diamond: r-invite\n'
                             ':white_small_square: r-latest\n'
                             ':small_blue_diamond: r-lenny\n'
-                            ':white_small_square: r-suggest {Q or S or C} \"{message}\"\n', inline=True)
+                            ':white_small_square: r-suggest {Q or S or C} "{message}"\n', inline=True)
         em.add_field(name="", value=":white_small_square: r-add {number1} {number2}\n"
                         ":small_blue_diamond: r-sub {number1} {number2}\n"
                         ":white_small_square: r-mul {number1} {number2}\n"
