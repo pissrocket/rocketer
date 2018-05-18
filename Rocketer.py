@@ -11,7 +11,7 @@ import os
 import sys
 import math
 
-version = "0.5.0"
+version = "0.5.1"
 owner = ["361534796830081024"]
 bot = commands.Bot(command_prefix='r-', description=None)
 message = discord.Message
@@ -73,12 +73,7 @@ async def add(ctx, x : int, y : int):
     
 @bot.command(pass_context=True)
 async def gun(ctx, somebody):
-    if ctx.id in owner:
-        bot.say("**Nah, i wont kill my owner xF**")
-    elif ctx.id in Domi:
-        bot.say("**Nah, i wont kill him :P**")
-    else:
-        bot.say(f"**{somebody} got killed by {ctx.message.author}** :rip:")
+    bot.say(f"**{somebody} got killed by {ctx.message.author}** :rip:")
     
 @bot.command()
 async def game(play):
@@ -430,10 +425,17 @@ async def on_message(message):
                             ':white_small_square: r-invite\n'
                             ':white_small_square: r-latest\n'
                             ':white_small_square: r-lenny\n'
-                            ':white_small_square: r-suggest {Q or S} \"{message}\"\n'
+                            ':white_small_square: r-suggest {Q or S or C} \"{message}\"\n'
                             '\n'
                             ':white_small_square: Free for everyone\n'
                             ':small_blue_diamond: Staff commands', colour=0x3498db)
+        em.add_filter(name="Help 2", value=":white_small_square: r-add {number1} {number2}\n"
+                        ":white_small_square: r-sub {number1} {number2}\n"
+                        ":white_small_square: r-mul {number1} {number2}\n"
+                        ":white_small_square: r-div {number1} {number2}\n"
+                        ":white_small_square: r-exp {number1} {number2}\n"
+                        ":white_small_square: r-gun {user}\n"
+                        ":white_small_square: r-nick \"{name}\"\n", inline=True)
         em.set_thumbnail(url="https://cdn.discordapp.com/emojis/385152309090451467.png?v=1")
         em.set_footer(text="The Official Bot of PissRocket, inviting and using the Bot in other servers breaks the Term of Use.")
         await bot.send_message(message.channel, embed=em)  
@@ -455,7 +457,11 @@ async def on_message(message):
                             "number1 ÷ number2\n"
                             "\n"
                             ":white_small_square: r-exp {number1} {number2}\n"
-                            "number1 ** number2", colour=0x3498db)
+                            "number1 ** number2"
+                            ":white_small_square: r-gun {user}\n"
+                            "Fun\n"
+                            "\n"
+                            ":white_small_square: r-nick \"{name}\"", colour=0x3498db)
         emb.set_thumbnail(url="https://cdn.discordapp.com/emojis/438035428386275340.png?v=1")
         await bot.send_message(message.channel, embed=emb)
     if message.content.startswith('r-bot'):
