@@ -11,7 +11,7 @@ import os
 import sys
 import math
 
-version = "0.5.4"
+version = "0.5.5"
 owner = ["361534796830081024"]
 bot = commands.Bot(command_prefix='r-', description=None)
 message = discord.Message
@@ -369,7 +369,7 @@ async def on_message(message):
                             ':small_blue_diamond: r-8ball\n'
                             ':white_small_square: r-verify\n'
                             ':small_blue_diamond: r-leavepls\n'
-                            ':white_small_square: Poll\n'
+                            ':white_small_square: r-poll {title} {description} <-(this decide about the options)\n'
                             ':small_blue_diamond: r-invite\n'
                             ':white_small_square: r-latest\n'
                             ':small_blue_diamond: r-lenny\n'
@@ -407,7 +407,10 @@ async def on_message(message):
                             "Fun\n"
                             "\n"
                             ":small_blue_diamond: r-nick \"{name}\"\n"
-                            "Change your name", colour=0x3498db)
+                            "Change your name\n"
+                            "\n"
+                            ":white_small_square: r-poll {title} {description} <-(this decide about the options)\n"
+                            "starts a quick Poll", colour=0x3498db)
         emb.set_thumbnail(url="https://cdn.discordapp.com/emojis/438035428386275340.png?v=1")
         await bot.send_message(message.channel, embed=emb)
     if message.content.startswith('r-bot'):
