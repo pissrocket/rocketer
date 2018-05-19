@@ -386,7 +386,7 @@ async def on_message(message):
                         ':small_blue_diamond: r-div {number1} {number2}\n'
                         ':white_small_square: r-exp {number1} {number2}\n'
                         ':small_blue_diamond: r-nick "{name}"\n'
-                        ':white_small_square: r-oof, inline=True)
+                        ':white_small_square: r-oof', inline=True)
         em.set_thumbnail(url='https://cdn.discordapp.com/emojis/385152309090451467.png?v=1')
         em.set_footer(text='The Official Bot of PissRocket, inviting and using the Bot in other servers breaks the Term of Use.')
         await bot.send_message(message.channel, embed=em)  
