@@ -264,7 +264,7 @@ async def on_message(message):
                                                               '**Very doubtful :8ball:**',
                                                               '**Ha! :8ball:**',
                                                               '**Ask it to ur mum :8ball:**',
-                                                              '**:feelsUltraREE: *REEEE* :8ball:**',]))
+                                                              ':feelsUltraREE: ***REEEE* :8ball:**',]))
     if message.content.upper().startswith('POLL'):
         msg = await bot.send_message(message.channel, "**A Poll has started! `24 hour remaining`**")
         await bot.add_reaction(msg, "\U0001F44D")
