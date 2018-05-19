@@ -11,7 +11,7 @@ import os
 import sys
 import math
 
-version = "0.5.5"
+version = "0.5.6"
 owner = ["361534796830081024"]
 bot = commands.Bot(command_prefix='r-', description=None)
 message = discord.Message
@@ -277,6 +277,12 @@ async def on_message(message):
         mouth = ['v', 'ᴥ', 'ᗝ', 'Ѡ', 'ᗜ', 'Ꮂ', 'ヮ', '╭͜ʖ╮', ' ͟ل͜', ' ͜ʖ', ' ͟ʖ', ' ʖ̯', 'ω', '³', ' ε ', '﹏', 'ل͜', '╭╮', '‿‿', '▾', '‸', 'Д', '∀', '!', '人', '.', 'ロ', '_', '෴', 'ѽ', 'ഌ', '⏏', 'ツ', '益']
         lenny = random.choice(ears).format(random.choice(eyes)).format(random.choice(mouth))
         await bot.send_message(message.channel, "**A wild Lenny has appeard:**\n\n\t" + lenny)
+    if message.content.startswith('r-oof'):
+        o = ['o00', 'oo', 'oO', 'o0', 'Oo', '0o', 'OOo', 'O0o', 'ooO', 'oo0', 'oo0oO', 'o0o', '0ooO', 'oo0oOO', 'ooo', '0oo', 'oooo', 'Ooo0', 'O0oo', 'ooo0', ]
+        f = ['f', 'ff', 'f!', 'ff!', 'fff', 'fff!']
+        msg1 = random.choice(o)
+        msg2 = random.choice(f)
+        await bot.send_message(message.channel, msg1 + msg2)
     if message.content.startswith('r-verify'):
         room = bot.get_channel(id='420141568486408203')
         em = discord.Embed(title='VERIFICATION', description='**Hey __' + message.author.name + '__, if you want to get verified, you need to answer 3 questions:\n'
@@ -379,7 +385,8 @@ async def on_message(message):
                         ':white_small_square: r-mul {number1} {number2}\n'
                         ':small_blue_diamond: r-div {number1} {number2}\n'
                         ':white_small_square: r-exp {number1} {number2}\n'
-                        ':small_blue_diamond: r-nick "{name}"', inline=True)
+                        ':small_blue_diamond: r-nick "{name}"\n'
+                        ':white_small_square: r-oof, inline=True)
         em.set_thumbnail(url='https://cdn.discordapp.com/emojis/385152309090451467.png?v=1')
         em.set_footer(text='The Official Bot of PissRocket, inviting and using the Bot in other servers breaks the Term of Use.')
         await bot.send_message(message.channel, embed=em)  
@@ -403,7 +410,7 @@ async def on_message(message):
                             ":small_blue_diamond: r-exp {number1} {number2}\n"
                             "number1 ** number2\n"
                             "\n"
-                            ":white_small_square: r-gun {user}\n"
+                            ":white_small_square: r-oof\n"
                             "Fun\n"
                             "\n"
                             ":small_blue_diamond: r-nick \"{name}\"\n"
