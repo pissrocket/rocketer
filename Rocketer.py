@@ -363,8 +363,8 @@ async def on_message(message):
                            ':link: Website: https://hegyiaron101.wixsite.com/pissrocket', colour=0x3498db)
         await bot.send_message(message.channel, embed=em)
     if message.content.startswith('r-list'):
-        em = discord.Embed(title='MY COMMANDS:', description="Hey, check out my commands!", colour=0x3498db)
-        em.add_field(name='', value=':small_blue_diamond: r-bot\n'
+        embed = discord.Embed(title='MY COMMANDS:', description="Hey, check out my commands!", colour=0x3498db)
+        embed.add_field(name='', value=':small_blue_diamond: r-bot\n'
                             ':white_small_square: r-game {game}\n'
                             ':small_blue_diamond: r-say {words}\n'
                             ':white_small_square: r-ping\n'
@@ -375,21 +375,21 @@ async def on_message(message):
                             ':small_blue_diamond: r-8ball\n'
                             ':white_small_square: r-verify\n'
                             ':small_blue_diamond: r-leavepls\n'
-                            ':white_small_square: r-poll {title} {description} <-(this decide about the options)\n'
+                            ':white_small_square: r-poll {title} {options}\n'
                             ':small_blue_diamond: r-invite\n'
                             ':white_small_square: r-latest\n'
                             ':small_blue_diamond: r-lenny\n'
                             ':white_small_square: r-suggest {Q or S or C} "{message}"', inline=True)
-        em.add_field(name='', value=':white_small_square: r-add {number1} {number2}\n'
+        embed.add_field(name='', value=':white_small_square: r-add {number1} {number2}\n'
                         ':small_blue_diamond: r-sub {number1} {number2}\n'
                         ':white_small_square: r-mul {number1} {number2}\n'
                         ':small_blue_diamond: r-div {number1} {number2}\n'
                         ':white_small_square: r-exp {number1} {number2}\n'
                         ':small_blue_diamond: r-nick "{name}"\n'
                         ':white_small_square: r-oof', inline=True)
-        em.set_thumbnail(url='https://cdn.discordapp.com/emojis/385152309090451467.png?v=1')
-        em.set_footer(text='The Official Bot of PissRocket, inviting and using the Bot in other servers breaks the Term of Use.')
-        await bot.send_message(message.channel, embed=em)  
+        embed.set_thumbnail(url='https://cdn.discordapp.com/emojis/385152309090451467.png?v=1')
+        embed.set_footer(text='The Official Bot of PissRocket, inviting and using the Bot in other servers breaks the Term of Use.')
+        await bot.send_message(message.channel, embed=embed)  
     if message.content.startswith('r-latest'):
         emb = discord.Embed(title="LATEST UPDATES", description=":high_brightness: The Currently version is __" + version + "__ :high_brightness:\n\n"
                             ":white_small_square: r-suggest {Q or S or __C__} \"{message}\"\n"
