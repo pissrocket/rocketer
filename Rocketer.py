@@ -392,7 +392,7 @@ async def on_message(message):
         await bot.send_message(message.channel, embed=embed)  
     if message.content.startswith('r-latest'):
         emb = discord.Embed(title="LATEST UPDATES", description=":high_brightness: The Currently version is __" + version + "__ :high_brightness:\n\n"
-                            ":white_small_square: r-suggest {Q or S or __C__} \"{message}\"\n"
+                            ":small_blue_diamond: r-suggest {Q or S or __C__} \"{message}\"\n"
                             "New prefix: __C__ for Command Suggestions\n"
                             "\n"
                             ":white_small_square: r-oof\n"
