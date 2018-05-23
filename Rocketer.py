@@ -395,21 +395,6 @@ async def on_message(message):
                             ":white_small_square: r-suggest {Q or S or __C__} \"{message}\"\n"
                             "New prefix: __C__ for Command Suggestions\n"
                             "\n"
-                            ":small_blue_diamond: r-add {number1} {number2}\n"
-                            "number1 + number2\n"
-                            "\n"
-                            ":white_small_square: r-sub {number1} {number2}\n"
-                            "number1 - number2\n"
-                            "\n"
-                            ":small_blue_diamond: r-mul {number1} {number2}\n"
-                            "number1 * number2\n"
-                            "\n"
-                            ":white_small_square: r-div {number1} {number2}\n"
-                            "number1 ÷ number2\n"
-                            "\n"
-                            ":small_blue_diamond: r-exp {number1} {number2}\n"
-                            "number1 ** number2\n"
-                            "\n"
                             ":white_small_square: r-oof\n"
                             "Fun\n"
                             "\n"
@@ -434,7 +419,7 @@ async def on_message(message):
                                 "<                                                >\n"
                                 "<▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒>\n"
                                 "\n"
-                                "         for the commands, type: \"r-help\"```".format(version), colour=0x3498db)
+                                "         for the commands, type: \"r-list\"```".format(version), colour=0x3498db)
         await bot.send_message(message.channel, embed=em)
     await bot.process_commands(message) #IMPORTANT
 
