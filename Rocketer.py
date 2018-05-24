@@ -38,7 +38,7 @@ async def roles(ctx, text, role, emoji):
         await bot.on_reaction_add(emoji, user)
         await bot.add_role(role, user)
     else:
-        bot.say("**Oh, I... only let my owner use that** :pepeKnife:"
+        bot.say("**Oh, I... only let my owner use that** :pepeKnife:")
     
 @bot.command(pass_context=True)
 async def roll(ctx, x : int, y : int):
