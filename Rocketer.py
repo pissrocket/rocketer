@@ -42,7 +42,7 @@ async def role_question_1(ctx, text, role):
             return e.startswith('📣')
 
         await bot.wait_for_reaction(message=msg, check=check)
-        await bot.add_role(role, user)
+        await bot.add_roles(role, user)
         await bot.send_message(ctx.message.channel, f"Added {role} to {user}")
     else:
         bot.say("**Oh, I... only let my owner use that** :pepeKnife:")
