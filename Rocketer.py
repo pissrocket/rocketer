@@ -153,7 +153,7 @@ async def on_message(message):
         except asyncio.TimeoutError:
             await bot.send_message(message.channel, '**The greeting is over! ;)**')
         else:
-            await bot.send_message(message.channel, f'**Hello __{author}__!**')
+            await bot.send_message(message.channel, f'**Hello __{message.author}__!**')
     if message.content.upper().startswith('R-AMIOWNER?'):
         if message.author.id in owner:
             await bot.send_message(message.channel, ':white_check_mark: **You are the Owner.**')
