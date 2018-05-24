@@ -150,7 +150,7 @@ async def on_message(message):
             return user == message.author and str(reaction.emoji) == '👍'
 
         try:
-            reaction, user = await bot.wait_for('reaction_add', timeout=60.0, check=check)
+            reaction, user = await bot.wait_for_message('reaction_add', timeout=60.0, check=check)
         except asyncio.TimeoutError:
             await bot.send_message(message.channel, '👎')
         else:
@@ -163,7 +163,7 @@ async def on_message(message):
             return m.content == 'hello' and m.channel == channel
 
         try:
-            msg = await bot.wait_for('message', timeout=20, check=check)
+            msg = await bot.wait_for_message('message', timeout=20, check=check)
 
         except asyncio.TimeoutError:
             await bot.send_message(message.channel, '**The greeting is over! ;)**')
