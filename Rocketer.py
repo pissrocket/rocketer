@@ -34,9 +34,9 @@ async def roles(ctx, text, role, emoji):
     user = discord.User
     if ctx.message.author.server_permissions.administrator:
         msg = await bot.send_message(ctx.message.channel, text + f"\nReact for the role:\n{role}")
-    await bot.add_reaction(msg, emoji)
-    await bot.on_reaction_add(emoji, user)
-    await bot.add_role(role, user)
+        await bot.add_reaction(msg, emoji)
+        await bot.on_reaction_add(emoji, user)
+        await bot.add_role(role, user)
     else:
         bot.say("**Oh, I... only let my owner use that** :pepeKnife:"
     
