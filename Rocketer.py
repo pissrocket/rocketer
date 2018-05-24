@@ -149,7 +149,7 @@ async def on_message(message):
             return msg.content.startswith('hello')
 
         try:
-            message = await bot.wait_for_message(author=author, timeout=20.0, check=check)
+            message = await bot.wait_for_message(timeout=20.0, check=check)
         except asyncio.TimeoutError:
             await bot.send_message(message.channel, '**The greeting is over! ;)**')
         else:
