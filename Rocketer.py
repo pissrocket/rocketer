@@ -30,11 +30,11 @@ async def on_ready():
     await bot.change_presence(game=discord.Game(name='Hmmmm... :))'))
 
 @bot.command(pass_context=True)
-async def roles(ctx, text, role, emoji):
+async def roles(ctx, text, role):
     user = discord.User
     if ctx.message.author.server_permissions.administrator:
         msg = await bot.send_message(ctx.message.channel, text + f"\nReact for the role:\n{role}")
-        await bot.add_reaction(msg, emoji)
+        emoji = await bot.add_reaction(msg, "📣")
         await bot.on_reaction_add(emoji, user)
         await bot.add_role(role, user)
     else:
