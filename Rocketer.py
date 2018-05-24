@@ -36,7 +36,7 @@ async def role_question_1(ctx, text, role):
     if ctx.message.author.id in owner:
         msg = await bot.send_message(ctx.message.channel, text + f"\nReact for the role:\n{role}")
         emoji = await bot.add_reaction(msg, "📣")
-        user = await bot.get_reaction_users(reaction="📣", limit=10000000000000)
+        user = await bot.get_reaction_users(reaction=u"\U0001F4E3", limit=10000000000000)
         await bot.add_role(role, user)
     else:
         bot.say("**Oh, I... only let my owner use that** :pepeKnife:")
