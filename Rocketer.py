@@ -11,11 +11,12 @@ import os
 import sys
 import math
 
+#use dis:     if ctx.message.author.server_permissions.administrator:
+
 version = "0.5.6"
 owner = ["361534796830081024"]
 bot = commands.Bot(command_prefix='r-', description=None)
 message = discord.Message
-Staff_Member = ["424927133522067467"]
 server = discord.Server
 member = discord.Member
 Domi = ["365173881952272384"]
@@ -32,10 +33,10 @@ async def on_ready():
 @bot.command(pass_context=True)
 async def roles(ctx, text, role):
     user = discord.User
-    if ctx.message.author.server_permissions.administrator:
+    if ctx.message.author.id in owner:
         msg = await bot.send_message(ctx.message.channel, text + f"\nReact for the role:\n{role}")
         emoji = await bot.add_reaction(msg, "📣")
-        await bot.on_reaction_add(emoji, user)
+        user = await bot.get_reaction_users(emoji, limit=10000000000000)
         await bot.add_role(role, user)
     else:
         bot.say("**Oh, I... only let my owner use that** :pepeKnife:")
