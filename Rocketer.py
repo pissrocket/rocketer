@@ -31,12 +31,12 @@ async def on_ready():
     await bot.change_presence(game=discord.Game(name='Hmmmm... :))'))
 
 @bot.command(pass_context=True)
-async def roles(ctx, text, role):
+async def role_question_1(ctx, text, role):
     user = discord.User
     if ctx.message.author.id in owner:
         msg = await bot.send_message(ctx.message.channel, text + f"\nReact for the role:\n{role}")
         emoji = await bot.add_reaction(msg, "📣")
-        user = await bot.get_reaction_users(emoji, limit=10000000000000)
+        user = await bot.get_reaction_users(reaction="📣", limit=10000000000000)
         await bot.add_role(role, user)
     else:
         bot.say("**Oh, I... only let my owner use that** :pepeKnife:")
