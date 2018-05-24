@@ -29,7 +29,7 @@ async def on_ready():
     print('------')
     print(discord.utils.oauth_url(bot.user.id))
     await bot.change_presence(game=discord.Game(name='Hmmmm... :))'))
-
+    
 @bot.command(pass_context=True)
 async def role_question_1(ctx, text, role):
     user = discord.User
@@ -142,6 +142,33 @@ async def poll(ctx, question, options: str):
     
 @bot.event
 async def on_message(message):
+    if message.content.startswith('$thumb'):
+        channel = message.channel
+        await channel.send('Send me that 👍 reaction, mate')
+
+        def check(reaction, user):
+            return user == message.author and str(reaction.emoji) == '👍'
+
+        try:
+            reaction, user = await client.wait_for('reaction_add', timeout=60.0, check=check)
+        except asyncio.TimeoutError:
+            await channel.send('👎')
+        else:
+            await channel.send('👍')
+    if message.content.startswith('r-welcome'):
+        channel = message.channel
+        await channel.send('**Say hello!**')
+
+        def check(m):
+            return m.content == 'hello' and m.channel == channel
+
+        try:
+            msg = await client.wait_for('message', timeout=20, check=check)
+
+        except asyncio.TimeoutError:
+            await channel.send('**The greeting is over! ;)**')
+        else:
+            await channel.send(f'**Hello {msg.author}!**')
     if message.content.upper().startswith('R-AMIOWNER?'):
         if message.author.id in owner:
             await bot.send_message(message.channel, ':white_check_mark: **You are the Owner.**')
