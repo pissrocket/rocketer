@@ -142,30 +142,14 @@ async def poll(ctx, question, options: str):
     
 @bot.event
 async def on_message(message):
-    if message.content.startswith('$thumb'):
-        channel = message.channel
-        await bot.send_message(message.channel, 'Send me that 👍 reaction, mate')
-
-        def check(reaction, user):
-            return user == message.author and str(reaction.emoji) == '👍'
-
-        try:
-            reaction, user = await bot.wait_for_message('reaction_add', timeout=60.0, check=check)
-        except asyncio.TimeoutError:
-            await bot.send_message(message.channel, '👎')
-        else:
-            await bot.send_message(message.channel, '👍')
     if message.content.startswith('r-welcome'):
-        channel = message.channel
         await bot.send_message(message.channel, '**Say hello!**')
 
-        def check(m):
-            return m.content == 'hello' and m.channel == channel
+        def check(msg):
+            return msg.content.startswith('hello')
 
-        try:
-            msg = await bot.wait_for_message('message', timeout=20, check=check)
-
-        except asyncio.TimeoutError:
+        message = await client.wait_for_message(timeout=20.0, check=check)
+        if asyncio.TimeoutError:
             await bot.send_message(message.channel, '**The greeting is over! ;)**')
         else:
             await bot.send_message(message.channel, f'**Hello {msg.author}!**')
