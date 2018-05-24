@@ -34,7 +34,7 @@ async def on_ready():
 async def role_question_1(ctx, roleee):
     member = discord.Member
     if ctx.message.author.id in owner:
-        role = "416942123896668160"
+        role = discord.utils.get(message.server.roles, id="416942123896668160")
         msg = await bot.send_message(ctx.message.channel, f"\n**React if you wanna be  Green:**\n{roleee}")
         emoji = await bot.add_reaction(msg, "📣")
         
