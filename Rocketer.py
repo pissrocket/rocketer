@@ -36,8 +36,14 @@ async def role_question_1(ctx, text, role):
     if ctx.message.author.id in owner:
         msg = await bot.send_message(ctx.message.channel, text + f"\nReact for the role:\n{role}")
         emoji = await bot.add_reaction(msg, "📣")
-        user = await bot.get_reaction_users(reaction=u"\U0001F4E3", limit=10000000000000)
+        
+        def check(reaction, user):
+            e = str(reaction.emoji)
+            return e.startswith('📣')
+
+        await bot.wait_for_reaction(message=msg, check=check)
         await bot.add_role(role, user)
+        await bot.send_message(ctx.message.channel, f"Added {role} to {user}")
     else:
         bot.say("**Oh, I... only let my owner use that** :pepeKnife:")
     
@@ -142,19 +148,6 @@ async def poll(ctx, question, options: str):
     
 @bot.event
 async def on_message(message):
-    if message.content.startswith('r-welcome'):
-        await bot.send_message(message.channel, '**Say hello!**')
-        author = discord.Member
-        
-        def check(msg):
-            return msg.content.startswith('hello')
-
-        try:
-            await bot.wait_for_message(author=author, timeout=20.0, check=check)
-        except asyncio.TimeoutError:
-            await bot.send_message(message.channel, '**The greeting is over! ;)**')
-        else:
-            await bot.send_message(message.channel, f'**Hello __{author}__!**')
     if message.content.upper().startswith('R-AMIOWNER?'):
         if message.author.id in owner:
             await bot.send_message(message.channel, ':white_check_mark: **You are the Owner.**')
