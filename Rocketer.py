@@ -11,6 +11,8 @@ import os
 import sys
 import math
 
+#permission system-hez: --if member.server_permissions.administrator:--
+
 version = "0.5.6"
 owner = ["361534796830081024"]
 bot = commands.Bot(command_prefix='r-', description=None)
@@ -26,18 +28,9 @@ async def on_ready():
     print(bot.user.id)
     print('------')
     print(discord.utils.oauth_url(bot.user.id))
-    await bot.change_presence(game=discord.Game(name='Hmmmm... :))'))
-
-class NoPermissionError(Exception): pass
-    
-def is_Admin(member):
-    if member.server_permissions.administrator:
-        return
-    else:
-        raise NoPermissionError
+    await bot.change_presence(game=discord.Game(name='Restarted 🤘'))
 
 @bot.command(pass_context=True)
-@is_Admin(message.author)
 async def roll(ctx, x : int, y : int):
     msg = random.randint(x, y)
     text = await bot.send_message(ctx.message.channel, "**Hmmm...**")
