@@ -103,12 +103,6 @@ async def nick(ctx, name):
     em = discord.Embed(title="Nickname", description=f"{ctx.message.author}'s nick set to __{name}__!", colour=0x3498db)
     await bot.say(embed=em)
     
-def get_user_color(user: discord.Member) -> discord.Colour:
-member = ctx.message.author.id
-if member is not None:
-    return member.colour
-return discord.Colour.default()
-    
 @bot.command(pass_context=True)
 async def suggest(ctx, pref, text):
     try:
@@ -125,7 +119,7 @@ async def suggest(ctx, pref, text):
         if text and pref is None:
             bot.say("**Usage:\n\tr-suggest {pref} \"{message}\"**")
     finally:
-        colours = get_user_color(ctx.message.author)
+        colours = member.colour
         colours2 = [0x11806a, 0x1abc9c, 0x2ecc71, 0x1f8b4c, 0x3498db, 0x206694, 0x9b59b6, 0x71368a, 0xe91e63, 0xad1457, 0xf1c40f, 0xc27c0e, 0xe67e22, 0xa84300, 0xe74c3c, 0x992d22, 0x95a5a6, 0x607d8b, 0x979c9f, 0x546e7a]
         col = random.choice(colours)
         em = discord.Embed(title=f"{msg}", description=f"**From {ctx.message.author.mention}**\n⋙ {text}", colour=col)
