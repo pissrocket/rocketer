@@ -35,7 +35,7 @@ async def role_question_1(ctx, roleee):
     member = discord.Member
     server = discord.Server
     if ctx.message.author.id in owner:
-        role = discord.utils.get(server.roles, id="416942123896668160")
+        role = discord.utils.get(message.server.roles, id="416942123896668160")
         msg = await bot.send_message(ctx.message.channel, f"\n**React if you wanna be  Green:**\n{roleee}")
         emoji = await bot.add_reaction(msg, "📣")
         
@@ -104,7 +104,7 @@ async def nick(ctx, name):
     await bot.say(embed=em)
     
 def get_user_color(user: discord.Member) -> discord.Colour:
-member = guild.get_member(user.id)
+member = server.get_member(user.id)
 if member is not None:
     return member.colour
 return discord.Colour.default()
