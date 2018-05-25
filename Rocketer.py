@@ -46,10 +46,10 @@ async def clear(ctx, number):
     elif not "-----BIG ROCKET------" or "----HEAD ADMIN-----" or "----------MOD----------" or "-------HEAD MOD-----" or "---------ADMIN--------" or "----BABY ROCKET----" in [y.name.lower() for y in ctx.message.author.roles]:
         raise NoPermError
     
-@bot.command(pass_context=True)
+"""@bot.command(pass_context=True)
 async def purge(ctx, amount):
     await bot.purge_from(ctx.message.channel, limit=amount)
-    bot.say(f"Cleared {amount}")
+    bot.say(f"Cleared {amount}")"""
     
 @bot.command(pass_context=True)
 async def roll(ctx, x : int, y : int):
