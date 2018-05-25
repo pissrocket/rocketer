@@ -37,7 +37,7 @@ def is_Admin(member):
         raise NoPermissionError
 
 @bot.command(pass_context=True)
-@is_Admin(ctx.message.author)
+@is_Admin(message.author)
 async def roll(ctx, x : int, y : int):
     msg = random.randint(x, y)
     text = await bot.send_message(ctx.message.channel, "**Hmmm...**")
