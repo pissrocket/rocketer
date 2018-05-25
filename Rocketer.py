@@ -11,7 +11,7 @@ import os
 import sys
 import math
 
-#permission system-hez: --if member.server_permissions.administrator:--
+#permission handler-hez: --if member.server_permissions.administrator:--
 
 version = "0.5.6"
 owner = ["361534796830081024"]
@@ -45,6 +45,10 @@ async def clear(ctx, number):
         await bot.send_message(ctx.message.channel, f"**{ctx.message.author} deleted" + str(number) + "messages**")
     elif not "-----BIG ROCKET------" or "----HEAD ADMIN-----" or "----------MOD----------" or "-------HEAD MOD-----" or "---------ADMIN--------" or "----BABY ROCKET----" in [y.name.lower() for y in ctx.message.author.roles]:
         raise NoPermError
+    
+@bot.command(pass_context=True)
+async def purge(ctx, amount):
+    await bot.purge_from(ctx.message.channel, limit=amount)
     
 @bot.command(pass_context=True)
 async def roll(ctx, x : int, y : int):
