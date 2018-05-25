@@ -28,17 +28,16 @@ async def on_ready():
     print(discord.utils.oauth_url(bot.user.id))
     await bot.change_presence(game=discord.Game(name='Hmmmm... :))'))
 
-class NoPermissionError(Exceptions):
-    pass
+class NoPermissionError(Exception): pass
     
-def is_Admin():
-    if ctx.message.author.server_permissions.administrator:
+def is_Admin(member):
+    if member.server_permissions.administrator:
         return
     else:
         raise NoPermissionError
 
-@is_Admin()
 @bot.command(pass_context=True)
+@is_Admin(ctx.message.author)
 async def roll(ctx, x : int, y : int):
     msg = random.randint(x, y)
     text = await bot.send_message(ctx.message.channel, "**Hmmm...**")
