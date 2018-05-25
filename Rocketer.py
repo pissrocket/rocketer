@@ -39,9 +39,9 @@ async def clear(ctx, number):
     if "-----BIG ROCKET------" or "----HEAD ADMIN-----" or "----------MOD----------" or "-------HEAD MOD-----" or "---------ADMIN--------" or "----BABY ROCKET----" in [y.name.lower() for y in ctx.message.author.roles]:
         msg = []
         number = int(number)
-        async for x in client.logs_from(ctx.message.channel, limit=number):
+        async for x in bot.logs_from(ctx.message.channel, limit=number):
             msg.append(x)
-        await client.delete_messages(msg)
+        await bot.delete_messages(msg)
         await bot.send_message(ctx.message.channel, f"**{ctx.message.author} deleted" + str(number) + "messages**")
     elif not "-----BIG ROCKET------" or "----HEAD ADMIN-----" or "----------MOD----------" or "-------HEAD MOD-----" or "---------ADMIN--------" or "----BABY ROCKET----" in [y.name.lower() for y in ctx.message.author.roles]:
         raise NoPermError
@@ -49,6 +49,7 @@ async def clear(ctx, number):
 @bot.command(pass_context=True)
 async def purge(ctx, amount):
     await bot.purge_from(ctx.message.channel, limit=amount)
+    bot.say(f"Cleared {amount}")
     
 @bot.command(pass_context=True)
 async def roll(ctx, x : int, y : int):
