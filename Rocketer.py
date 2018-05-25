@@ -30,6 +30,24 @@ async def on_ready():
     print(discord.utils.oauth_url(bot.user.id))
     await bot.change_presence(game=discord.Game(name='Restarted 🤘'))
 
+class NoPermError(Exception):
+    bot.say("**Sry boi, seems like you cant use this command..**")
+    pass
+    
+@bot.command(pass_context=True)
+async def clear(ctx, n):
+   if "-----BIG ROCKET------" or "----HEAD ADMIN-----" or "----------MOD----------" or "-------HEAD MOD-----" or "---------ADMIN--------" or "----BABY ROCKET----" in [y.name.lower() for y in ctx.message.author.roles]:
+       n = int(n)
+       msg = []
+       tn = n + 1
+       async for x in bot.logs_from(ctx.message.channel, limit=tn):
+          msg.append(x)
+          await bot.delete_messages(x)
+
+       await bot.send_message(ctx.message.channel, "Deleted" + str(n) + "messages")
+   elif not "-----BIG ROCKET------" or "----HEAD ADMIN-----" or "----------MOD----------" or "-------HEAD MOD-----" or "---------ADMIN--------" or "----BABY ROCKET----" in [y.name.lower() for y in ctx.message.author.roles]:
+       raise NoPermError
+    
 @bot.command(pass_context=True)
 async def roll(ctx, x : int, y : int):
     msg = random.randint(x, y)
