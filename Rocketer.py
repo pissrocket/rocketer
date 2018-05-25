@@ -10,8 +10,6 @@ import traceback
 import os
 import sys
 import math
-import tax
-from db import database
 
 #use dis:     if ctx.message.author.server_permissions.administrator:
 
@@ -31,90 +29,6 @@ async def on_ready():
     print('------')
     print(discord.utils.oauth_url(bot.user.id))
     await bot.change_presence(game=discord.Game(name='Hmmmm... :))'))
-
-class Coin:
-    def __init__(self, bot):
-        self.bot = bot                                  # The bot object.
-        self.coinActive = True                          # If this is set to false, the coin interval is stopped.
-        self.database = database.Database(self.bot)     # database object -> used to update and get coin amount
-        self.tax = tax.Tax(self.bot)                    # Tax object used to get the value of taxable
-        self.COIN_AMOUNT = 1                           # amount of coins to be given every interval
-        self.COIN_INTERVAL = 30                          # interval in seconds for sending out coins.
-
-    @commands.command(name="coins", pass_context=True, help="Get your coin amount")
-    async def coins(self, ctx):
-        await self.bot.say("{}, you have {} coins".format(ctx.message.author.mention,
-                                                          self.database.get_coins(ctx.message.author.id)))
-
-    """@commands.command(name="roll", pass_context=True, help="Gamble coins, reach over 50 - 100")
-    async def luck(self, ctx, amount):
-        if float(amount) <= 0 :
-            await self.bot.say("{}, please enter a valid amount?".format(ctx.message.author.mention))
-            return None
-
-        if not self.check_balance(ctx.message.author, float(amount)):
-            await self.bot.say("{}, sorry buddy.. you do not have enough coins to do this bet.. You got {}"
-                               .format(ctx.message.author.mention, self.database.get_coins(ctx.message.author.id)))
-            return None
-
-        rolled = random.randint(0,100)
-        if rolled <= 50 :
-            self.database.remove_coins(ctx.message.author.id, amount, ctx.message.author.mention)
-            await self.bot.say("{}, you lost.. you rolled {} and lost {} coins".format(
-                ctx.message.author.mention, rolled, amount))
-            pass
-        else :
-
-            self.database.insert_coins(ctx.message.author.id, amount, ctx.message.author.mention)
-            await self.bot.say(
-                "{}, you won! you rolled {} and won {} coins".format(ctx.message.author.mention, rolled, amount))
-            pass"""
-
-    @commands.command(name="donate", pass_context=True)
-    async def give(self, ctx, toUser :discord.Member, coins):
-        member = toUser
-        if member is not None :
-            if self.check_balance(ctx.message.author, float(coins)):
-                if float(coins) > 0 :
-
-                    self.database.remove_coins(userid=ctx.message.author.id, coins=coins, mention=ctx.message.author.mention)
-                    self.database.insert_coins(userid=member.id, coins=coins, mention=ctx.message.author.mention)
-                    await self.bot.say("{}, you donated {} coins to {}".format(ctx.message.author.mention, coins,
-                                                                               member.mention))
-
-                else: await self.bot.say("{}, coins needs to be higher than 0.".format(ctx.message.author.mention))
-            else: await self.bot.say("{}, not enough coins.".format(ctx.message.author.mention))
-        else: await self.bot.say("Did not find member {}".format(toUser))
-
-    @commands.command(name="toplist", pass_context=False)
-    async def toplist(self):
-        output = "On the coin top we got: \n \n"
-        count = 1
-        for user in self.database.get_top_coin_holders() :
-            if user["mention"] == None :    # if for some reason mention is not in the db.. Then get it..
-                user["mention"] = await self.bot.get_user_info(user["userid"])
-                user["mention"] = user["mention"].mention
-
-            output += "#{} {} with {} coins \n".format(count, user["mention"], user["coins"])
-            count += 1
-        await self.bot.say(output)
-
-
-    def check_balance(self,user, requestedBalance):
-        '''
-        check if the user have enough coins to do the transaction 
-        :param user: 
-        :param requestedBalance: 
-        :return: 
-        '''
-        if self.database.get_coins(user.id) < float(requestedBalance):
-            return False
-        return True
-
-    
-def setup(bot):
-    bot.add_cog(Coin(bot))
-
     
 @bot.command(pass_context=True)
 async def role_question_1(ctx, roleee):
@@ -189,6 +103,12 @@ async def nick(ctx, name):
     em = discord.Embed(title="Nickname", description=f"{ctx.message.author}'s nick set to __{name}__!", colour=0x3498db)
     await bot.say(embed=em)
     
+def get_user_color(user: discord.Member) -> discord.Colour:
+member = guild.get_member(user.id)
+if member is not None:
+    return member.colour
+return discord.Colour.default()
+    
 @bot.command(pass_context=True)
 async def suggest(ctx, pref, text):
     try:
@@ -205,7 +125,8 @@ async def suggest(ctx, pref, text):
         if text and pref is None:
             bot.say("**Usage:\n\tr-suggest {pref} \"{message}\"**")
     finally:
-        colours = [0x11806a, 0x1abc9c, 0x2ecc71, 0x1f8b4c, 0x3498db, 0x206694, 0x9b59b6, 0x71368a, 0xe91e63, 0xad1457, 0xf1c40f, 0xc27c0e, 0xe67e22, 0xa84300, 0xe74c3c, 0x992d22, 0x95a5a6, 0x607d8b, 0x979c9f, 0x546e7a]
+        colours = get_user_color(ctx.message.author)
+        colours2 = [0x11806a, 0x1abc9c, 0x2ecc71, 0x1f8b4c, 0x3498db, 0x206694, 0x9b59b6, 0x71368a, 0xe91e63, 0xad1457, 0xf1c40f, 0xc27c0e, 0xe67e22, 0xa84300, 0xe74c3c, 0x992d22, 0x95a5a6, 0x607d8b, 0x979c9f, 0x546e7a]
         col = random.choice(colours)
         em = discord.Embed(title=f"{msg}", description=f"**From {ctx.message.author.mention}**\n⋙ {text}", colour=col)
         channel = bot.get_channel(id="444837114258128916")
