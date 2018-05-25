@@ -104,7 +104,7 @@ async def nick(ctx, name):
     await bot.say(embed=em)
     
 def get_user_color(user: discord.Member) -> discord.Colour:
-member = server.get_member(user.id)
+member = ctx.message.author.id
 if member is not None:
     return member.colour
 return discord.Colour.default()
