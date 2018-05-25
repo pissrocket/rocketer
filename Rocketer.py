@@ -11,8 +11,6 @@ import os
 import sys
 import math
 
-#use dis:     if ctx.message.author.server_permissions.administrator:
-
 version = "0.5.6"
 owner = ["361534796830081024"]
 bot = commands.Bot(command_prefix='r-', description=None)
@@ -29,27 +27,17 @@ async def on_ready():
     print('------')
     print(discord.utils.oauth_url(bot.user.id))
     await bot.change_presence(game=discord.Game(name='Hmmmm... :))'))
-    
-@bot.command(pass_context=True)
-async def role_question_1(ctx, roleee):
-    member = discord.Member
-    server = discord.Server
-    if ctx.message.author.id in owner:
-        role = discord.utils.get(message.server.roles, id="416942123896668160")
-        msg = await bot.send_message(ctx.message.channel, f"\n**React if you wanna be  Green:**\n{roleee}")
-        emoji = await bot.add_reaction(msg, "📣")
-        
-        """def check(reaction, user):
-            e = str(reaction.emoji)
-            return e.startswith('📣')
 
-        await bot.wait_for_reaction(message=msg, check=check)"""
-        for item in msg.reactions:
-            await item.add_roles(role, member)
-        await bot.send_message(ctx.message.channel, f"**Added {roleee} to {member}**")           
-    else:
-        bot.say("**Oh, I... only let my owner use that** :pepeKnife:")
+class NoPermissionError(Exceptions):
+    pass
     
+def is_Admin():
+    if ctx.message.author.server_permissions.administrator:
+        return
+    else:
+        raise NoPermissionError
+
+@is_Admin()
 @bot.command(pass_context=True)
 async def roll(ctx, x : int, y : int):
     msg = random.randint(x, y)
