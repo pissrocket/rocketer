@@ -1,25 +1,14 @@
-import discord
-from discord.ext import commands
-import asyncio
-import time
-import random
-import aiohttp
-import re
-import datetime
-import traceback
-import os
-import sys
-import math
+import discord, logging, json, asyncio, time, random, aiohttp, re, datetime, traceback, os, sys, math, discord.ext, profanity, tinydb
 
 #permission handler-hez: --if member.server_permissions.administrator:--
 
 version = "0.5.6"
-owner = ["361534796830081024"]
+Rettend, owner = ["361534796830081024"]
 bot = commands.Bot(command_prefix='r-', description=None)
 message = discord.Message
 server = discord.Server
 member = discord.Member
-Domi = ["365173881952272384"]
+Domi, Imox = ["365173881952272384"]
 
 @bot.event
 async def on_ready():
@@ -45,12 +34,16 @@ async def clear(ctx, number):
         await bot.send_message(ctx.message.channel, f"**{ctx.message.author} deleted" + str(number) + "messages**")
     elif not "-----BIG ROCKET------" or "----HEAD ADMIN-----" or "----------MOD----------" or "-------HEAD MOD-----" or "---------ADMIN--------" or "----BABY ROCKET----" in [y.name.lower() for y in ctx.message.author.roles]:
         raise NoPermError
-    
-"""@bot.command(pass_context=True)
-async def purge(ctx, amount):
-    await bot.purge_from(ctx.message.channel, limit=amount)
-    bot.say(f"Cleared {amount}")"""
-    
+
+@bot.command(pass_context=True)
+async def purge(context, number : int):
+	for role in member.roles:
+		if role.name == "-----BIG ROCKET------" or "----HEAD ADMIN-----" or "----------MOD----------" or "-------HEAD MOD-----" or "---------ADMIN--------" or "----BABY ROCKET----"
+            deleted = await bot.purge_from(context.message.channel, limit=number)
+	        await bot.send_message(context.message.channel, 'Deleted {} message(s)'.format(len(deleted)))
+        else:
+            raise NoPermError
+        
 @bot.command(pass_context=True)
 async def roll(ctx, x : int, y : int):
     msg = random.randint(x, y)
@@ -149,6 +142,32 @@ async def poll(ctx, question, options: str):
     for reaction in reactions[:len(options)]:
         await bot.add_reaction(react_message, reaction)
     await bot.edit_message(react_message, embed=embed)
+
+@bot.command(pass_context=True)
+async def register(context):
+	for server in bot.servers:
+		roles = server.roles
+		members = server.members
+		member = None
+		for mem in members:
+			if mem.id == context.message.author.id:
+				member = mem
+				break
+		for role in roles:
+			if role.name == "Registered":
+				await bot.add_roles(member, role)
+				break
+    
+@bot.listen()
+async def on_member_join(member):
+	room = bot.get_channel(id="381774233199443968")
+    is_verified = False
+	for role in member.roles:
+		if role.name == "Registered":
+			is_verified = True
+			break
+	if is_verified == False:
+		await bot.send_message(room, "**TEXT_HERE**")
     
 @bot.event
 async def on_message(message):
