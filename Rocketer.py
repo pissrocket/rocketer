@@ -3,12 +3,12 @@ import discord, logging, json, asyncio, time, random, aiohttp, re, datetime, tra
 #permission handler-hez: --if member.server_permissions.administrator:--
 
 version = "0.5.6"
-Rettend, owner = ["361534796830081024"]
+owner = ["361534796830081024"]
 bot = commands.Bot(command_prefix='r-', description=None)
 message = discord.Message
 server = discord.Server
 member = discord.Member
-Domi, Imox = ["365173881952272384"]
+Imox = ["365173881952272384"]
 
 @bot.event
 async def on_ready():
