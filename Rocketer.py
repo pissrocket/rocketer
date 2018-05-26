@@ -41,7 +41,7 @@ async def purge(context, number : int):
         if role.name == "-----BIG ROCKET------" or "----HEAD ADMIN-----" or "----------MOD----------" or "-------HEAD MOD-----" or "---------ADMIN--------" or "----BABY ROCKET----":
             deleted = await bot.purge_from(context.message.channel, limit=number)
             await bot.send_message(context.message.channel, '**Deleted {} messages**'.format(len(deleted)))
-     	else:
+        else:
             raise NoPermError
         
 @bot.command(pass_context=True)
