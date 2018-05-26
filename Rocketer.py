@@ -39,8 +39,10 @@ async def clear(ctx, number):
 @bot.command(pass_context=True)
 async def purge(ctx, number : int):
     if "-----BIG ROCKET------" or "----HEAD ADMIN-----" or "----------MOD----------" or "-------HEAD MOD-----" or "---------ADMIN--------" or "----BABY ROCKET----" in [y.name.lower() for y in ctx.message.author.roles]:
+        number += 1
         deleted = await bot.purge_from(ctx.message.channel, limit=number)
-        await bot.send_message(ctx.message.channel, '**{1} deleted {2} messages**'.format(ctx.message.author, len(deleted)))
+        del = len(deleted)
+        await bot.send_message(ctx.message.channel, f'**{ctx.message.author} deleted {del} messages**')
     else:
         raise NoPermError
         
