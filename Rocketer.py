@@ -1,4 +1,4 @@
-import discord, logging, json, asyncio, time, random, aiohttp, re, datetime, traceback, os, sys, math, discord.ext, profanity, tinydb
+import discord, logging, json, asyncio, time, random, aiohttp, re, datetime, traceback, os, sys, math, discord.ext, tinydb
 
 #permission handler-hez: --if member.server_permissions.administrator:--
 
