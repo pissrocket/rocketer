@@ -145,29 +145,29 @@ async def poll(ctx, question, options: str):
 
 @bot.command(pass_context=True)
 async def register(context):
-	for server in bot.servers:
-		roles = server.roles
-		members = server.members
-		member = None
-		for mem in members:
-			if mem.id == context.message.author.id:
-				member = mem
-				break
-		for role in roles:
-			if role.name == "Registered":
-				await bot.add_roles(member, role)
-				break
+    for server in bot.servers:
+        roles = server.roles
+        members = server.members
+        member = None
+        for mem in members:
+            if mem.id == context.message.author.id:
+                member = mem
+                break
+        for role in roles:
+            if role.name == "Registered":
+                await bot.add_roles(member, role)
+                break
     
 @bot.listen()
 async def on_member_join(member):
-	room = bot.get_channel(id="381774233199443968")
+    room = bot.get_channel(id="381774233199443968")
     is_verified = False
-	for role in member.roles:
-		if role.name == "Registered":
-			is_verified = True
-			break
-	if is_verified == False:
-		await bot.send_message(room, "**TEXT_HERE**")
+    for role in member.roles:
+        if role.name == "Registered":
+            is_verified = True
+            break
+        if is_verified == False:
+            await bot.send_message(room, "**TEXT_HERE**")
     
 @bot.event
 async def on_message(message):
