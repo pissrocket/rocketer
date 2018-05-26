@@ -1,4 +1,5 @@
-import discord, logging, json, asyncio, time, random, aiohttp, re, datetime, traceback, os, sys, math, discord.ext
+import discord, logging, json, asyncio, time, random, aiohttp, re, datetime, traceback, os, sys, math
+from discord.ext import commands
 
 #permission handler-hez: --if member.server_permissions.administrator:--
 
