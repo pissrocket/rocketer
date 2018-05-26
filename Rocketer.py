@@ -38,11 +38,11 @@ async def clear(ctx, number):
 @bot.command(pass_context=True)
 async def purge(context, number : int):
 	for role in member.roles:
-		if role.name == "-----BIG ROCKET------" or "----HEAD ADMIN-----" or "----------MOD----------" or "-------HEAD MOD-----" or "---------ADMIN--------" or "----BABY ROCKET----"
-            deleted = await bot.purge_from(context.message.channel, limit=number)
-	        await bot.send_message(context.message.channel, 'Deleted {} message(s)'.format(len(deleted)))
-        else:
-            raise NoPermError
+		if role.name == "-----BIG ROCKET------" or "----HEAD ADMIN-----" or "----------MOD----------" or "-------HEAD MOD-----" or "---------ADMIN--------" or "----BABY ROCKET----":
+            		deleted = await bot.purge_from(context.message.channel, limit=number)
+	        	await bot.send_message(context.message.channel, '**Deleted {} messages**'.format(len(deleted)))
+        	else:
+			raise NoPermError
         
 @bot.command(pass_context=True)
 async def roll(ctx, x : int, y : int):
