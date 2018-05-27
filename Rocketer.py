@@ -2,7 +2,7 @@ import discord, logging, json, asyncio, time, random, aiohttp, re, datetime, tra
 from discord.ext import commands
 
 #-------------------DATA---------------------
-version = "0.5.8"
+version = "0.6.0"
 owner = ["361534796830081024"]
 bot = commands.Bot(command_prefix='r-', description=None)
 message = discord.Message
@@ -106,8 +106,10 @@ async def suggest(ctx, pref, text):
             msg = "𝓠𝓾𝒆𝓼𝓽𝓲𝓸𝓷"
         if pref is "C":
             msg = "𝓒𝓸𝓶𝓶𝓪𝓷𝓭 𝓢𝓾𝓰𝓰𝒆𝓼𝓽𝓲𝓸𝓷"
+        if pref is "B":
+            msg = "𝓑𝓾𝓰𝓼"
         if pref is None:
-            bot.say("**Please use a valid prefix! The available prefixes: __Q__, __S__, __C__**")
+            bot.say("**Please use a valid prefix! The available prefixes: __Q__, __S__, __C__, __B__**")
         if text is None:
             bot.say("**Please write a message!**")
         if text and pref is None:
@@ -356,10 +358,12 @@ async def on_message(message):
         await bot.send_message(message.channel, "**A wild Lenny has appeard:**\n\n\t" + lenny)
     if message.content.startswith('r-oof'):
         o = ['o00', 'oo', 'oO', 'o0', 'Oo', '0o', 'OOo', 'O0o', 'ooO', 'oo0', 'oo0oO', 'o0o', '0ooO', 'oo0oOO', 'ooo', '0oo', 'oooo', 'Ooo0', 'O0oo', 'ooo0', ]
-        f = ['f', 'ff', 'f!', 'ff!', 'fff', 'fff!']
+        f = ['f', 'ff', 'fff']
+        mark = ['!', '!!', '!!', '!1', '!!1', '!1!!', '1!!!', '!1!1!', '1!', '!!1'', '!!!1!', '!!!!', '!11!']
         msg1 = random.choice(o)
         msg2 = random.choice(f)
-        await bot.send_message(message.channel, msg1 + msg2)
+        msg3 = random.choice(mark)
+        await bot.send_message(message.channel, msg1 + msg2 + msg3)
     if message.content.startswith('r-leavepls'):
         em5 = discord.Embed(title=":warning: WARNING :warning:", description="THE BOT WILL LEAVE THE SERVER IN:\n"
                             ":large_blue_circle::large_blue_circle::large_blue_circle::large_blue_circle::black_circle:\n"
@@ -440,13 +444,12 @@ async def on_message(message):
                             ':white_small_square: r-bigdigits\n'
                             ':small_blue_diamond: r-digits {0-9}\n'
                             ':white_small_square: r-help\n'
-                            ':small_blue_diamond: r-8ball\n'
                             ':small_blue_diamond: r-leavepls\n'
                             ':white_small_square: r-poll {title} {options}\n'
                             ':small_blue_diamond: r-invite\n'
                             ':white_small_square: r-latest\n'
                             ':small_blue_diamond: r-lenny\n'
-                            ':white_small_square: r-suggest {Q or S or C} "{message}"', inline=True)
+                            ':white_small_square: r-suggest {Q or S or C or B} "{message}"', inline=True)
         emb.set_thumbnail(url='https://cdn.discordapp.com/emojis/385152309090451467.png?v=1')
         emb.set_footer(text='The Official Bot of PissRocket, inviting and using the Bot in other servers breaks the Term of Use.\nType r-help 2 for more commands!!')
         await bot.send_message(message.channel, embed=emb)
@@ -461,14 +464,15 @@ async def on_message(message):
                         ':white_small_square: r-verify\n'
                         ':small_blue_diamond: r-register\n'
                         ':white_small_square: r-clear {number}\n'
-                        ':small_blue_diamond: r-oof', inline=True)
+                        ':small_blue_diamond: r-oof\n'
+                        ':white_small_square: r-8ball {Question}\n', inline=True)
         emb.set_thumbnail(url='https://cdn.discordapp.com/emojis/385152309090451467.png?v=1')
         emb.set_footer(text='The Official Bot of PissRocket, inviting and using the Bot in other servers breaks the Term of Use.\nType r-help for more commands!!')
         await bot.send_message(message.channel, embed=emb)
     if message.content.startswith('r-latest'):
         emb = discord.Embed(title="LATEST UPDATES", description=":high_brightness: The Currently version is __" + version + "__ :high_brightness:\n\n"
-                            ":small_blue_diamond: r-suggest {Q or S or __C__} \"{message}\"\n"
-                            "New prefix: __C__ for Command Suggestions\n"
+                            ":small_blue_diamond: r-suggest {Q or S or C or __B__} \"{message}\"\n"
+                            "New prefix: __B__ for Command Bugs\n"
                             "\n"
                             ":white_small_square: r-oof\n"
                             "Fun\n"
