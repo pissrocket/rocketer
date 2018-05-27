@@ -156,6 +156,10 @@ async def register(ctx):
             if role.name == "Registered":
                 await bot.add_roles(member, role)
                 break
+            elif role.name == "Unregistered":
+                await bot.remover_roles(member, role)
+                break
+        await bot.send_message(ctx.message.channel, f"**Congratulations {ctx.message.author}, you are verified!**")
     
 @bot.listen()
 async def on_member_join(member):
@@ -166,7 +170,7 @@ async def on_member_join(member):
             is_verified = True
             break
         if is_verified == False:
-            await bot.send_message(room, f"**Welcome {user.mention}, I will show you around, First, to __get permissions for all channels__, you need to type `r-verify` and __answer all of the questions!__\nThan type `r-register` ! __IMPORTANT: typing `r-register` without answering the questions, will unregister you!__**")
+            await bot.send_message(room, f"**Welcome __{member.name}__, I will show you around, First, to __get permissions for all channels__, you need to type `r-verify` and __answer all of the questions!__\nThan type `r-register` ! __IMPORTANT: typing `r-register` without answering the questions, will unregister you!__**")
 
 @bot.listen()
 async def on_member_remove(member):
