@@ -155,6 +155,7 @@ async def register(ctx):
         for role in roles:
             if role.name == "Registered":
                 await bot.add_roles(member, role)
+                await bot.send_message(ctx.message.channel, "**Boi, you are already verified... Why are you want to?**")
                 break
             elif role.name == "Unregistered":
                 await bot.remover_roles(member, role)
