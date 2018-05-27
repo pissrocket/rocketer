@@ -1,1 +1,1 @@
-worker: python Rocketer.py
+worker: python preizy.py
