@@ -439,20 +439,20 @@ async def on_message(message):
         embed.set_footer(text='The Official Bot of PissRocket, inviting and using the Bot in other servers breaks the Term of Use.')
         msg = await bot.send_message(message.channel, embed=embed)
         if message.content.startswith('r-list 2'):
-        embed = discord.Embed(title='MY COMMANDS:', description="Hey, check out my commands!", colour=0x3498db)
-        embed.add_field(name='', value=':white_small_square: r-add {number1} {number2}\n'
-                        ':small_blue_diamond: r-sub {number1} {number2}\n'
-                        ':white_small_square: r-mul {number1} {number2}\n'
-                        ':small_blue_diamond: r-div {number1} {number2}\n'
-                        ':white_small_square: r-exp {number1} {number2}\n'
-                        ':small_blue_diamond: r-nick "{name}"\n'
-                        ':white_small_square: r-verify\n'
-                        ':small_blue_diamond: r-register\n'
-                        ':white_small_square: r-clear {number}\n'
-                        ':small_blue_diamond: r-oof', inline=True)
-        embed.set_thumbnail(url='https://cdn.discordapp.com/emojis/385152309090451467.png?v=1')
-        embed.set_footer(text='The Official Bot of PissRocket, inviting and using the Bot in other servers breaks the Term of Use.')
-        await bot.edit_message(msg, embed=embed)
+            embed = discord.Embed(title='MY COMMANDS:', description="Hey, check out my commands!", colour=0x3498db)
+            embed.add_field(name='', value=':white_small_square: r-add {number1} {number2}\n'
+                            ':small_blue_diamond: r-sub {number1} {number2}\n'
+                            ':white_small_square: r-mul {number1} {number2}\n'
+                            ':small_blue_diamond: r-div {number1} {number2}\n'
+                            ':white_small_square: r-exp {number1} {number2}\n'
+                            ':small_blue_diamond: r-nick "{name}"\n'
+                            ':white_small_square: r-verify\n'
+                            ':small_blue_diamond: r-register\n'
+                            ':white_small_square: r-clear {number}\n'
+                            ':small_blue_diamond: r-oof', inline=True)
+            embed.set_thumbnail(url='https://cdn.discordapp.com/emojis/385152309090451467.png?v=1')
+            embed.set_footer(text='The Official Bot of PissRocket, inviting and using the Bot in other servers breaks the Term of Use.')
+            await bot.edit_message(msg, embed=embed)
     if message.content.startswith('r-latest'):
         emb = discord.Embed(title="LATEST UPDATES", description=":high_brightness: The Currently version is __" + version + "__ :high_brightness:\n\n"
                             ":small_blue_diamond: r-suggest {Q or S or __C__} \"{message}\"\n"
