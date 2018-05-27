@@ -359,7 +359,7 @@ async def on_message(message):
     if message.content.startswith('r-oof'):
         o = ['o00', 'oo', 'oO', 'o0', 'Oo', '0o', 'OOo', 'O0o', 'ooO', 'oo0', 'oo0oO', 'o0o', '0ooO', 'oo0oOO', 'ooo', '0oo', 'oooo', 'Ooo0', 'O0oo', 'ooo0', ]
         f = ['f', 'ff', 'fff']
-        mark = ['!', '!!', '!!', '!1', '!!1', '!1!!', '1!!!', '!1!1!', '1!', '!!1'', '!!!1!', '!!!!', '!11!']
+        mark = ['!', '!!', '!!', '!1', '!!1', '!1!!', '1!!!', '!1!1!', '1!', '!!1!', '!!!1!', '!!!!', '!11!']
         msg1 = random.choice(o)
         msg2 = random.choice(f)
         msg3 = random.choice(mark)
