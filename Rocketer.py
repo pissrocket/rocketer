@@ -425,7 +425,8 @@ async def on_message(message):
                         ':small_blue_diamond: r-div {number1} {number2}\n'
                         ':white_small_square: r-exp {number1} {number2}\n'
                         ':small_blue_diamond: r-nick "{name}"\n'
-                        ':white_small_square: r-oof', inline=True)
+                        ':white_small_square: r-clear {number}\n'
+                        ':small_blue_diamond: r-oof', inline=True)
         embed.set_thumbnail(url='https://cdn.discordapp.com/emojis/385152309090451467.png?v=1')
         embed.set_footer(text='The Official Bot of PissRocket, inviting and using the Bot in other servers breaks the Term of Use.')
         await bot.send_message(message.channel, embed=embed)  
@@ -440,8 +441,8 @@ async def on_message(message):
                             ":small_blue_diamond: r-nick \"{name}\"\n"
                             "Change your name\n"
                             "\n"
-                            ":white_small_square: r-poll {title} {description} <-(this decide about the options)\n"
-                            "starts a quick Poll", colour=0x3498db)
+                            ":white_small_square: r-clear {number}\n"
+                            "Delete a specific amount of messages\nMod permissions needs", colour=0x3498db)
         emb.set_thumbnail(url="https://cdn.discordapp.com/emojis/438035428386275340.png?v=1")
         await bot.send_message(message.channel, embed=emb)
     if message.content.startswith('r-bot'):
