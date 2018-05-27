@@ -1,8 +1,7 @@
 import discord, logging, json, asyncio, time, random, aiohttp, re, datetime, traceback, os, sys, math
 from discord.ext import commands
 
-# "-----BIG ROCKET------" or "----HEAD ADMIN-----" or "----------MOD----------" or "-------HEAD MOD-----" or "---------ADMIN--------" or "----BABY ROCKET----"
-
+#-------------------DATA---------------------
 version = "0.5.8"
 owner = ["361534796830081024"]
 bot = commands.Bot(command_prefix='r-', description=None)
@@ -12,6 +11,12 @@ member = discord.Member
 user = discord.User
 Imox = ["365173881952272384"]
 permissions = discord.Permissions
+#--------------------------------------------
+
+#--------------MODERATOR'S ID-----------------
+"""                  Imox                  Rettend                PReiZ                 Lapras                Legends               sunrab                Spork"""
+Moderators = ["365173881952272384", "361534796830081024", "407382812518383627", "323851553662566401", "386400236916047872", "366607123771293696", "375991973246533642"]
+#--------------------------------------------
 
 @bot.event
 async def on_ready():
@@ -28,15 +33,15 @@ class NoPermError(Exception):
 
 @bot.command(pass_context=True)
 async def clear(ctx, number : int):
-    if "Staff Member" not in ctx.message.author.roles:
-        raise NoPermError
-    if "Staff Member" in ctx.message.author.roles:
+    if ctx.message.author.id in Moderators:
         number += 1
         deleted = await bot.purge_from(ctx.message.channel, limit=number)
         num = number - 1
         msg = await bot.send_message(ctx.message.channel, f'**{ctx.message.author} deleted __{num}__ messages**')
         await asyncio.sleep(4)
         await bot.delete_message(msg)
+    else:
+        raise NoPermError
 
 @bot.command(pass_context=True)
 async def roll(ctx, x : int, y : int):
