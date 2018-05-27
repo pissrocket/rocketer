@@ -1,6 +1,8 @@
 import discord, logging, json, asyncio, time, random, aiohttp, re, datetime, traceback, os, sys, math
 from discord.ext import commands
 
+# "-----BIG ROCKET------" or "----HEAD ADMIN-----" or "----------MOD----------" or "-------HEAD MOD-----" or "---------ADMIN--------" or "----BABY ROCKET----"
+
 version = "0.5.8"
 owner = ["361534796830081024"]
 bot = commands.Bot(command_prefix='r-', description=None)
@@ -9,6 +11,7 @@ server = discord.Server
 member = discord.Member
 user = discord.User
 Imox = ["365173881952272384"]
+permissions = discord.Permissions
 
 @bot.event
 async def on_ready():
@@ -25,7 +28,7 @@ class NoPermError(Exception):
 
 @bot.command(pass_context=True)
 async def clear(ctx, number : int):
-    if "-----BIG ROCKET------" or "----HEAD ADMIN-----" or "----------MOD----------" or "-------HEAD MOD-----" or "---------ADMIN--------" or "----BABY ROCKET----" not in ctx.message.author.roles:
+    if discord.Permissions.manage_messages not in ctx.message.author.permissions:
         raise NoPermError
     else:
         number += 1
