@@ -159,8 +159,8 @@ async def register(ctx):
                 break
             elif role.name == "Unregistered":
                 await bot.remover_roles(member, role)
+                await bot.send_message(ctx.message.channel, f"**Congratulations {ctx.message.author}, you are verified!**")
                 break
-        await bot.send_message(ctx.message.channel, f"**Congratulations {ctx.message.author}, you are verified!**")
     
 @bot.listen()
 async def on_member_join(member):
