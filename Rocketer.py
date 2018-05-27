@@ -1,8 +1,6 @@
 import discord, logging, json, asyncio, time, random, aiohttp, re, datetime, traceback, os, sys, math
 from discord.ext import commands
 
-#permission handler-hez: --if member.server_permissions.administrator:--
-
 version = "0.5.8"
 owner = ["361534796830081024"]
 bot = commands.Bot(command_prefix='r-', description=None)
@@ -28,7 +26,7 @@ class NoPermError(Exception):
 @bot.command(pass_context=True)
 async def clear(ctx, number : int):
     """if "-----BIG ROCKET------" or "----HEAD ADMIN-----" or "----------MOD----------" or "-------HEAD MOD-----" or "---------ADMIN--------" or "----BABY ROCKET----" in [y.name.lower() for y in ctx.message.author.roles]:"""
-    if server.permissions.manage_messages.permissions_in(ctx.message.author):
+    if discord.Permissions.manage_messages.permissions_in(ctx.message.author):
         number += 1
         deleted = await bot.purge_from(ctx.message.channel, limit=number)
         num = number - 1
