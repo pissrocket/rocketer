@@ -25,15 +25,17 @@ class NoPermError(Exception):
 
 @bot.command(pass_context=True)
 async def clear(ctx, number : int):
-    if "-----BIG ROCKET------" or "----HEAD ADMIN-----" or "----------MOD----------" or "-------HEAD MOD-----" or "---------ADMIN--------" or "----BABY ROCKET----" in ctx.message.author.roles:
+    if "-----BIG ROCKET------" or "----HEAD ADMIN-----" or "----------MOD----------" or "-------HEAD MOD-----" or "---------ADMIN--------" or "----BABY ROCKET----" not in ctx.message.author.roles:
+        raise NoPermError
+    else:
         number += 1
         deleted = await bot.purge_from(ctx.message.channel, limit=number)
         num = number - 1
         msg = await bot.send_message(ctx.message.channel, f'**{ctx.message.author} deleted __{num}__ messages**')
         await asyncio.sleep(4)
         await bot.delete_message(msg)
-    else:
-        raise NoPermError
+
+
         
 @bot.command(pass_context=True)
 async def roll(ctx, x : int, y : int):
