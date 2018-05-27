@@ -3,7 +3,7 @@ from discord.ext import commands
 
 #permission handler-hez: --if member.server_permissions.administrator:--
 
-version = "0.5.6"
+version = "0.5.8"
 owner = ["361534796830081024"]
 bot = commands.Bot(command_prefix='r-', description=None)
 message = discord.Message
