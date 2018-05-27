@@ -9,6 +9,7 @@ bot = commands.Bot(command_prefix='r-', description=None)
 message = discord.Message
 server = discord.Server
 member = discord.Member
+user = discord.User
 Imox = ["365173881952272384"]
 
 @bot.event
@@ -30,7 +31,9 @@ async def clear(ctx, number : int):
         number += 1
         deleted = await bot.purge_from(ctx.message.channel, limit=number)
         num = number - 1
-        await bot.send_message(ctx.message.channel, f'**{ctx.message.author} deleted __{num}__ messages**')
+        msg = await bot.send_message(ctx.message.channel, f'**{ctx.message.author} deleted __{num}__ messages**')
+        await asyncio.sleep(4)
+        await bot.delete_message(msg)
     else:
         raise NoPermError
         
@@ -134,13 +137,13 @@ async def poll(ctx, question, options: str):
     await bot.edit_message(react_message, embed=embed)
 
 @bot.command(pass_context=True)
-async def register(context):
+async def register(ctx):
     for server in bot.servers:
         roles = server.roles
         members = server.members
         member = None
         for mem in members:
-            if mem.id == context.message.author.id:
+            if mem.id == ctx.message.author.id:
                 member = mem
                 break
         for role in roles:
@@ -157,8 +160,15 @@ async def on_member_join(member):
             is_verified = True
             break
         if is_verified == False:
-            await bot.send_message(room, "**TEXT_HERE**")
-    
+            await bot.send_message(room, f"**Welcome {user.mention}, I will show you around, First, to __get permissions for all channels__, you need to type `r-verify` and __answer all of the questions!__\nThan type `r-register` ! __IMPORTANT: typing `r-register` without answering the questions, will unregister you!__**")
+    @bot.listen()
+    async def on_member_remove(member):
+        room2 = bot.get_channel(id="370269066864361476")
+        if is_verified = False:
+            await bot.send_message(room2, f"**{member} left without trying to verify...**")
+        if is_verified = True:
+            await bot.send_message(room2, f"**{member} left without saying anything...** <:thonkSad:421004865049985035>")
+
 @bot.event
 async def on_message(message):
     if message.content.upper().startswith('R-AMIOWNER?'):
@@ -318,11 +328,11 @@ async def on_message(message):
         room = bot.get_channel(id='420141568486408203')
         em = discord.Embed(title='VERIFICATION', description='**Hey __' + message.author.name + '__, if you want to get verified, you need to answer 3 questions:\n'
                                 ':one: Do you play __.io games__?\n'
-                                ':two: What else games do you play?\n'
+                                ':two: What else games do you play? __Please enumerate some of them__\n'
                                 ':three: How did you get here?\n'
-                                '__Note__: if you play a game, and you want to get this game\'s special role, you need to ask it to an Admin (or higher) in {0.mention}, __and you must certify it!__)\n'
+                                '__Note__: if you play a game, and you want to get this game\'s special role, you need to ask it to an Admin (or higher), that game will be added to {0.mention}\n'
                                 '\n'
-                                '__Type `!verify` to finish the verification__**'.format(room), colour=0x3498db)
+                                '__Type `!register` if you answered all of the questions above, and to finish the verification__**'.format(room), colour=0x3498db)
         em.set_thumbnail(url=message.author.avatar_url)
         await bot.send_message(message.channel, embed=em)
     if message.content.startswith('r-leavepls'):
