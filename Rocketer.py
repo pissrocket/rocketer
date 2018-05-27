@@ -335,15 +335,21 @@ async def on_message(message):
         await bot.send_message(message.channel, msg1 + msg2)
     if message.content.startswith('r-verify'):
         room = bot.get_channel(id='420141568486408203')
-        em = discord.Embed(title='VERIFICATION', description='**Hey __' + message.author.name + '__, if you want to get verified, you need to answer 3 questions:\n'
-                                ':one: Do you play __.io games__?\n'
-                                ':two: What else games do you play? __Please enumerate some of them__\n'
-                                ':three: How did you get here?\n'
-                                '__Note__: if you play a game, and you want to get this game\'s special role, you need to ask it to an Admin (or higher), that game will be added to {0.mention}\n'
-                                '\n'
-                                '__Type `!register` if you answered all of the questions above, and to finish the verification__**'.format(room), colour=0x3498db)
-        em.set_thumbnail(url=message.author.avatar_url)
-        await bot.send_message(message.channel, embed=em)
+        for role in roles:
+            if role.name == "Registered":
+                await bot.send_message(message.channel, "**Boi, you are already verified... Why are you want to?**")
+                break
+            elif role.name == "Unregistered":
+                em = discord.Embed(title='VERIFICATION', description='**Hey __' + message.author.name + '__, if you want to get verified, you need to answer 3 questions:\n'
+                                        ':one: Do you play __.io games__?\n'
+                                        ':two: What else games do you play? __Please enumerate some of them__\n'
+                                        ':three: How did you get here?\n'
+                                        '__Note__: if you play a game, and you want to get this game\'s special role, you need to ask it to an Admin (or higher), that game will be added to {0.mention}\n'
+                                        '\n'
+                                        '__Type `r-register` if you answered all of the questions above, and to finish the verification__**'.format(room), colour=0x3498db)
+                em.set_thumbnail(url=message.author.avatar_url)
+                await bot.send_message(message.channel, embed=em)
+                break
     if message.content.startswith('r-leavepls'):
         em5 = discord.Embed(title=":warning: WARNING :warning:", description="THE BOT WILL LEAVE THE SERVER IN:\n"
                             ":large_blue_circle::large_blue_circle::large_blue_circle::large_blue_circle::black_circle:\n"
@@ -412,7 +418,7 @@ async def on_message(message):
         em = discord.Embed(title='MY LINKS:', description=':cyclone: PissRocket: https://discord.gg/Cf833k8\n'
                            ':link: Website: https://hegyiaron101.wixsite.com/pissrocket', colour=0x3498db)
         await bot.send_message(message.channel, embed=em)
-    if message.content.startswith('r-list'):
+    if message.content.startswith('r-list 1'):
         embed = discord.Embed(title='MY COMMANDS:', description="Hey, check out my commands!", colour=0x3498db)
         embed.add_field(name='', value=':small_blue_diamond: r-bot\n'
                             ':white_small_square: r-game {game}\n'
@@ -423,24 +429,30 @@ async def on_message(message):
                             ':small_blue_diamond: r-digits {0-9}\n'
                             ':white_small_square: r-help\n'
                             ':small_blue_diamond: r-8ball\n'
-                            ':white_small_square: r-verify\n'
                             ':small_blue_diamond: r-leavepls\n'
                             ':white_small_square: r-poll {title} {options}\n'
                             ':small_blue_diamond: r-invite\n'
                             ':white_small_square: r-latest\n'
                             ':small_blue_diamond: r-lenny\n'
                             ':white_small_square: r-suggest {Q or S or C} "{message}"', inline=True)
+        embed.set_thumbnail(url='https://cdn.discordapp.com/emojis/385152309090451467.png?v=1')
+        embed.set_footer(text='The Official Bot of PissRocket, inviting and using the Bot in other servers breaks the Term of Use.')
+        msg = await bot.send_message(message.channel, embed=embed)
+        if message.content.startswith('r-list 2'):
+        embed = discord.Embed(title='MY COMMANDS:', description="Hey, check out my commands!", colour=0x3498db)
         embed.add_field(name='', value=':white_small_square: r-add {number1} {number2}\n'
                         ':small_blue_diamond: r-sub {number1} {number2}\n'
                         ':white_small_square: r-mul {number1} {number2}\n'
                         ':small_blue_diamond: r-div {number1} {number2}\n'
                         ':white_small_square: r-exp {number1} {number2}\n'
                         ':small_blue_diamond: r-nick "{name}"\n'
+                        ':white_small_square: r-verify\n'
+                        ':small_blue_diamond: r-register\n'
                         ':white_small_square: r-clear {number}\n'
                         ':small_blue_diamond: r-oof', inline=True)
         embed.set_thumbnail(url='https://cdn.discordapp.com/emojis/385152309090451467.png?v=1')
         embed.set_footer(text='The Official Bot of PissRocket, inviting and using the Bot in other servers breaks the Term of Use.')
-        await bot.send_message(message.channel, embed=embed)  
+        await bot.edit_message(msg, embed=embed)
     if message.content.startswith('r-latest'):
         emb = discord.Embed(title="LATEST UPDATES", description=":high_brightness: The Currently version is __" + version + "__ :high_brightness:\n\n"
                             ":small_blue_diamond: r-suggest {Q or S or __C__} \"{message}\"\n"
