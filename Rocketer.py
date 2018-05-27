@@ -28,8 +28,7 @@ class NoPermError(Exception):
 @bot.command(pass_context=True)
 async def clear(ctx, number : int):
     if "-----BIG ROCKET------" or "----HEAD ADMIN-----" or "----------MOD----------" or "-------HEAD MOD-----" or "---------ADMIN--------" or "----BABY ROCKET----" not in ctx.message.author.roles:
-        raise NoPermError(Sry boi, seems like you cant use this command...)
-        bot.say(err)
+        raise NoPermError
     elif "-----BIG ROCKET------" or "----HEAD ADMIN-----" or "----------MOD----------" or "-------HEAD MOD-----" or "---------ADMIN--------" or "----BABY ROCKET----" in ctx.message.author.roles:
         number += 1
         deleted = await bot.purge_from(ctx.message.channel, limit=number)
