@@ -25,6 +25,7 @@ async def on_ready():
 class NoPermError(Exception):
     pass
 
+
 @bot.command(pass_context=True)
 async def clear(ctx, number : int):
     if "-----BIG ROCKET------" or "----HEAD ADMIN-----" or "----------MOD----------" or "-------HEAD MOD-----" or "---------ADMIN--------" or "----BABY ROCKET----" not in ctx.message.author.roles:
