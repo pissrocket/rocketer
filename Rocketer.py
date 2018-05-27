@@ -161,19 +161,17 @@ async def on_member_join(member):
             break
         if is_verified == False:
             await bot.send_message(room, f"**Welcome {user.mention}, I will show you around, First, to __get permissions for all channels__, you need to type `r-verify` and __answer all of the questions!__\nThan type `r-register` ! __IMPORTANT: typing `r-register` without answering the questions, will unregister you!__**")
-    @bot.listen()
-    async def on_member_remove(member):
-        room2 = bot.get_channel(id="370269066864361476")
-        if is_verified = False:
-            await bot.send_message(room2, f"**{member} left without trying to verify...**")
-        if is_verified = True:
-            await bot.send_message(room2, f"**{member} left without saying anything...** <:thonkSad:421004865049985035>")
+
+@bot.listen()
+async def on_member_remove(member):
+    room2 = bot.get_channel(id="370269066864361476")
+    await bot.send_message(room2, f"**{member} left without saying anything...** <:thonkSad:421004865049985035>")
 
 @bot.event
 async def on_message(message):
     if message.content.upper().startswith('R-AMIOWNER?'):
         if message.author.id in owner:
-            await bot.send_message(message.channel, ':white_check_mark: **You are the Owner.**')
+            await bot.send_message(message.channel, ':white_check_mark: **You are the Owner, Hey Rettend :D**')
         else:
             await bot.send_message(message.channel, ':negative_squared_cross_mark: **You aren\'t the Owner.**')
     if message.content.startswith('r-ping'):
